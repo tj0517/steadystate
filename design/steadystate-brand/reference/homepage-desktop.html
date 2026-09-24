@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steadystate — Systems that settle.</title>
+</head>
+<body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+body{margin:0;background:#14171C;color:#EDEBE6;font-family:"Inter Tight",Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#7FB2E5;text-decoration:none}a:hover{color:#A6CBEF}
+</style>
+
+
+<div style="max-width: 1440px; margin: 0 auto; box-sizing: border-box; display: flex; flex-direction: column; background: #14171C; color: #EDEBE6; font-family: 'Inter Tight', Inter, system-ui, sans-serif; overflow: hidden">
+
+<!-- NAV -->
+<header style="height: 84px; box-sizing: border-box; padding: 0 120px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #2C3239">
+  <a href="#top" aria-label="Steadystate — strona główna" style="display: flex; align-items: center; gap: 12px; color: #EDEBE6">
+    <svg width="40" height="32" viewBox="0 0 50 40" aria-hidden="true"><path d="M4 32 C8 32 10 4 15 6 C20 8 20 24 25 22 C29 20.5 29 16 33 16.5 L44 16.5" fill="none" stroke="#7FB2E5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="44" cy="16.5" r="3.2" fill="#EDEBE6"/></svg>
+    <span style="font-size: 22px; font-weight: 600; letter-spacing: -0.02em">steadystate</span>
+  </a>
+  <nav aria-label="Główna" style="display: flex; align-items: center; gap: 36px; font-size: 15px; font-weight: 500">
+    <a href="#uslugi" style="color: #EDEBE6">Usługi</a>
+    <a href="#realizacje" style="color: #EDEBE6">Realizacje</a>
+    <a href="#proces" style="color: #EDEBE6">Proces</a>
+    <a href="#studio" style="color: #EDEBE6">Studio</a>
+    <a href="#kontakt" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 8px; background: #14171C; color: #EDEBE6; font-weight: 500">Umów rozmowę</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="top" style="box-sizing: border-box; padding: 96px 120px 88px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center">
+  <div style="grid-column: 1 / span 6; display: flex; flex-direction: column; gap: 32px">
+    <div style="display: inline-flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #9EA3AA">
+      <span style="display: inline-block; width: 24px; height: 2px; background: #7FB2E5"></span>
+      <span>Studio software · Gdańsk</span>
+    </div>
+    <h1 style="margin: 0; font-size: 68px; line-height: 1.02; font-weight: 600; letter-spacing: -0.03em; color: #EDEBE6">Systemy, po których firma wchodzi w&nbsp;stan ustalony.</h1>
+    <p style="margin: 0; max-width: 540px; font-size: 19px; line-height: 30px; color: #9EA3AA">Budujemy systemy do pracy i&nbsp;do sprzedaży: obieg dokumentów, CRM, zamówienia, lejek zapytań. Po wdrożeniu kręcą się same, a&nbsp;Ty przestajesz gasić pożary.</p>
+    <div style="display: flex; align-items: center; gap: 16px; margin-top: 8px">
+      <a href="#kontakt" style="display: inline-flex; align-items: center; height: 52px; padding: 0 24px; border-radius: 8px; background: #7FB2E5; color: #14171C; font-size: 16px; font-weight: 500">Umów 30‑minutową rozmowę</a>
+      <a href="#realizacje" style="display: inline-flex; align-items: center; height: 52px; padding: 0 24px; border-radius: 8px; border: 1px solid #2C3239; background: #1E2329; color: #EDEBE6; font-size: 16px; font-weight: 500">Zobacz realizacje</a>
+    </div>
+  </div>
+
+  <div style="grid-column: 7 / span 6; display: flex; flex-direction: column; gap: 16px">
+    <div style="background: #1E2329; border: 1px solid #2C3239; border-radius: 16px; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #9EA3AA">
+        <span>Pożary w firmie / tydzień</span>
+        <span>przed → po wdrożeniu</span>
+      </div>
+      <svg viewBox="0 0 560 300" width="536" height="287" role="img" aria-label="Wykres: liczba nagłych problemów spada po skoku i ustala się na niskim, stałym poziomie">
+        <g stroke="#2C3239" stroke-width="1">
+          <line x1="0" y1="60" x2="560" y2="60"/><line x1="0" y1="120" x2="560" y2="120"/><line x1="0" y1="180" x2="560" y2="180"/><line x1="0" y1="240" x2="560" y2="240"/>
+        </g>
+        <line x1="0" y1="212" x2="560" y2="212" stroke="#7FB2E5" stroke-width="1.5" stroke-dasharray="6 6"/>
+        <path d="M0 250 C40 250 50 30 90 34 C120 37 118 160 150 166 C180 171 176 106 205 110 C232 114 230 206 262 208 C300 210 380 212 560 212" fill="none" stroke="#7FB2E5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="530" cy="212" r="8" fill="#EDEBE6"/>
+        <rect x="392" y="222" width="150" height="28" rx="4" fill="#1A2B3D"/>
+        <text x="467" y="241" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" letter-spacing="1" fill="#7FB2E5">STAN USTALONY</text>
+        <text x="8" y="292" font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" letter-spacing="1" fill="#9EA3AA">START</text>
+        <text x="552" y="292" text-anchor="end" font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" letter-spacing="1" fill="#9EA3AA">TYDZIEŃ 8</text>
+      </svg>
+    </div>
+    <p style="margin: 0; font-size: 14px; line-height: 22px; color: #9EA3AA; padding: 0 4px">Stan ustalony to moment, w&nbsp;którym układ przestaje oscylować. Tak projektujemy systemy: raz wdrożone, działają bez nadzoru.</p>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<section aria-label="Liczby" style="box-sizing: border-box; margin: 0 120px; padding: 40px 0; border-top: 1px solid #2C3239; border-bottom: 1px solid #2C3239; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px">
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.02em; color: #EDEBE6">2 tyg.</span>
+    <span style="font-size: 14px; line-height: 22px; color: #9EA3AA">od startu do działającego sklepu B2B (Hydra Arms)</span>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.02em; color: #EDEBE6">2 000+</span>
+    <span style="font-size: 14px; line-height: 22px; color: #9EA3AA">produktów importowanych automatycznie każdego dnia</span>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.02em; color: #EDEBE6">3+</span>
+    <span style="font-size: 14px; line-height: 22px; color: #9EA3AA">dostawców spiętych w&nbsp;jeden katalog, bez ręcznej pracy</span>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.02em; color: #EDEBE6">5</span>
+    <span style="font-size: 14px; line-height: 22px; color: #9EA3AA">systemów w&nbsp;portfolio: od dokumentacji offshore po sprzedaż wypraw</span>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="uslugi" style="box-sizing: border-box; padding: 112px 120px 0; display: flex; flex-direction: column; gap: 48px">
+  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 720px">
+    <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #9EA3AA">Dwie linie usług</span>
+    <h2 style="margin: 0; font-size: 44px; line-height: 48px; font-weight: 600; letter-spacing: -0.02em">Jeden system do pracy. Jeden do sprzedaży.</h2>
+    <p style="margin: 0; font-size: 19px; line-height: 30px; color: #9EA3AA">Nie sprzedajemy godzin programisty. Sprzedajemy działający system z&nbsp;jasno opisanym stanem końcowym.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+    <article style="background: #1E2329; border: 1px solid #2C3239; border-radius: 16px; padding: 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+      <div style="display: flex; align-items: center; justify-content: space-between">
+        <span style="display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: 4px; background: #1A2B3D; color: #7FB2E5; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase">Steady Ops</span>
+        <span style="font-size: 14px; color: #9EA3AA">System do pracy</span>
+      </div>
+      <h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 600; letter-spacing: -0.01em">Firma, w&nbsp;której nic nie ginie między mailem a&nbsp;Excelem.</h3>
+      <p style="margin: 0; font-size: 16px; line-height: 26px; color: #9EA3AA">Obieg dokumentów, CRM, rejestracja czasu, finanse, zamówienia i&nbsp;integracje z&nbsp;dostawcami. Jedno źródło prawdy zamiast dziesięciu arkuszy.</p>
+      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 16px; line-height: 24px">
+        <li style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; margin-top: 11px; width: 16px; height: 2px; background: #7FB2E5"></span><span>Obieg i&nbsp;kontrola dokumentów z&nbsp;wersjonowaniem i&nbsp;akceptacjami</span></li>
+        <li style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; margin-top: 11px; width: 16px; height: 2px; background: #7FB2E5"></span><span>Czas pracy i&nbsp;rozliczenia projektów w&nbsp;jednym widoku</span></li>
+        <li style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; margin-top: 11px; width: 16px; height: 2px; background: #7FB2E5"></span><span>Sklep i&nbsp;katalog B2B z&nbsp;automatycznym importem od dostawców</span></li>
+        <li style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; margin-top: 11px; width: 16px; height: 2px; background: #7FB2E5"></span><span>Integracje: BaseLinker, płatności, księgowość, magazyn</span></li>
+      </ul>
+      <div style="margin-top: 8px; padding-top: 20px; border-top: 1px solid #2C3239; display: flex; justify-content: space-between; align-items: center; font-size: 14px">
+        <span style="color: #9EA3AA">Realizacje: Sea Clouds DCS, Hydra Arms</span>
+        <a href="#realizacje" style="font-weight: 500">Zobacz case →</a>
+      </div>
+    </article>
+
+    <article style="background: #1E2329; border: 1px solid #2C3239; border-radius: 16px; padding: 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+      <div style="display: flex; align-items: center; justify-content: space-between">
+        <span style="display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: 4px; background: #2E2414; color: #E6A652; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase">Steady Sales</span>
+        <span style="font-size: 14px; color: #9EA3AA">System do sprzedaży</span>
+      </div>
+      <h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 600; letter-spacing: -0.01em">Zapytania, które same się kwalifikują, zanim do nich usiądziesz.</h3>
+      <p style="margin: 0; font-size: 16px; line-height: 26px; color: #9EA3AA">Lejek od reklamy do płatności: landing, formularz, kwalifikacja zapytań z&nbsp;użyciem AI, oferta, płatność. Odpowiadasz tylko tym, którzy są gotowi kupić.</p>
+      <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 16px; line-height: 24px">
+        <li style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; margin-top: 11px; width: 16px; height: 2px; background: #E6A652"></span><span>Landing i&nbsp;kampanie Google Ads pod jeden mierzalny cel</span></li>
+        <li style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; margin-top: 11px; width: 16px; height: 2px; background: #E6A652"></span><span>Kwalifikacja zapytań i&nbsp;pierwsza odpowiedź generowane automatycznie</span></li>
+        <li style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; margin-top: 11px; width: 16px; height: 2px; background: #E6A652"></span><span>Oferta, rezerwacja i&nbsp;płatność online bez ręcznego przepisywania</span></li>
+        <li style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; margin-top: 11px; width: 16px; height: 2px; background: #E6A652"></span><span>Jeden panel: skąd przyszło zapytanie i&nbsp;na jakim jest etapie</span></li>
+      </ul>
+      <div style="margin-top: 8px; padding-top: 20px; border-top: 1px solid #2C3239; display: flex; justify-content: space-between; align-items: center; font-size: 14px">
+        <span style="color: #9EA3AA">Realizacja: Fjordanglers</span>
+        <a href="#realizacje" style="font-weight: 500">Zobacz case →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="realizacje" style="box-sizing: border-box; padding: 112px 120px 0; display: flex; flex-direction: column; gap: 48px">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 48px">
+    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 720px">
+      <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #9EA3AA">Realizacje</span>
+      <h2 style="margin: 0; font-size: 44px; line-height: 48px; font-weight: 600; letter-spacing: -0.02em">Każdy projekt kończy się tym samym: opisem, co teraz działa samo.</h2>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px">
+
+    <article style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; background: #1E2329; border: 1px solid #2C3239; border-radius: 16px; padding: 40px; box-sizing: border-box">
+      <div style="grid-column: 1 / span 3; display: flex; flex-direction: column; gap: 12px">
+        <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #7FB2E5">Steady Ops · B2B e‑commerce</span>
+        <h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 600; letter-spacing: -0.01em">Hydra Arms</h3>
+        <span style="font-size: 14px; line-height: 22px; color: #9EA3AA">Sektor obronny. Wcześniej bez sklepu internetowego.</span>
+      </div>
+      <div style="grid-column: 4 / span 5; display: flex; flex-direction: column; gap: 12px; font-size: 16px; line-height: 26px">
+        <p style="margin: 0">Strona i&nbsp;sklep od zera: Next.js, Supabase, BaseLinker. Katalog składany codziennie z&nbsp;plików XML trzech dostawców, ponad 2&nbsp;000 produktów, bez ręcznego przepisywania cen i&nbsp;stanów.</p>
+        <p style="margin: 0; color: #9EA3AA">Start produkcyjny po dwóch tygodniach od pierwszej rozmowy.</p>
+      </div>
+      <div style="grid-column: 10 / span 3; display: flex; flex-direction: column; gap: 8px; padding: 20px; background: #1A2B3D; border-radius: 8px; box-sizing: border-box">
+        <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #7FB2E5">Stan ustalony</span>
+        <span style="font-size: 15px; line-height: 23px; color: #EDEBE6">Katalog aktualizuje się sam każdej nocy. Zespół obsługuje zamówienia, nie dane.</span>
+      </div>
+    </article>
+
+    <article style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; background: #1E2329; border: 1px solid #2C3239; border-radius: 16px; padding: 40px; box-sizing: border-box">
+      <div style="grid-column: 1 / span 3; display: flex; flex-direction: column; gap: 12px">
+        <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #7FB2E5">Steady Ops · Dokumentacja</span>
+        <h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 600; letter-spacing: -0.01em">Sea Clouds DCS</h3>
+        <span style="font-size: 14px; line-height: 22px; color: #9EA3AA">Inżynieria offshore. System kontroli dokumentów.</span>
+      </div>
+      <div style="grid-column: 4 / span 5; display: flex; flex-direction: column; gap: 12px; font-size: 16px; line-height: 26px">
+        <p style="margin: 0">Document Control System z&nbsp;rejestracją czasu pracy: rewizje, transmittale, akceptacje i&nbsp;rozliczenie godzin na projekt w&nbsp;jednym miejscu zamiast w&nbsp;mailach i&nbsp;arkuszach.</p>
+        <p style="margin: 0; color: #9EA3AA">Budowany etapami, każdy etap z&nbsp;kryteriami „gotowe, gdy”.</p>
+      </div>
+      <div style="grid-column: 10 / span 3; display: flex; flex-direction: column; gap: 8px; padding: 20px; background: #1A2B3D; border-radius: 8px; box-sizing: border-box">
+        <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #7FB2E5">Stan ustalony</span>
+        <span style="font-size: 15px; line-height: 23px; color: #EDEBE6">Każda rewizja ma właściciela i&nbsp;status. Nikt nie pyta, która wersja jest aktualna.</span>
+      </div>
+    </article>
+
+    <article style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; background: #1E2329; border: 1px solid #2C3239; border-radius: 16px; padding: 40px; box-sizing: border-box">
+      <div style="grid-column: 1 / span 3; display: flex; flex-direction: column; gap: 12px">
+        <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #E6A652">Steady Sales · Lejek zapytań</span>
+        <h3 style="margin: 0; font-size: 30px; line-height: 36px; font-weight: 600; letter-spacing: -0.01em">Fjordanglers</h3>
+        <span style="font-size: 14px; line-height: 22px; color: #9EA3AA">Wyprawy wędkarskie z&nbsp;przewodnikiem. Klienci z&nbsp;całej Europy.</span>
+      </div>
+      <div style="grid-column: 4 / span 5; display: flex; flex-direction: column; gap: 12px; font-size: 16px; line-height: 26px">
+        <p style="margin: 0">Od reklamy do rezerwacji: landing, kampanie, formularz zapytania, kwalifikacja z&nbsp;użyciem AI i&nbsp;automatyczna pierwsza odpowiedź. Oferta i&nbsp;płatność online.</p>
+        <p style="margin: 0; color: #9EA3AA">Nasz własny produkt: testujemy na sobie to, co sprzedajemy.</p>
+      </div>
+      <div style="grid-column: 10 / span 3; display: flex; flex-direction: column; gap: 8px; padding: 20px; background: #2E2414; border-radius: 8px; box-sizing: border-box">
+        <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #E6A652">Stan ustalony</span>
+        <span style="font-size: 15px; line-height: 23px; color: #EDEBE6">Zapytanie dostaje odpowiedź w&nbsp;minuty, a&nbsp;człowiek wchodzi dopiero przy gotowym kliencie.</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="proces" style="box-sizing: border-box; padding: 112px 120px 0; display: flex; flex-direction: column; gap: 48px">
+  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 720px">
+    <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #9EA3AA">Proces</span>
+    <h2 style="margin: 0; font-size: 44px; line-height: 48px; font-weight: 600; letter-spacing: -0.02em">Krótkie etapy, każdy z&nbsp;jasnym „gotowe, gdy”.</h2>
+  </div>
+  <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px">
+    <li style="display: flex; flex-direction: column; gap: 16px; padding-top: 24px; border-top: 2px solid #EDEBE6">
+      <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: #9EA3AA">01</span>
+      <h3 style="margin: 0; font-size: 20px; line-height: 28px; font-weight: 600">Mapa procesu</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 24px; color: #9EA3AA">Rozmowa i&nbsp;przegląd tego, jak praca wygląda dziś. Wychodzisz z&nbsp;opisem stanu końcowego i&nbsp;wyceną.</p>
+    </li>
+    <li style="display: flex; flex-direction: column; gap: 16px; padding-top: 24px; border-top: 2px solid #EDEBE6">
+      <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: #9EA3AA">02</span>
+      <h3 style="margin: 0; font-size: 20px; line-height: 28px; font-weight: 600">Działający prototyp</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 24px; color: #9EA3AA">Klikalny system na prawdziwych danych, nie makieta. Poprawiamy na żywo, zanim powstanie reszta.</p>
+    </li>
+    <li style="display: flex; flex-direction: column; gap: 16px; padding-top: 24px; border-top: 2px solid #EDEBE6">
+      <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: #9EA3AA">03</span>
+      <h3 style="margin: 0; font-size: 20px; line-height: 28px; font-weight: 600">Wdrożenie etapami</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 24px; color: #9EA3AA">Każdy etap to jeden domknięty kawałek pracy z&nbsp;kryteriami odbioru. Widzisz postęp co tydzień.</p>
+    </li>
+    <li style="display: flex; flex-direction: column; gap: 16px; padding-top: 24px; border-top: 2px solid #7FB2E5">
+      <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; color: #7FB2E5">04</span>
+      <h3 style="margin: 0; font-size: 20px; line-height: 28px; font-weight: 600">Stan ustalony</h3>
+      <p style="margin: 0; font-size: 15px; line-height: 24px; color: #9EA3AA">System działa bez nas. Zostaje opieka: monitoring, drobne zmiany, kolejny etap, gdy będzie potrzebny.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- STUDIO (dark) -->
+<section id="studio" style="box-sizing: border-box; margin: 112px 120px 0; padding: 64px; background: #E6E8EB; color: #14171C; border-radius: 16px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px">
+  <div style="grid-column: 1 / span 6; display: flex; flex-direction: column; gap: 20px">
+    <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5E636B">Studio</span>
+    <h2 style="margin: 0; font-size: 36px; line-height: 42px; font-weight: 600; letter-spacing: -0.02em; color: #14171C">Małe studio. Jedna osoba odpowiedzialna od pierwszej rozmowy do produkcji.</h2>
+  </div>
+  <div style="grid-column: 8 / span 5; display: flex; flex-direction: column; gap: 20px; font-size: 16px; line-height: 26px; color: #3D434B">
+    <p style="margin: 0">Pracujemy z&nbsp;architekturą i&nbsp;procesem zbudowanymi wokół agentów AI. Dzięki temu dostarczamy w&nbsp;tygodniach to, co zwykle zajmuje kwartały, i&nbsp;prowadzimy kilka projektów naraz bez rozmywania odpowiedzialności.</p>
+    <p style="margin: 0">Nie ma account managera między Tobą a&nbsp;osobą, która pisze kod. Każda decyzja techniczna jest tłumaczona na to, co zmienia w&nbsp;Twojej firmie.</p>
+    <div style="display: flex; gap: 32px; padding-top: 8px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #5E636B">
+      <span>Next.js</span><span>Supabase</span><span>BaseLinker</span><span>Google Ads</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="kontakt" style="box-sizing: border-box; padding: 112px 120px 0; flex-grow: 1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-content: start">
+  <div style="grid-column: 1 / span 7; display: flex; flex-direction: column; gap: 24px">
+    <h2 style="margin: 0; font-size: 56px; line-height: 60px; font-weight: 600; letter-spacing: -0.03em">Opowiedz, co dziś gasisz ręcznie.</h2>
+    <p style="margin: 0; max-width: 560px; font-size: 19px; line-height: 30px; color: #9EA3AA">30 minut rozmowy. Wychodzisz z&nbsp;opinią, czy to jest problem na system, i&nbsp;z&nbsp;szacunkiem, ile zajmie doprowadzenie go do stanu ustalonego.</p>
+    <div style="display: flex; align-items: center; gap: 16px; margin-top: 8px">
+      <a href="mailto:[EMAIL]" style="display: inline-flex; align-items: center; height: 52px; padding: 0 24px; border-radius: 8px; background: #7FB2E5; color: #14171C; font-size: 16px; font-weight: 500">Umów rozmowę</a>
+      <a href="mailto:[EMAIL]" style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 15px; color: #EDEBE6">[EMAIL]@steadystate.pl</a>
+    </div>
+  </div>
+  <div style="grid-column: 9 / span 4; display: flex; flex-direction: column; gap: 16px; padding: 32px; background: #1E2329; border: 1px solid #2C3239; border-radius: 16px; box-sizing: border-box">
+    <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #9EA3AA">Dobrze pasujemy, gdy</span>
+    <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 15px; line-height: 23px">
+      <li style="display: flex; gap: 12px"><span style="flex: none; margin-top: 10px; width: 16px; height: 2px; background: #7FB2E5"></span><span>Masz proces, który działa, ale trzyma się na ludziach i&nbsp;arkuszach</span></li>
+      <li style="display: flex; gap: 12px"><span style="flex: none; margin-top: 10px; width: 16px; height: 2px; background: #7FB2E5"></span><span>Zapytań przychodzi więcej, niż jesteś w&nbsp;stanie dobrze obsłużyć</span></li>
+      <li style="display: flex; gap: 12px"><span style="flex: none; margin-top: 10px; width: 16px; height: 2px; background: #7FB2E5"></span><span>Chcesz jednej osoby, która rozumie i&nbsp;biznes, i&nbsp;kod</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="box-sizing: border-box; margin: 0 120px; padding: 32px 0 40px; border-top: 1px solid #2C3239; display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #9EA3AA">
+  <div style="display: flex; align-items: center; gap: 10px; color: #EDEBE6">
+    <svg width="30" height="24" viewBox="0 0 50 40" aria-hidden="true"><path d="M4 32 C8 32 10 4 15 6 C20 8 20 24 25 22 C29 20.5 29 16 33 16.5 L44 16.5" fill="none" stroke="#7FB2E5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="44" cy="16.5" r="3.2" fill="#EDEBE6"/></svg>
+    <span style="font-weight: 600">steadystate</span>
+    <span style="color: #9EA3AA; margin-left: 8px">Systems that settle.</span>
+  </div>
+  <div style="display: flex; gap: 28px">
+    <a href="#uslugi" style="color: #9EA3AA">Usługi</a>
+    <a href="#realizacje" style="color: #9EA3AA">Realizacje</a>
+    <a href="#proces" style="color: #9EA3AA">Proces</a>
+    <a href="#kontakt" style="color: #9EA3AA">Kontakt</a>
+  </div>
+  <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em">GDAŃSK · STEADYSTATE.PL</span>
+</footer>
+
+</div>
+
+</body>
+</html>
