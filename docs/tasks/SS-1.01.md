@@ -1,7 +1,7 @@
 ---
 id: SS-1.01
 title: Szkielet projektu Next.js + Tailwind
-status: in_progress
+status: review
 difficulty: S
 model: null
 model_approved: null
@@ -12,7 +12,7 @@ depends_on: []
 blocked_by_questions: []
 touches_db: false
 touches_prod: false
-pr: null
+pr: 1
 ---
 
 ## Cel
