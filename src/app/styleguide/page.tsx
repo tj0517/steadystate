@@ -56,6 +56,13 @@ export default function StyleguidePage() {
           )}
         </div>
       </section>
+
+      <section className="flex flex-col gap-space-4">
+        <h2 className="text-h2">Warianty responsywne</h2>
+        <div id="responsive-proof" className="text-h2 md:text-display">
+          responsive text style
+        </div>
+      </section>
     </main>
   );
 }

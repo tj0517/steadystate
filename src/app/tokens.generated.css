@@ -47,6 +47,9 @@
 }
 
 @theme inline {
+  /* Only brand colours are available as Tailwind colour utilities —
+   * the default Tailwind palette (slate, blue, amber-500, ...) is removed. */
+  --color-*: initial;
   --color-surface: var(--surface);
   --color-surface-raised: var(--surface-raised);
   --color-line: var(--line);
@@ -74,13 +77,71 @@
   --font-mono: var(--font-mono);
 }
 
-/* Text styles */
-.text-display { font-family: var(--font-sans); font-size: 72px; line-height: 72px; font-weight: 600; letter-spacing: -0.03em; }
-.text-h1 { font-family: var(--font-sans); font-size: 44px; line-height: 48px; font-weight: 600; letter-spacing: -0.02em; }
-.text-h2 { font-family: var(--font-sans); font-size: 30px; line-height: 36px; font-weight: 600; letter-spacing: -0.01em; }
-.text-h3 { font-family: var(--font-sans); font-size: 20px; line-height: 28px; font-weight: 600; }
-.text-lead { font-family: var(--font-sans); font-size: 19px; line-height: 30px; font-weight: 400; }
-.text-body { font-family: var(--font-sans); font-size: 16px; line-height: 26px; font-weight: 400; }
-.text-small { font-family: var(--font-sans); font-size: 14px; line-height: 22px; font-weight: 400; }
-.text-metric { font-family: var(--font-mono); font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.02em; }
-.text-label { font-family: var(--font-mono); font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; }
+/* Text styles — @utility so they work with variants (md:text-display, ...) */
+@utility text-display {
+  font-family: var(--font-sans);
+  font-size: 72px;
+  line-height: 72px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+@utility text-h1 {
+  font-family: var(--font-sans);
+  font-size: 44px;
+  line-height: 48px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+@utility text-h2 {
+  font-family: var(--font-sans);
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+@utility text-h3 {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+@utility text-lead {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  line-height: 30px;
+  font-weight: 400;
+}
+
+@utility text-body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+@utility text-small {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+@utility text-metric {
+  font-family: var(--font-mono);
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+@utility text-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}

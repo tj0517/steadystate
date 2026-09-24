@@ -68,7 +68,7 @@ const themeRadiusLines = tokens.radius.tokens.map(
 function textClass(style, familyVar) {
   const decls = [`font-family: var(${familyVar})`, `font-size: ${style.fontSize}`, `line-height: ${style.lineHeight}`, `font-weight: ${style.fontWeight}`];
   if (style.letterSpacing) decls.push(`letter-spacing: ${style.letterSpacing}`);
-  return `.text-${style.name} { ${decls.join("; ")}; }`;
+  return `@utility text-${style.name} {\n  ${decls.join(";\n  ")};\n}`;
 }
 
 const textClassLines = tokens.type.groups.flatMap((group) => {
@@ -93,6 +93,9 @@ ${lightAliasLines.join("\n")}
 }
 
 @theme inline {
+  /* Only brand colours are available as Tailwind colour utilities —
+   * the default Tailwind palette (slate, blue, amber-500, ...) is removed. */
+  --color-*: initial;
 ${themeColorLines.join("\n")}
 ${themeSpacingLines.join("\n")}
 ${themeRadiusLines.join("\n")}
@@ -100,8 +103,8 @@ ${themeRadiusLines.join("\n")}
   --font-mono: var(--font-mono);
 }
 
-/* Text styles */
-${textClassLines.join("\n")}
+/* Text styles — @utility so they work with variants (md:text-display, ...) */
+${textClassLines.join("\n\n")}
 `;
 
 writeFileSync(outPath, out, "utf8");
