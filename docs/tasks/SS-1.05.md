@@ -29,7 +29,7 @@ na desktopie i dobrze działać na telefonie.
 - [ ] teksty w `src/content/pl/`
 
 ## Gotowe, gdy
-- sekcje odpowiadają wzorowi — zrzuty 1440 trzech sekcji obok zrzutów wzoru w `.playwright-mcp/`; ocenia tj w review
+- sekcje odpowiadają wzorowi z poprawkami tj z review — zrzuty 1440 trzech sekcji obok zrzutów wzoru w `.playwright-mcp/`; ocenia tj w review, poprawki wizualne na tej samej gałęzi
 - telefon bez poziomego przewijania — Playwright 390×844: `scrollWidth <= 390`; zrzut 390 całej części
 - `amber` tylko w Steady Sales — `grep -rn 'amber' src --include='*.tsx'` trafia wyłącznie w komponent/wariant Steady Sales
 - teksty zgodne z O-03 — nazwy klientów i liczby w `src/content/pl/` odpowiadają odpowiedzi w `docs/04-open-questions.md` (cytat wiersza O-03 w raporcie)
@@ -50,3 +50,4 @@ na desktopie i dobrze działać na telefonie.
 - `docs/04-open-questions.md` — O-03
 
 ## Notatki z realizacji
+- 2026-09-24 tj: poprawki wizualne w kodzie, w review; wzór to punkt startowy (wf-plan, opcja B)

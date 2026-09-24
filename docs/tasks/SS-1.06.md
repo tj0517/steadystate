@@ -29,7 +29,7 @@ kompletna treściowo, brakuje tylko prawdziwych danych kontaktowych (SS-1.07).
 - [ ] teksty w `src/content/pl/`, nazwy klientów wg O-03
 
 ## Gotowe, gdy
-- sekcje odpowiadają wzorowi — zrzuty 1440 obok zrzutów wzoru w `.playwright-mcp/`; ocenia tj w review
+- sekcje odpowiadają wzorowi z poprawkami tj z review — zrzuty 1440 obok zrzutów wzoru w `.playwright-mcp/`; ocenia tj w review, poprawki wizualne na tej samej gałęzi
 - telefon bez poziomego przewijania — Playwright 390×844: `scrollWidth <= 390`; zrzut 390 całej strony
 - nie wyświetla się placeholder adresu — `curl -s localhost:3000 | grep -c '\[EMAIL\]'` = 0
 - wszystkie kotwice nagłówka trafiają w sekcje — Playwright: dla każdego linku z nawigacji `document.querySelector(href)` istnieje
@@ -49,3 +49,4 @@ kompletna treściowo, brakuje tylko prawdziwych danych kontaktowych (SS-1.07).
 - `docs/04-open-questions.md` — O-03
 
 ## Notatki z realizacji
+- 2026-09-24 tj: poprawki wizualne w kodzie, w review; wzór to punkt startowy (wf-plan, opcja B)
