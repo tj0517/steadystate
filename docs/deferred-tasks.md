@@ -10,3 +10,4 @@
 | 2026-09-24 | Osadzony kalendarz na stronie | SS-1.07 | |
 | 2026-09-24 | Zdjęcia i zrzuty systemów w case'ach | SS-1.10 | wymaga zgody klientów |
 | 2026-09-24 | Testy e2e / Lighthouse w CI, monitoring dostępności | SS-1.02, SS-1.09 | |
+| 2026-09-24 | Usunąć nieużywane domyślne SVG create-next-app (`public/next.svg`, `vercel.svg`, `file.svg`, `globe.svg`, `window.svg`) | SS-1.01 | strona startowa ich już nie używa, ale to poza zakresem tego zadania |
