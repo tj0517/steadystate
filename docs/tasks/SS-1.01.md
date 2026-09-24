@@ -34,7 +34,7 @@ Sukces: `npm run build` przechodzi, a kolejne zadania mogą od razu dokładać U
 - build przechodzi — `npm run build` kończy się kodem 0 (ostatnie ~15 linii w raporcie)
 - lint i typy czyste — `npm run lint && npm run typecheck` kończy się kodem 0
 - `CLAUDE.md` mieści się w limicie i wskazuje markę — `wc -c CLAUDE.md` < 8000 oraz `grep -c 'design/steadystate-brand/BRAND.md' CLAUDE.md` ≥ 1
-- śmieci i sekrety nie trafią do repo — `git check-ignore -v node_modules .next .env.local .playwright-mcp` wypisuje cztery linie
+- śmieci i sekrety nie trafią do repo — `git check-ignore -v node_modules/x .next/x .env.local .playwright-mcp/x` wypisuje cztery linie (ścieżki w środku, bo wzorce katalogów git dopasowuje tylko do istniejących katalogów)
 - lockfile w repo — `git ls-files package-lock.json` zwraca ścieżkę
 - paczka marki nietknięta — `git diff --stat main...HEAD -- design/` jest puste
 
@@ -52,3 +52,4 @@ Sukces: `npm run build` przechodzi, a kolejne zadania mogą od razu dokładać U
 
 ## Notatki z realizacji
 - 2026-09-24 tj: stack Next.js + Tailwind, hosting Vercel Pro (wf-plan D1, D2)
+- 2026-09-24 tj: kryterium check-ignore sprawdza ścieżki w środku katalogów (wf-task, przed startem)
