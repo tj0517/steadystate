@@ -1,7 +1,7 @@
 ---
 id: SS-1.03
 title: Tokeny marki i fonty w kodzie
-status: review
+status: done
 difficulty: M
 model: sonnet
 model_approved: null
@@ -55,3 +55,4 @@ na sztywno.
 - 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)
 - 2026-09-24 tj: Vercel Framework Preset był „Other" (import przed Next.js) — przestawiony na Next.js, podgląd ponownie wdrożony
 - 2026-09-24 tj: review — przyjęte z uzupełnieniami (domyślna paleta Tailwinda, zakres check:colors, style tekstu jako utility, dowody)
+- 2026-09-24 tj: odebrane, PR #2 — tokeny z tokens.json (generator + aktualność), tylko paleta marki (domyślna Tailwinda wyłączona), check:colors z red proof (hex, rgba/hsl/oklch, klasy palety), style tekstu jako @utility z wariantami (md: 30→72px), fonty self-hostowane, weryfikacja na podglądzie Vercel
