@@ -54,3 +54,4 @@ na sztywno.
 ## Notatki z realizacji
 - 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)
 - 2026-09-24 tj: Vercel Framework Preset był „Other" (import przed Next.js) — przestawiony na Next.js, podgląd ponownie wdrożony
+- 2026-09-24 tj: review — przyjęte z uzupełnieniami (domyślna paleta Tailwinda, zakres check:colors, style tekstu jako utility, dowody)
