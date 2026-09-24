@@ -1,7 +1,7 @@
 ---
 id: SS-1.03
 title: Tokeny marki i fonty w kodzie
-status: in_progress
+status: review
 difficulty: M
 model: sonnet
 model_approved: null
@@ -12,7 +12,7 @@ depends_on: [SS-1.01]
 blocked_by_questions: []
 touches_db: false
 touches_prod: false
-pr: null
+pr: 2
 ---
 
 ## Cel
@@ -53,3 +53,4 @@ na sztywno.
 
 ## Notatki z realizacji
 - 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)
+- 2026-09-24 tj: Vercel Framework Preset był „Other" (import przed Next.js) — przestawiony na Next.js, podgląd ponownie wdrożony
