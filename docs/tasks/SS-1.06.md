@@ -31,9 +31,9 @@ kompletna treściowo, brakuje tylko prawdziwych danych kontaktowych (SS-1.07).
 ## Gotowe, gdy
 - sekcje odpowiadają wzorowi z poprawkami tj z review — zrzuty 1440 obok zrzutów wzoru w `.playwright-mcp/`; ocenia tj w review, poprawki wizualne na tej samej gałęzi
 - telefon bez poziomego przewijania — Playwright 390×844: `scrollWidth <= 390`; zrzut 390 całej strony
-- nie wyświetla się placeholder adresu — `curl -s localhost:3000 | grep -c '\[EMAIL\]'` = 0
+- nie wyświetla się placeholder adresu — `curl -s <podgląd> | grep -c '\[EMAIL\]'` = 0
 - wszystkie kotwice nagłówka trafiają w sekcje — Playwright: dla każdego linku z nawigacji `document.querySelector(href)` istnieje
-- `npm run lint`, `npm run typecheck`, `npm run build` przechodzą
+- `npm run lint`, `npm run typecheck` przechodzą lokalnie, a build podglądu PR na Vercelu jest zielony (check Vercel na PR)
 
 ## Poza zakresem
 - adres e-mail i link do kalendarza → SS-1.07
@@ -50,3 +50,4 @@ kompletna treściowo, brakuje tylko prawdziwych danych kontaktowych (SS-1.07).
 
 ## Notatki z realizacji
 - 2026-09-24 tj: poprawki wizualne w kodzie, w review; wzór to punkt startowy (wf-plan, opcja B)
+- 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)

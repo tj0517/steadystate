@@ -29,9 +29,9 @@ zadaniu cała strona istnieje w obu językach.
 - treść z plików — tekst podstron równy `content/cases/*.en.md`
 - brak polskiego tekstu — ten sam grep co w SS-1.12 na trzech adresach `/en/cases/<slug>` jest pusty
 - pary językowe — każda podstrona PL ma hreflang do EN i odwrotnie; przełącznik prowadzi do odpowiednika (Playwright)
-- sitemap — `curl -s localhost:3000/sitemap.xml | grep -c '/en/cases/'` = 3
+- sitemap — `curl -s <podgląd>/sitemap.xml | grep -c '/en/cases/'` = 3
 - zrzuty 390 w `.playwright-mcp/`, `scrollWidth <= 390`
-- `npm run lint`, `npm run typecheck`, `npm run build` przechodzą
+- `npm run lint`, `npm run typecheck` przechodzą lokalnie, a build podglądu PR na Vercelu jest zielony (check Vercel na PR)
 
 ## Poza zakresem
 - zmiany szablonu case'u → osobne zadanie
@@ -45,3 +45,4 @@ zadaniu cała strona istnieje w obu językach.
 - `docs/tasks/SS-1.10.md`, `docs/tasks/SS-1.12.md`
 
 ## Notatki z realizacji
+- 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)

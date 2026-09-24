@@ -28,9 +28,9 @@ Każde „Umów rozmowę” na stronie prowadzi do kalendarza, a adres e-mail dz
 
 ## Gotowe, gdy
 - wszystkie CTA wskazują kalendarz — Playwright zbiera `href` przycisków „Umów…”; wszystkie równe URL z `contact.ts`
-- mail ma poprawny adres — `curl -s localhost:3000 | grep -o 'mailto:[^"]*' | sort -u` zwraca jeden adres z O-01
+- mail ma poprawny adres — `curl -s <podgląd> | grep -o 'mailto:[^"]*' | sort -u` zwraca jeden adres z O-01
 - ścieżka działa naprawdę — tj potwierdza w review: mail testowy doszedł, rezerwacja testowa pojawiła się w kalendarzu (dowód: potwierdzenie tj)
-- `npm run lint`, `npm run typecheck`, `npm run build` przechodzą
+- `npm run lint`, `npm run typecheck` przechodzą lokalnie, a build podglądu PR na Vercelu jest zielony (check Vercel na PR)
 
 ## Poza zakresem
 - formularz kontaktowy z kwalifikacją zapytań → deferred (etap Steady Sales)
@@ -46,3 +46,4 @@ Każde „Umów rozmowę” na stronie prowadzi do kalendarza, a adres e-mail dz
 
 ## Notatki z realizacji
 - 2026-09-24 tj: kontakt v1 = kalendarz + mail, formularz później (wf-plan D3)
+- 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)

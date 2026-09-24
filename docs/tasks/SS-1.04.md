@@ -34,7 +34,7 @@ telefonie, stopka i kontener sekcji. Teksty od początku leżą w plikach treśc
 - brak poziomego przewijania na telefonie — Playwright 390×844: `document.documentElement.scrollWidth <= 390`
 - menu mobilne działa z klawiatury — Playwright: Tab do przycisku, Enter otwiera (`aria-expanded="true"`), Esc zamyka, fokus na przycisku; wynik kroków w raporcie
 - teksty pochodzą z plików treści — zmiana etykiety „Proces” w `src/content/pl/` zmienia ją w nagłówku (zrzut lub test), a usunięcie klucza powoduje błąd `npm run typecheck` (red proof)
-- `npm run lint` (w tym `check:colors`) i `npm run build` przechodzą
+- `npm run lint` (w tym `check:colors`) przechodzą lokalnie, a build podglądu PR na Vercelu jest zielony (check Vercel na PR)
 
 ## Poza zakresem
 - sekcje strony głównej → SS-1.05, SS-1.06
@@ -51,3 +51,4 @@ telefonie, stopka i kontener sekcji. Teksty od początku leżą w plikach treśc
 
 ## Notatki z realizacji
 - 2026-09-24 tj: wersję mobilną układa agent z tokenów, tj ocenia zrzuty 390 px (wf-plan D5)
+- 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)

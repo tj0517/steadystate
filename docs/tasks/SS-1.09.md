@@ -30,6 +30,7 @@ i sprawdza wynik odczytem.
 - strona działa po HTTPS — `curl -sI https://steadystate.pl` → `HTTP/2 200`
 - `www` przekierowuje — `curl -sI https://www.steadystate.pl` → 301 lub 308 z `location: https://steadystate.pl/`
 - HTTP przekierowuje na HTTPS — `curl -sI http://steadystate.pl` → 301/308 na `https://`
+- strona robocza ukryta na produkcji — `curl -s -o /dev/null -w '%{http_code}' https://steadystate.pl/styleguide` = 404 (warunek z SS-1.03)
 - poczta nie ucierpiała — `dig +short steadystate.pl MX` identyczne jak przed zmianą (oba wyniki w raporcie)
 - produkcja to ostatni commit `main` — hash z panelu Vercel lub `curl -s https://steadystate.pl` zgodny ze zmianą z ostatniego PR-a (wskaż, po czym poznać)
 

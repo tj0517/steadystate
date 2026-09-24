@@ -31,11 +31,11 @@ a agent go nie zmienia i nie dopisuje faktów o kliencie.
 ## Gotowe, gdy
 - treść pochodzi z pliku — tekst podstrony równy treści `content/cases/hydra-arms.pl.md` (skrypt porównujący tekst lub diff w raporcie); agent nie dopisał zdań
 - szablon przyjmuje nowy case plikiem (red proof w drugą stronę) — tymczasowy plik `content/cases/test.pl.md` daje `/realizacje/test` bez zmian w kodzie; plik usunięty przed PR
-- nieznany slug = 404 — `curl -s -o /dev/null -w '%{http_code}' localhost:3000/realizacje/nie-ma` = 404
-- sitemap zawiera podstronę — `curl -s localhost:3000/sitemap.xml | grep -c 'realizacje/hydra-arms'` = 1
+- nieznany slug = 404 — `curl -s -o /dev/null -w '%{http_code}' <podgląd>/realizacje/nie-ma` = 404
+- sitemap zawiera podstronę — `curl -s <podgląd>/sitemap.xml | grep -c 'realizacje/hydra-arms'` = 1
 - wygląd — zrzuty 1440 i 390 w `.playwright-mcp/`, `scrollWidth <= 390`; ocenia tj
 - Lighthouse ≥ 90 (wydajność, dostępność, SEO) dla podstrony na podglądzie PR
-- `npm run lint`, `npm run typecheck`, `npm run build` przechodzą
+- `npm run lint`, `npm run typecheck` przechodzą lokalnie, a build podglądu PR na Vercelu jest zielony (check Vercel na PR)
 
 ## Poza zakresem
 - case'y Sea Clouds i Fjordanglers → SS-1.11
@@ -52,3 +52,4 @@ a agent go nie zmienia i nie dopisuje faktów o kliencie.
 
 ## Notatki z realizacji
 - 2026-09-24 tj: case'y i EN w zakresie etapu 1, po starcie PL (wf-plan D4); treść pisze tj z Claude poza repo
+- 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)

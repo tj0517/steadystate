@@ -28,13 +28,13 @@ kliknięciem.
 - [ ] `hreflang` (pl, en, x-default → `/`) w obie strony, sitemap z obiema wersjami, metadata i OG po angielsku
 
 ## Gotowe, gdy
-- brak polskiego tekstu na `/en` — `curl -s localhost:3000/en | sed 's/<[^>]*>/\n/g' | grep -E '[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]' | grep -v -e 'Gdańsk' -e 'GDAŃSK'` puste (nazwa miasta to jedyny wyjątek)
+- brak polskiego tekstu na `/en` — `curl -s <podgląd>/en | sed 's/<[^>]*>/\n/g' | grep -E '[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]' | grep -v -e 'Gdańsk' -e 'GDAŃSK'` puste (nazwa miasta to jedyny wyjątek)
 - niekompletne tłumaczenie nie przejdzie (red proof) — usunięcie jednego klucza z `src/content/en/` powoduje błąd `npm run typecheck`
-- `lang` i hreflang — `curl -s localhost:3000/en | grep -o '<html[^>]*lang="en"'` trafia; oba adresy mają `<link rel="alternate" hreflang=...>` dla pl, en i x-default
+- `lang` i hreflang — `curl -s <podgląd>/en | grep -o '<html[^>]*lang="en"'` trafia; oba adresy mają `<link rel="alternate" hreflang=...>` dla pl, en i x-default
 - przełącznik działa — Playwright: klik EN na `/` → `/en`, klik PL na `/en` → `/`
-- sitemap — `curl -s localhost:3000/sitemap.xml | grep -c '/en'` ≥ 1
+- sitemap — `curl -s <podgląd>/sitemap.xml | grep -c '/en'` ≥ 1
 - wygląd — zrzuty 1440 i 390 `/en` w `.playwright-mcp/`, `scrollWidth <= 390` (angielskie teksty mają inną długość)
-- `npm run lint`, `npm run typecheck`, `npm run build` przechodzą
+- `npm run lint`, `npm run typecheck` przechodzą lokalnie, a build podglądu PR na Vercelu jest zielony (check Vercel na PR)
 
 ## Poza zakresem
 - automatyczne przekierowanie według języka przeglądarki → deferred (osobna decyzja tj)
@@ -49,3 +49,4 @@ kliknięciem.
 - `docs/04-open-questions.md` — O-05
 
 ## Notatki z realizacji
+- 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)

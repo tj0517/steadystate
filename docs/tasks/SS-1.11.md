@@ -27,9 +27,9 @@ na stronie głównej prowadzi do właściwej podstrony.
 ## Gotowe, gdy
 - treść z plików — tekst podstron równy plikom treści (porównanie jak w SS-1.10)
 - wszystkie linki case'ów działają — Playwright: każdy link „Zobacz case →” na `/` daje 200 i trafia na `/realizacje/<slug>`; żaden nie wskazuje już `#realizacje`
-- sitemap — `curl -s localhost:3000/sitemap.xml | grep -c 'realizacje/'` = 3
+- sitemap — `curl -s <podgląd>/sitemap.xml | grep -c 'realizacje/'` = 3
 - wygląd — zrzuty 1440 i 390 obu podstron w `.playwright-mcp/`, `scrollWidth <= 390`
-- `npm run lint`, `npm run typecheck`, `npm run build` przechodzą
+- `npm run lint`, `npm run typecheck` przechodzą lokalnie, a build podglądu PR na Vercelu jest zielony (check Vercel na PR)
 
 ## Poza zakresem
 - wersja EN → SS-1.13
@@ -43,3 +43,4 @@ na stronie głównej prowadzi do właściwej podstrony.
 - `docs/tasks/SS-1.10.md`
 
 ## Notatki z realizacji
+- 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)

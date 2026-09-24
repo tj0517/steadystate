@@ -33,7 +33,7 @@ progi jakości (Lighthouse ≥ 90). Analityka tylko w wariancie wybranym w O-02.
 - OG działa — `curl -s <podgląd>/ | grep -E 'og:image|og:title'` zwraca oba, a `curl -sI <og:image>` = 200 i `image/png`
 - sitemap i robots — `curl -s <podgląd>/sitemap.xml | grep -c '<loc>'` ≥ 1, brak `styleguide`; `curl -s <podgląd>/robots.txt` wskazuje sitemap
 - favicon — `curl -sI <podgląd>/favicon.ico` albo `/icon.svg` = 200
-- `npm run lint`, `npm run typecheck`, `npm run build` przechodzą
+- `npm run lint`, `npm run typecheck` przechodzą lokalnie, a build podglądu PR na Vercelu jest zielony (check Vercel na PR)
 
 ## Poza zakresem
 - metadane EN i hreflang → SS-1.12
@@ -49,3 +49,4 @@ progi jakości (Lighthouse ≥ 90). Analityka tylko w wariancie wybranym w O-02.
 - `docs/04-open-questions.md` — O-02
 
 ## Notatki z realizacji
+- 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)
