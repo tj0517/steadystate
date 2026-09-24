@@ -59,3 +59,4 @@ Sukces: `npm run build` przechodzi, a kolejne zadania mogą od razu dokładać U
 - 2026-09-24 tj: `.gitignore` musi zawierać `*.tsbuildinfo` i `next-env.d.ts` (domyślne wpisy Next.js zgubione przy przenoszeniu plików)
 - 2026-09-24 tj: nieużywane domyślne SVG w `public/` zostają w deferred, bez akcji
 - 2026-09-24 tj: memory pressure = warn → bez lokalnego builda; kryterium `npm run build` udowadnia Vercel Preview build zamiast lokalnego
+- 2026-09-24 tj: review — przyjęte z uzupełnieniami (CLAUDE.md, @types/node, dowody lint/typecheck)

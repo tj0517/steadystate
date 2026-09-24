@@ -12,13 +12,13 @@ Strona marketingowa steadystate.pl.
 - `npm run build` — build produkcyjny
 - `npm run start` — uruchomienie builda
 - `npm run lint` — ESLint
-- `npm run typecheck` — `tsc --noEmit`
+- `npm run typecheck` — `next typegen && tsc --noEmit`
 
 ## Struktura katalogów
 - `src/app/` — strony i layouty (App Router)
 - `public/` — statyczne assety
 - `design/steadystate-brand/` — eksport design systemu marki (patrz niżej), nie edytować
-- `docs/tasks/` — zadania projektu; `docs/tasks/INDEX.md` to lista statusów, źródło prawdy o stanie prac
+- `docs/tasks/` — zadania projektu; pliki zadań są źródłem prawdy o statusie, `docs/tasks/INDEX.md` to tylko przegląd trzymany z nimi w synchronizacji
 
 ## Marka i UI
 Design system: `design/steadystate-brand/` — przeczytaj `design/steadystate-brand/BRAND.md` i `tokens.json` przed pracą nad UI.
