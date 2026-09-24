@@ -3,3 +3,10 @@
 .DS_Store
 .playwright-mcp/
 design/*.zip
+
+# node / next
+node_modules/
+.next/
+.vercel/
+*.tsbuildinfo
+next-env.d.ts
