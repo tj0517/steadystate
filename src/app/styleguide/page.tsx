@@ -12,6 +12,20 @@ const colorTokens = tokens.color.tokens.filter(
     typeof t.value === "object"
 );
 
+// Literal class names so Tailwind's source scanner can find them —
+// `text-${style.name}` is a dynamic string and would not be detected.
+const TEXT_STYLE_CLASSES: Record<string, string> = {
+  display: "text-display",
+  h1: "text-h1",
+  h2: "text-h2",
+  h3: "text-h3",
+  lead: "text-lead",
+  body: "text-body",
+  small: "text-small",
+  metric: "text-metric",
+  label: "text-label",
+};
+
 export default function StyleguidePage() {
   if (process.env.VERCEL_ENV === "production") {
     notFound();
@@ -49,7 +63,7 @@ export default function StyleguidePage() {
         <div className="flex flex-col gap-space-4">
           {tokens.type.groups.flatMap((group) =>
             group.styles.map((style) => (
-              <div key={style.name} className={`text-${style.name}`}>
+              <div key={style.name} className={TEXT_STYLE_CLASSES[style.name]}>
                 {style.name} — {style.fontSize} / {style.lineHeight}
               </div>
             ))
