@@ -1,12 +1,12 @@
 ---
 id: SS-1.03
 title: Tokeny marki i fonty w kodzie
-status: todo
+status: in_progress
 difficulty: M
-model: null
+model: sonnet
 model_approved: null
-effort: null
-branch: null
+effort: medium
+branch: feat/tokens
 due: null
 depends_on: [SS-1.01]
 blocked_by_questions: []

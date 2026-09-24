@@ -9,8 +9,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "typecheck": "next typegen && tsc --noEmit"
+    "lint": "node scripts/check-colors.mjs && eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "tokens": "node scripts/generate-tokens.mjs",
+    "check:colors": "node scripts/check-colors.mjs"
   },
   "dependencies": {
     "next": "16.3.6",
