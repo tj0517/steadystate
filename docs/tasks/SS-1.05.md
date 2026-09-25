@@ -1,7 +1,7 @@
 ---
 id: SS-1.05
 title: Strona główna cz. 1 — hero, pasek liczb, usługi
-status: review
+status: done
 difficulty: M
 model: sonnet
 model_approved: null
@@ -55,3 +55,4 @@ na desktopie i dobrze działać na telefonie.
 - 2026-09-25 tj: wzór do porównań agent otwiera przez `python3 -m http.server` w folderze wzoru (Playwright blokuje `file://`, SS-1.04)
 - 2026-09-25: implementacja gotowa do review — branch `feat/home-top`, PR #4
 - 2026-09-25 tj: review r2 — twarde spacje ze wzoru, czytelne podpisy wykresu na telefonie, kolor kreski w etykiecie hero, kolory linków „Zobacz case”
+- 2026-09-25 tj: odebrane, PR #4 — hero, pasek liczb i usługi zgodne ze wzorem (łamanie nagłówka jak we wzorze), 23 twarde spacje przeniesione ze wzoru (pozostałe 36 dla SS-1.06), czytelne podpisy wykresu przy 390, amber tylko w Steady Sales, linki case w kolorach linii, weryfikacja na podglądzie Vercel
