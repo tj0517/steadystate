@@ -29,7 +29,7 @@ export function SteadyOpsCard({ content }: SteadyOpsCardProps) {
       </ul>
       <div className="mt-space-2 flex flex-col gap-space-2 border-t border-line pt-space-6 text-small md:flex-row md:items-center md:justify-between">
         <span className="text-ink-muted">{content.credit}</span>
-        <a href={content.caseHref} className="font-medium text-ink">
+        <a href={content.caseHref} className="font-medium text-signal">
           {content.caseLabel}
         </a>
       </div>

@@ -54,3 +54,4 @@ na desktopie i dobrze działać na telefonie.
 - 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)
 - 2026-09-25 tj: wzór do porównań agent otwiera przez `python3 -m http.server` w folderze wzoru (Playwright blokuje `file://`, SS-1.04)
 - 2026-09-25: implementacja gotowa do review — branch `feat/home-top`, PR #4
+- 2026-09-25 tj: review r2 — twarde spacje ze wzoru, czytelne podpisy wykresu na telefonie, kolor kreski w etykiecie hero, kolory linków „Zobacz case”
