@@ -1,0 +1,147 @@
+/* GENERATED FILE — do not edit by hand.
+ * Source: design/steadystate-brand/tokens.json
+ * Regenerate with: npm run tokens
+ */
+:root, [data-theme="dark"] {
+  --surface: #14171C; /* Tło strony. Marka jest dark‑first: grafitowa czerń domyślnie, chłodna jasna szarość w wersji jasnej. Nigdy ciepła biel. */
+  --surface-raised: #1E2329; /* Karty, panele, menu na surface. Odcinają się tonem, nie cieniem. */
+  --line: #2C3239; /* Hairline'y, obramowania pól, podziały sekcji. */
+  --ink: #EDEBE6; /* Tekst podstawowy na surface i surface-raised. */
+  --ink-muted: #9EA3AA; /* Tekst drugorzędny, podpisy, etykiety mono — na obu surface. */
+  --deep: #E6E8EB; /* Sekcja odwrócona (Studio, wyróżniony blok): w dark jasny kamień, w light granatowa czerń. Dzieli długie strony. */
+  --on-deep: #14171C; /* Tekst na tle deep. */
+  --on-deep-muted: #5E636B; /* Tekst drugorzędny na tle deep. */
+  --signal: #7FB2E5; /* Atrament — akcent marki: główne CTA, aktywny stan, krzywa stanu ustalonego, kluczowe liczby. Jeden akcent na ekran. */
+  --signal-soft: #1A2B3D; /* Tło wyróżnień za tekstem signal (tagi, boxy „Stan ustalony”). */
+  --on-signal: #14171C; /* Tekst i ikony na wypełnieniu signal (etykieta głównego przycisku). */
+  --amber: #E6A652; /* Akcent pomocniczy: linia Steady Sales, ostrzeżenia. Nigdy obok signal w tym samym komponencie. */
+  --amber-soft: #2E2414; /* Tło wyróżnień za tekstem amber. */
+  --link: var(--signal); /* Linki — alias signal. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-16: 64px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --font-sans: "Inter Tight", Inter, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+[data-theme="light"] {
+  --surface: #F1F2F4;
+  --surface-raised: #FFFFFF;
+  --line: #DFE2E6;
+  --ink: #121417;
+  --ink-muted: #5E636B;
+  --deep: #1E2A38;
+  --on-deep: #ECEDEF;
+  --on-deep-muted: #AEB4BD;
+  --signal: #1F4E79;
+  --signal-soft: #DCE6F0;
+  --on-signal: #FFFFFF;
+  --amber: #8F5C0C;
+  --amber-soft: #F4E6C8;
+  --link: var(--signal);
+}
+
+@theme inline {
+  /* Only brand colours are available as Tailwind colour utilities —
+   * the default Tailwind palette (slate, blue, amber-500, ...) is removed. */
+  --color-*: initial;
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-deep: var(--deep);
+  --color-on-deep: var(--on-deep);
+  --color-on-deep-muted: var(--on-deep-muted);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-on-signal: var(--on-signal);
+  --color-amber: var(--amber);
+  --color-amber-soft: var(--amber-soft);
+  --color-link: var(--link);
+  --spacing-space-1: var(--space-1);
+  --spacing-space-2: var(--space-2);
+  --spacing-space-4: var(--space-4);
+  --spacing-space-6: var(--space-6);
+  --spacing-space-8: var(--space-8);
+  --spacing-space-16: var(--space-16);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/* Text styles — @utility so they work with variants (md:text-display, ...) */
+@utility text-display {
+  font-family: var(--font-sans);
+  font-size: 72px;
+  line-height: 72px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+@utility text-h1 {
+  font-family: var(--font-sans);
+  font-size: 44px;
+  line-height: 48px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+@utility text-h2 {
+  font-family: var(--font-sans);
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+@utility text-h3 {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+@utility text-lead {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  line-height: 30px;
+  font-weight: 400;
+}
+
+@utility text-body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+@utility text-small {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+@utility text-metric {
+  font-family: var(--font-mono);
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+@utility text-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
