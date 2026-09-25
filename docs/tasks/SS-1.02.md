@@ -1,12 +1,12 @@
 ---
 id: SS-1.02
 title: CI na PR i podgląd Vercel
-status: todo
+status: in_progress
 difficulty: S
 model: null
 model_approved: null
-effort: null
-branch: null
+effort: low
+branch: chore/ci
 due: null
 depends_on: [SS-1.01]
 blocked_by_questions: []
