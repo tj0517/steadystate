@@ -10,7 +10,7 @@ Etap 1: strona steadystate.pl na produkcji (PL główna → produkcja, potem cas
 | SS-1.03 | Tokeny marki i fonty w kodzie | done | M | SS-1.01 | – | – |
 | SS-1.04 | Layout — nawigacja, menu mobilne, stopka, pliki treści | done | M | SS-1.03 | – | – |
 | SS-1.05 | Strona główna cz. 1 — hero, pasek liczb, usługi | done | M | SS-1.04 | O-03 | – |
-| SS-1.06 | Strona główna cz. 2 — realizacje, proces, studio, CTA | review | M | SS-1.05 | O-03 | – |
+| SS-1.06 | Strona główna cz. 2 — realizacje, proces, studio, CTA | done | M | SS-1.05 | O-03 | – |
 | SS-1.07 | Kontakt — link do kalendarza i e-mail | todo | S | SS-1.06 | O-01 | – |
 | SS-1.08 | SEO, metadane, OG i dostępność | todo | S | SS-1.06 | O-02 | – |
 | SS-1.09 | Produkcja — domena steadystate.pl na Vercelu | todo | S | SS-1.02, SS-1.07, SS-1.08 | – | – |
