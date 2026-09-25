@@ -12,7 +12,7 @@ depends_on: [SS-1.01]
 blocked_by_questions: []
 touches_db: false
 touches_prod: false
-pr: null
+pr: 6
 ---
 
 ## Cel
