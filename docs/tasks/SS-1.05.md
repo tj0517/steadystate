@@ -1,12 +1,12 @@
 ---
 id: SS-1.05
 title: Strona główna cz. 1 — hero, pasek liczb, usługi
-status: todo
+status: in_progress
 difficulty: M
-model: null
+model: sonnet
 model_approved: null
-effort: null
-branch: null
+effort: medium
+branch: feat/home-top
 due: null
 depends_on: [SS-1.04]
 blocked_by_questions: [O-03]
