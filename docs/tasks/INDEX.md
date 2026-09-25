@@ -6,7 +6,7 @@ Etap 1: strona steadystate.pl na produkcji (PL główna → produkcja, potem cas
 | id | tytuł | status | trudność | zależności | pytania | due |
 |---|---|---|---|---|---|---|
 | SS-1.01 | Szkielet projektu Next.js + Tailwind | done | S | – | – | – |
-| SS-1.02 | CI na PR i podgląd Vercel | review | S | SS-1.01 | – | – |
+| SS-1.02 | CI na PR i podgląd Vercel | done | S | SS-1.01 | – | – |
 | SS-1.03 | Tokeny marki i fonty w kodzie | done | M | SS-1.01 | – | – |
 | SS-1.04 | Layout — nawigacja, menu mobilne, stopka, pliki treści | done | M | SS-1.03 | – | – |
 | SS-1.05 | Strona główna cz. 1 — hero, pasek liczb, usługi | done | M | SS-1.04 | O-03 | – |
