@@ -11,3 +11,9 @@ body {
   color: var(--ink);
   font-family: var(--font-sans);
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
