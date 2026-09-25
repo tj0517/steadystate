@@ -1,7 +1,7 @@
 ---
 id: SS-1.04
 title: Layout — nawigacja, menu mobilne, stopka, pliki treści
-status: review
+status: done
 difficulty: M
 model: Sonnet
 model_approved: null
@@ -55,3 +55,4 @@ telefonie, stopka i kontener sekcji. Teksty od początku leżą w plikach treśc
 - 2026-09-25 tj: kryterium „teksty z plików treści” dowodzone grepem + typecheck zamiast tymczasowej zmiany etykiety na podglądzie (wf-task); logo jako komponent z tokenami (fakt: pliki z `logos/` łamią check:colors)
 - 2026-09-25 tj: próg menu mobilnego = 768px (Tailwind `md`) — nawigacja desktopowa (4 linki + CTA) pokazuje się dopiero od 768px wzwyż, mimo ryzyka ciasnoty na wąskich tabletach; wzór otwartego menu mobilnego = pełnoekranowy overlay (header zmienia się w overlay z linkami i CTA, reszta strony zasłonięta)
 - 2026-09-25 tj: review — przyjęte z poprawkami wizualnymi (krzywa logo, linia stopki, kolor napisu w stopce)
+- 2026-09-25 tj: odebrane, PR #3 — nagłówek i stopka zgodne ze wzorem po poprawkach (krzywa logo z NAV, linia stopki w marginesach, napis w ink), menu mobilne z klawiatury, brak poziomego scrolla przy 390, teksty z plików treści (grep + red proof typecheck), weryfikacja na podglądzie Vercel
