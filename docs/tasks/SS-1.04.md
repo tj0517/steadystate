@@ -1,18 +1,18 @@
 ---
 id: SS-1.04
 title: Layout — nawigacja, menu mobilne, stopka, pliki treści
-status: in_progress
+status: review
 difficulty: M
-model: null
+model: Sonnet
 model_approved: null
-effort: null
+effort: medium
 branch: feat/layout
 due: null
 depends_on: [SS-1.03]
 blocked_by_questions: []
 touches_db: false
 touches_prod: false
-pr: null
+pr: 3
 ---
 
 ## Cel
