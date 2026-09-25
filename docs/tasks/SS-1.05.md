@@ -29,7 +29,7 @@ na desktopie i dobrze działać na telefonie.
 - [ ] teksty w `src/content/pl/`
 
 ## Gotowe, gdy
-- sekcje odpowiadają wzorowi z poprawkami tj z review — zrzuty 1440 trzech sekcji obok zrzutów wzoru w `.playwright-mcp/`; ocenia tj w review, poprawki wizualne na tej samej gałęzi
+- sekcje odpowiadają wzorowi z poprawkami tj z review — zrzuty 1440 trzech sekcji obok zrzutów tych samych sekcji wzoru, otwartego przez lokalny serwer statyczny (`python3 -m http.server` w `design/steadystate-brand/reference/`, bo `file://` jest zablokowane), w `.playwright-mcp/`; ocenia tj w review, poprawki wizualne na tej samej gałęzi
 - telefon bez poziomego przewijania — Playwright 390×844: `scrollWidth <= 390`; zrzut 390 całej części
 - `amber` tylko w Steady Sales — `grep -rn 'amber' src --include='*.tsx'` trafia wyłącznie w komponent/wariant Steady Sales
 - teksty zgodne z O-03 — nazwy klientów i liczby w `src/content/pl/` odpowiadają odpowiedzi w `docs/04-open-questions.md` (cytat wiersza O-03 w raporcie)
@@ -52,3 +52,4 @@ na desktopie i dobrze działać na telefonie.
 ## Notatki z realizacji
 - 2026-09-24 tj: poprawki wizualne w kodzie, w review; wzór to punkt startowy (wf-plan, opcja B)
 - 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)
+- 2026-09-25 tj: wzór do porównań agent otwiera przez `python3 -m http.server` w folderze wzoru (Playwright blokuje `file://`, SS-1.04)

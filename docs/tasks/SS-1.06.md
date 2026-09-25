@@ -29,7 +29,7 @@ kompletna treściowo, brakuje tylko prawdziwych danych kontaktowych (SS-1.07).
 - [ ] teksty w `src/content/pl/`, nazwy klientów wg O-03
 
 ## Gotowe, gdy
-- sekcje odpowiadają wzorowi z poprawkami tj z review — zrzuty 1440 obok zrzutów wzoru w `.playwright-mcp/`; ocenia tj w review, poprawki wizualne na tej samej gałęzi
+- sekcje odpowiadają wzorowi z poprawkami tj z review — zrzuty 1440 obok zrzutów tych samych sekcji wzoru, otwartego przez lokalny serwer statyczny (`python3 -m http.server` w `design/steadystate-brand/reference/`, bo `file://` jest zablokowane), w `.playwright-mcp/`; ocenia tj w review, poprawki wizualne na tej samej gałęzi
 - telefon bez poziomego przewijania — Playwright 390×844: `scrollWidth <= 390`; zrzut 390 całej strony
 - nie wyświetla się placeholder adresu — `curl -s <podgląd> | grep -c '\[EMAIL\]'` = 0
 - wszystkie kotwice nagłówka trafiają w sekcje — Playwright: dla każdego linku z nawigacji `document.querySelector(href)` istnieje
@@ -51,3 +51,4 @@ kompletna treściowo, brakuje tylko prawdziwych danych kontaktowych (SS-1.07).
 ## Notatki z realizacji
 - 2026-09-24 tj: poprawki wizualne w kodzie, w review; wzór to punkt startowy (wf-plan, opcja B)
 - 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)
+- 2026-09-25 tj: wzór do porównań agent otwiera przez `python3 -m http.server` w folderze wzoru (Playwright blokuje `file://`, SS-1.04)
