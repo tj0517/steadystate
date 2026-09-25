@@ -61,7 +61,7 @@ export function SiteHeader({ content }: SiteHeaderProps) {
           ))}
           <a
             href={content.cta.href}
-            className="inline-flex h-11 items-center rounded-md bg-signal px-space-6 font-medium text-on-signal"
+            className="inline-flex h-11 items-center rounded-md px-space-6 font-medium text-ink"
           >
             {content.cta.label}
           </a>
