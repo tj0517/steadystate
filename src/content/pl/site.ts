@@ -76,6 +76,111 @@ export const site: SiteContent = {
       caseLabel: "Zobacz case →",
     },
   },
+  cases: {
+    label: "Realizacje",
+    heading: "Każdy projekt kończy się tym samym: opisem, co teraz działa samo.",
+    items: [
+      {
+        accent: "signal",
+        tag: "Steady Ops · B2B e‑commerce",
+        name: "Hydra Arms",
+        sector: "Sektor obronny. Wcześniej bez sklepu internetowego.",
+        description:
+          "Strona i sklep od zera: Next.js, Supabase, BaseLinker. Katalog składany codziennie z plików XML trzech dostawców, ponad 2 000 produktów, bez ręcznego przepisywania cen i stanów.",
+        note: "Start produkcyjny po dwóch tygodniach od pierwszej rozmowy.",
+        steadyState: {
+          label: "Stan ustalony",
+          text: "Katalog aktualizuje się sam każdej nocy. Zespół obsługuje zamówienia, nie dane.",
+        },
+        caseHref: "#realizacje",
+        caseLabel: "Zobacz case →",
+      },
+      {
+        accent: "signal",
+        tag: "Steady Ops · Dokumentacja",
+        name: "Sea Clouds DCS",
+        sector: "Inżynieria offshore. System kontroli dokumentów.",
+        description:
+          "Document Control System z rejestracją czasu pracy: rewizje, transmittale, akceptacje i rozliczenie godzin na projekt w jednym miejscu zamiast w mailach i arkuszach.",
+        note: "Budowany etapami, każdy etap z kryteriami „gotowe, gdy”.",
+        steadyState: {
+          label: "Stan ustalony",
+          text: "Każda rewizja ma właściciela i status. Nikt nie pyta, która wersja jest aktualna.",
+        },
+        caseHref: "#realizacje",
+        caseLabel: "Zobacz case →",
+      },
+      {
+        accent: "amber",
+        tag: "Steady Sales · Lejek zapytań",
+        name: "Fjordanglers",
+        sector: "Wyprawy wędkarskie z przewodnikiem. Klienci z całej Europy.",
+        description:
+          "Od reklamy do rezerwacji: landing, kampanie, formularz zapytania, kwalifikacja z użyciem AI i automatyczna pierwsza odpowiedź. Oferta i płatność online.",
+        note: "Nasz własny produkt: testujemy na sobie to, co sprzedajemy.",
+        steadyState: {
+          label: "Stan ustalony",
+          text: "Zapytanie dostaje odpowiedź w minuty, a człowiek wchodzi dopiero przy gotowym kliencie.",
+        },
+        caseHref: "#realizacje",
+        caseLabel: "Zobacz case →",
+      },
+    ],
+  },
+  process: {
+    label: "Proces",
+    heading: "Krótkie etapy, każdy z jasnym „gotowe, gdy”.",
+    steps: [
+      {
+        number: "01",
+        heading: "Mapa procesu",
+        description:
+          "Rozmowa i przegląd tego, jak praca wygląda dziś. Wychodzisz z opisem stanu końcowego i wyceną.",
+      },
+      {
+        number: "02",
+        heading: "Działający prototyp",
+        description:
+          "Klikalny system na prawdziwych danych, nie makieta. Poprawiamy na żywo, zanim powstanie reszta.",
+      },
+      {
+        number: "03",
+        heading: "Wdrożenie etapami",
+        description:
+          "Każdy etap to jeden domknięty kawałek pracy z kryteriami odbioru. Widzisz postęp co tydzień.",
+      },
+      {
+        number: "04",
+        heading: "Stan ustalony",
+        description:
+          "System działa bez nas. Zostaje opieka: monitoring, drobne zmiany, kolejny etap, gdy będzie potrzebny.",
+      },
+    ],
+  },
+  studio: {
+    label: "Studio",
+    heading:
+      "Małe studio. Jedna osoba odpowiedzialna od pierwszej rozmowy do produkcji.",
+    paragraphs: [
+      "Pracujemy z architekturą i procesem zbudowanymi wokół agentów AI. Dzięki temu dostarczamy w tygodniach to, co zwykle zajmuje kwartały, i prowadzimy kilka projektów naraz bez rozmywania odpowiedzialności.",
+      "Nie ma account managera między Tobą a osobą, która pisze kod. Każda decyzja techniczna jest tłumaczona na to, co zmienia w Twojej firmie.",
+    ],
+    stack: ["Next.js", "Supabase", "BaseLinker", "Google Ads"],
+  },
+  cta: {
+    heading: "Opowiedz, co dziś gasisz ręcznie.",
+    lead: "30 minut rozmowy. Wychodzisz z opinią, czy to jest problem na system, i z szacunkiem, ile zajmie doprowadzenie go do stanu ustalonego.",
+    // href docelowy (kalendarz / mailto) uzupełnia SS-1.07 — na razie kotwica sekcji.
+    button: { href: "#kontakt", label: "Umów rozmowę" },
+    fit: {
+      label: "Dobrze pasujemy, gdy",
+      items: [
+        "Masz proces, który działa, ale trzyma się na ludziach i arkuszach",
+        "Zapytań przychodzi więcej, niż jesteś w stanie dobrze obsłużyć",
+        "Chcesz jednej osoby, która rozumie i biznes, i kod",
+      ],
+    },
+  },
   nav: {
     logoAriaLabel: "Steadystate — strona główna",
     navAriaLabel: "Główna",

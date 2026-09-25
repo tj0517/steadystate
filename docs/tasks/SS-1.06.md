@@ -1,12 +1,12 @@
 ---
 id: SS-1.06
 title: Strona główna cz. 2 — realizacje, proces, studio, CTA
-status: todo
+status: in_progress
 difficulty: M
-model: null
-model_approved: null
-effort: null
-branch: null
+model: sonnet
+model_approved: true
+effort: medium
+branch: feat/home-bottom
 due: null
 depends_on: [SS-1.05]
 blocked_by_questions: [O-03]
