@@ -54,3 +54,4 @@ telefonie, stopka i kontener sekcji. Teksty od początku leżą w plikach treśc
 - 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)
 - 2026-09-25 tj: kryterium „teksty z plików treści” dowodzone grepem + typecheck zamiast tymczasowej zmiany etykiety na podglądzie (wf-task); logo jako komponent z tokenami (fakt: pliki z `logos/` łamią check:colors)
 - 2026-09-25 tj: próg menu mobilnego = 768px (Tailwind `md`) — nawigacja desktopowa (4 linki + CTA) pokazuje się dopiero od 768px wzwyż, mimo ryzyka ciasnoty na wąskich tabletach; wzór otwartego menu mobilnego = pełnoekranowy overlay (header zmienia się w overlay z linkami i CTA, reszta strony zasłonięta)
+- 2026-09-25 tj: review — przyjęte z poprawkami wizualnymi (krzywa logo, linia stopki, kolor napisu w stopce)
