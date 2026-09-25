@@ -1,18 +1,18 @@
 ---
 id: SS-1.04
 title: Layout — nawigacja, menu mobilne, stopka, pliki treści
-status: todo
+status: done
 difficulty: M
-model: null
+model: Sonnet
 model_approved: null
-effort: null
-branch: null
+effort: medium
+branch: feat/layout
 due: null
 depends_on: [SS-1.03]
 blocked_by_questions: []
 touches_db: false
 touches_prod: false
-pr: null
+pr: 3
 ---
 
 ## Cel
@@ -53,3 +53,6 @@ telefonie, stopka i kontener sekcji. Teksty od początku leżą w plikach treśc
 - 2026-09-24 tj: wersję mobilną układa agent z tokenów, tj ocenia zrzuty 390 px (wf-plan D5)
 - 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)
 - 2026-09-25 tj: kryterium „teksty z plików treści” dowodzone grepem + typecheck zamiast tymczasowej zmiany etykiety na podglądzie (wf-task); logo jako komponent z tokenami (fakt: pliki z `logos/` łamią check:colors)
+- 2026-09-25 tj: próg menu mobilnego = 768px (Tailwind `md`) — nawigacja desktopowa (4 linki + CTA) pokazuje się dopiero od 768px wzwyż, mimo ryzyka ciasnoty na wąskich tabletach; wzór otwartego menu mobilnego = pełnoekranowy overlay (header zmienia się w overlay z linkami i CTA, reszta strony zasłonięta)
+- 2026-09-25 tj: review — przyjęte z poprawkami wizualnymi (krzywa logo, linia stopki, kolor napisu w stopce)
+- 2026-09-25 tj: odebrane, PR #3 — nagłówek i stopka zgodne ze wzorem po poprawkach (krzywa logo z NAV, linia stopki w marginesach, napis w ink), menu mobilne z klawiatury, brak poziomego scrolla przy 390, teksty z plików treści (grep + red proof typecheck), weryfikacja na podglądzie Vercel

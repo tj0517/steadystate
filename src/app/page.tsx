@@ -1,3 +1,7 @@
 export default function Home() {
-  return <p>Steadystate</p>;
+  return (
+    <div id="top">
+      <p>Steadystate</p>
+    </div>
+  );
 }
