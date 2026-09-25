@@ -5,7 +5,7 @@ export const site: SiteContent = {
     label: "Studio software · Gdańsk",
     heading: "Systemy, po których firma wchodzi w stan ustalony.",
     lead: "Budujemy systemy do pracy i do sprzedaży: obieg dokumentów, CRM, zamówienia, lejek zapytań. Po wdrożeniu kręcą się same, a Ty przestajesz gasić pożary.",
-    primaryCta: { href: "#kontakt", label: "Umów 30-minutową rozmowę" },
+    primaryCta: { href: "#kontakt", label: "Umów 30‑minutową rozmowę" },
     secondaryCta: { href: "#realizacje", label: "Zobacz realizacje" },
     chart: {
       ariaLabel:
