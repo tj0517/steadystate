@@ -1,18 +1,18 @@
 ---
 id: SS-1.02
 title: CI na PR i podgląd Vercel
-status: todo
+status: done
 difficulty: S
-model: null
+model: sonnet
 model_approved: null
-effort: null
-branch: null
+effort: low
+branch: chore/ci
 due: null
 depends_on: [SS-1.01]
 blocked_by_questions: []
 touches_db: false
 touches_prod: false
-pr: null
+pr: 6
 ---
 
 ## Cel
@@ -51,3 +51,5 @@ a błąd albo wklejony klucz nie dojdzie do `main`.
 ## Notatki z realizacji
 - 2026-09-24 tj: GitHub zakładany od razu, podgląd Vercel od pierwszych PR-ów UI (wf-plan D6)
 - 2026-09-25 tj (retro): import Vercel już zrobiony; dodane kryterium `<podgląd>/` = 200
+- 2026-09-25 tj: zgoda na `GITHUB_TOKEN` (automatyczny token Actions, tylko odczyt przy `permissions: contents: read`) w kroku gitleaks-action — bez niego akcja nie skanuje PR-ów
+- 2026-09-25 tj: przyjęte w review (PR #6) — checki zielone; red proof typów (run 36146892847 czerwony → revert zielony); red proof gitleaks lokalnie (exit=1, stripe-access-token); podgląd 200; link podglądu w PR

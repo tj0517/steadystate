@@ -14,6 +14,9 @@ Strona marketingowa steadystate.pl.
 - `npm run lint` — ESLint
 - `npm run typecheck` — `next typegen && tsc --noEmit`
 
+## CI
+CI (`.github/workflows/ci.yml`) uruchamia typecheck, lint, build i skan sekretów (gitleaks) na każdym PR; każdy PR ma też własny podgląd na Vercelu (integracja GitHub → Vercel).
+
 ## Struktura katalogów
 - `src/app/` — strony i layouty (App Router)
 - `public/` — statyczne assety
