@@ -1,7 +1,7 @@
 ---
 id: SS-1.06
 title: Strona główna cz. 2 — realizacje, proces, studio, CTA
-status: in_progress
+status: review
 difficulty: M
 model: sonnet
 model_approved: true
@@ -12,7 +12,7 @@ depends_on: [SS-1.05]
 blocked_by_questions: [O-03]
 touches_db: false
 touches_prod: false
-pr: null
+pr: 5
 ---
 
 ## Cel
@@ -52,3 +52,4 @@ kompletna treściowo, brakuje tylko prawdziwych danych kontaktowych (SS-1.07).
 - 2026-09-24 tj: poprawki wizualne w kodzie, w review; wzór to punkt startowy (wf-plan, opcja B)
 - 2026-09-24 tj: weryfikacja UI i HTTP na podglądzie PR na Vercelu (`<podgląd>` = URL podglądu z PR, publiczny); lokalnie tylko lint i typy (Mac 8 GB przy działającym stacku HA)
 - 2026-09-25 tj: wzór do porównań agent otwiera przez `python3 -m http.server` w folderze wzoru (Playwright blokuje `file://`, SS-1.04)
+- 2026-09-25 claude: zbudowane wg wzoru; odstępstwa do oceny w review: (a) karty case'ów mają dodatkowo „Zobacz case →” (wymóg zakresu, wzór tego nie ma) — przez to box „Stan ustalony” rozciąga się na wysokość wiersza; (b) rozmiary 15/23 i 15/24 ze wzoru zmapowane na `text-small` (14/22); (c) tekst treści Studio na `on-deep-muted` zamiast nietokenowego `#3D434B`; (d) padding kart 32px (`space-8`) zamiast 40px we wzorze — jak w SS-1.05
