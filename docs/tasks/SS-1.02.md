@@ -1,7 +1,7 @@
 ---
 id: SS-1.02
 title: CI na PR i podgląd Vercel
-status: in_progress
+status: review
 difficulty: S
 model: null
 model_approved: null
