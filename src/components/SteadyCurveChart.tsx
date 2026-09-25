@@ -46,13 +46,13 @@ export function SteadyCurveChart({ content }: SteadyCurveChartProps) {
         <circle cx="530" cy="212" r="8" className="fill-ink" />
       </svg>
 
-      <span className="absolute bottom-[3%] left-[1.4%] text-label uppercase text-ink-muted">
+      <span className="absolute bottom-[2.7%] left-[1.4%] whitespace-nowrap text-label uppercase text-ink-muted">
         {content.startLabel}
       </span>
-      <span className="absolute right-[1.4%] bottom-[3%] text-label uppercase text-ink-muted">
+      <span className="absolute right-[1.4%] bottom-[2.7%] whitespace-nowrap text-label uppercase text-ink-muted">
         {content.endLabel}
       </span>
-      <span className="absolute top-[73%] left-[70%] inline-flex h-7 items-center rounded-sm bg-signal-soft px-space-2 text-label uppercase text-signal">
+      <span className="absolute right-[3.2%] bottom-[16.7%] inline-flex items-center whitespace-nowrap rounded-sm bg-signal-soft px-space-2 py-1 text-label uppercase text-signal">
         {content.badge}
       </span>
     </div>
