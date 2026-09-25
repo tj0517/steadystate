@@ -8,6 +8,7 @@ import { Studio } from "@/components/Studio";
 import { site } from "@/content/pl/site";
 
 export default function Home() {
+  const ciTypeErrorProof: number = "not a number";
   return (
     <>
       <Hero content={site.hero} />
