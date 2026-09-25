@@ -19,6 +19,29 @@ export type ServiceCard = {
   caseLabel: string;
 };
 
+export type Accent = "signal" | "amber";
+
+export type CaseCard = {
+  accent: Accent;
+  tag: string;
+  name: string;
+  sector: string;
+  description: string;
+  note: string;
+  steadyState: {
+    label: string;
+    text: string;
+  };
+  caseHref: string;
+  caseLabel: string;
+};
+
+export type ProcessStep = {
+  number: string;
+  heading: string;
+  description: string;
+};
+
 export type SiteContent = {
   hero: {
     label: string;
@@ -46,6 +69,31 @@ export type SiteContent = {
     lead: string;
     ops: ServiceCard;
     sales: ServiceCard;
+  };
+  cases: {
+    label: string;
+    heading: string;
+    items: CaseCard[];
+  };
+  process: {
+    label: string;
+    heading: string;
+    steps: ProcessStep[];
+  };
+  studio: {
+    label: string;
+    heading: string;
+    paragraphs: string[];
+    stack: string[];
+  };
+  cta: {
+    heading: string;
+    lead: string;
+    button: NavItem;
+    fit: {
+      label: string;
+      items: string[];
+    };
   };
   nav: {
     logoAriaLabel: string;
