@@ -24,13 +24,14 @@ a błąd albo wklejony klucz nie dojdzie do `main`.
 - [ ] odczyt stanu: `git remote -v` (musi wskazywać GitHub — zakłada tj), `ls .github 2>/dev/null`
 - [ ] workflow GitHub Actions na `pull_request` i `push` do `main`: `npm ci`, `typecheck`, `lint`, `build`
 - [ ] skan sekretów (gitleaks) w tym samym workflow
-- [ ] dokładna instrukcja dla tj: import repo do Vercel (Pro), bez domeny; podglądy dla PR
+- [ ] odczyt: projekt Vercel już podpięty (tj 2026-09-24, preset Next.js) — bez zmian w ustawieniach
 - [ ] w `CLAUDE.md` jedna linia: gdzie jest CI i że podgląd PR jest na Vercelu
 
 ## Gotowe, gdy
 - checki biegną na PR tego zadania i są zielone — wynik `gh pr checks <nr>` w raporcie
 - check łapie błąd typów (red proof) — tymczasowy commit z celowym błędem typu na tej gałęzi daje czerwony check (link lub log), potem commit wycofany i check znów zielony
 - skan sekretów łapie klucz (red proof) — lokalnie `gitleaks detect --no-git --source <katalog tymczasowy poza repo>` z fałszywym kluczem w formacie `sk_live_…` zwraca znalezisko; niczego takiego nie commitujesz
+- podgląd naprawdę serwuje stronę — `curl -s -o /dev/null -w '%{http_code}' <podgląd>/` = 200 (zielony build tego nie dowodzi, SS-1.03)
 - PR ma link podglądu — `gh pr view <nr> --comments | grep -c 'vercel.app'` ≥ 1 (po imporcie przez tj)
 - workflow nie zawiera sekretów ani `continue-on-error` — `grep -nE 'continue-on-error|sk_|ghp_' .github/workflows/*.yml` puste
 
@@ -49,3 +50,4 @@ a błąd albo wklejony klucz nie dojdzie do `main`.
 
 ## Notatki z realizacji
 - 2026-09-24 tj: GitHub zakładany od razu, podgląd Vercel od pierwszych PR-ów UI (wf-plan D6)
+- 2026-09-25 tj (retro): import Vercel już zrobiony; dodane kryterium `<podgląd>/` = 200
