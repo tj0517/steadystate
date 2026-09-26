@@ -1,7 +1,7 @@
 ---
 id: SS-1.16
 title: Realizacje jako rejestr z diagramami, proces na krzywej, pasek liczb
-status: in_progress
+status: review
 difficulty: M
 model: fable-5.1
 model_approved: null
@@ -12,7 +12,7 @@ depends_on: [SS-1.15]
 blocked_by_questions: []
 touches_db: false
 touches_prod: false
-pr: null
+pr: 9
 ---
 
 ## Cel
@@ -67,3 +67,4 @@ Pasek liczb schodzi do trzech uczciwych liczb.
 ## Notatki z realizacji
 - 2026-09-26: zadanie z audytu slop (faza 3 z 3); jedyny „kreatywny” element strukturalny to krzywa jako oś procesu — motyw marki jako układ, nie dekoracja
 - 2026-09-26 tj: tło w #realizacje poza boxami — przezroczyste lub surface; jeden akcent na diagram sprawdzany w Playwright (kolory linii w SVG), nie grepem; Lighthouse dostępność przeniesiona do SS-1.08; Studio bez linii mono („5 systemów” nie wraca)
+- 2026-09-26: implementacja gotowa do review — branch `feat/cases-register`, PR #9; pomiary Playwright na podglądzie Vercel i zrzuty w `.playwright-mcp/ss-1.16/`; wykonane na modelu Fable 5.1 (prompt zakładał Sonnet medium)
