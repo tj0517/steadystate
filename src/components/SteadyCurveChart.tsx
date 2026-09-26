@@ -19,7 +19,7 @@ const CURVE_LENGTH = 900;
 // The draw-in animation lives in globals.css (`.curve-*` classes).
 export function SteadyCurveChart({ content }: SteadyCurveChartProps) {
   return (
-    <div className="relative">
+    <div className="relative pb-space-4 md:pb-0">
       <svg
         viewBox="0 0 560 260"
         width="560"
