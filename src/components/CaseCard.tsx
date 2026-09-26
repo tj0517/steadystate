@@ -1,7 +1,9 @@
 import type { CaseCard as CaseCardContent } from "@/content/types";
+import { FlowDiagram } from "./FlowDiagram";
 
 type CaseCardProps = {
   content: CaseCardContent;
+  index: number;
 };
 
 // Accent classes written out literally — the Tailwind scanner only sees full
@@ -11,23 +13,38 @@ const accents = {
   amber: { text: "text-amber", box: "bg-amber-soft" },
 } as const;
 
-export function CaseCard({ content }: CaseCardProps) {
+// A register row, not a card (SS-1.16): hairline on top, mono index, flow
+// diagram instead of a screenshot. The „Stan ustalony” box is the only box
+// in the section.
+export function CaseCard({ content, index }: CaseCardProps) {
   const accent = accents[content.accent];
   // Until SS-1.10 ships the subpages every case href is a section anchor —
   // a link that scrolls you to where you already are. Don't render it.
   const hasSubpage = !content.caseHref.startsWith("#");
+  const ordinal = String(index + 1).padStart(2, "0");
 
   return (
-    <article data-reveal className="grid grid-cols-1 gap-space-6 rounded-lg border border-line bg-surface-raised p-space-8 lg:grid-cols-12 lg:gap-x-space-6">
+    <article
+      data-reveal
+      className="grid grid-cols-1 gap-space-6 border-t border-line py-space-8 lg:grid-cols-12 lg:gap-x-space-6"
+    >
       <div className="flex flex-col gap-space-2 lg:col-span-3">
+        <span className="text-label text-ink-muted">{ordinal}</span>
         <span className={`text-label uppercase ${accent.text}`}>{content.tag}</span>
         <h3 className="text-h2 text-ink">{content.name}</h3>
         <span className="text-small text-ink-muted">{content.sector}</span>
       </div>
 
-      <div className="flex flex-col gap-space-4 text-body lg:col-span-5">
+      <div className="flex flex-col gap-space-4 text-body lg:col-span-6">
         <p className="text-ink">{content.description}</p>
         <p className="text-ink-muted">{content.note}</p>
+        <div className="py-space-2">
+          <FlowDiagram
+            steps={content.flow}
+            accent={content.accent}
+            ariaLabel={`${content.name}: ${content.flow.join(" → ")}`}
+          />
+        </div>
         {content.stack && (
           <span className="text-label uppercase text-ink-muted">
             {content.stack.join(" · ")}
@@ -44,7 +61,7 @@ export function CaseCard({ content }: CaseCardProps) {
       </div>
 
       <div
-        className={`flex flex-col gap-space-2 rounded-md p-space-6 lg:col-span-3 lg:col-start-10 ${accent.box}`}
+        className={`flex flex-col gap-space-2 self-start rounded-md p-space-6 lg:col-span-3 lg:col-start-10 ${accent.box}`}
       >
         <span className={`text-label uppercase ${accent.text}`}>
           {content.steadyState.label}
