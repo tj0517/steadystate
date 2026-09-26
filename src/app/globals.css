@@ -81,8 +81,10 @@ button {
 
 /* Section reveal — the hidden class is added by RevealObserver after mount,
  * so server HTML and no-JS render everything visible. Only opacity and
- * transform change; the stagger is set inline per batch. */
-[data-reveal] {
+ * transform change; the stagger is set inline per batch. The transition is
+ * declared on the visible state only, so hiding is instant and nothing
+ * fades out; removing the class fades in. */
+[data-reveal]:not(.reveal-hidden) {
   transition-property: opacity, transform;
   transition-duration: 350ms;
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
@@ -101,7 +103,7 @@ button {
     animation: none;
   }
 
-  [data-reveal] {
+  [data-reveal]:not(.reveal-hidden) {
     transition: none;
   }
 }
