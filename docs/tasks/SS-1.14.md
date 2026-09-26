@@ -1,10 +1,10 @@
 ---
 id: SS-1.14
 title: Stany hover/focus, CTA w nagłówku i poprawki tekstu po audycie
-status: review
+status: done
 difficulty: S
 model: fable-5.1
-model_approved: null
+model_approved: fable by tj 2026-09-26
 effort: xhigh
 branch: feat/interaction-states
 due: null
@@ -80,3 +80,5 @@ z generatora. Bez ruchu, bez nowych efektów — tylko kolor, ramka i podkreśle
 - 2026-09-26: po usunięciu etykiet osi na dole karty wykresu został pusty pas (~50 px w viewBox 560×300); geometria zostaje dla SS-1.15, które i tak przebudowuje hero (notatka w SS-1.15)
 - 2026-09-26: wyniki lokalne (dev server, Playwright): fokus 2px `rgb(127, 178, 229)` offset 2px na wszystkich 15 elementach fokusowalnych strony (jedyny bez obrysu to przycisk overlaya Next.js dev, poza stroną); hover główny `rgb(166, 203, 239)` = `#A6CBEF`, `transform: none`, `transition-duration: 0.2s`, `cubic-bezier(0, 0, 0.2, 1)`; CTA w nagłówku `border 1px`, linki `0px`; reduced motion: 0 animacji; 390: `scrollWidth` 390; `npm run lint`, `npm run typecheck`, `npm run tokens` bez zmian — OK. Podgląd Vercel: po otwarciu PR
 - 2026-09-26: implementacja gotowa do review — branch `feat/interaction-states`, PR #7
+- 2026-09-26 tj: akceptuję odstępstwa (1)–(4) — dwa przepisane kryteria (martwe linki liczone w `#uslugi`/`#realizacje`, hover na elementach interaktywnych) i pasek liczb w 3 kolumnach; Fable xhigh świadomie; light `signal-hover` `#1A4267` do potwierdzenia przy przenoszeniu do artefaktu marki
+- 2026-09-26 tj: przyjęte w review (PR #7) — T1–T9 dosłownie, etykiety i martwe linki usunięte, tokeny spójne; fokus/hover/reduced motion/390 potwierdzone na podglądzie PR
