@@ -53,3 +53,4 @@ zostało zmienione i dlaczego.
 - 2026-09-26: implementacja prompt 1 gotowa do review — branch `feat/site-upgrades`, PR #10
 - 2026-09-26: pomiary Playwright na podglądzie Vercel (1440×900): po 2,6 s ogon SVG ma opacity 0 i canvas rysuje linię w spoczynku (pas 215–225 px, rest 223); po przeciągnięciu wskaźnika pas 194–240 (wychylenie ~28 px), po zejściu wskaźnika wraca do 215–225 po 3 s; tło kontaktu analogicznie (rest 279, przy wskaźniku 235–300); 390×844: `scrollWidth` 390, canvas rysuje ogon; zrzuty w `.playwright-mcp/ss-1.17/`. Symulacja offline: pełne wychylenie gaśnie w ~2,6 s
 - 2026-09-26: prompt 2 — Studio pełnoszerokie w `deep` z krawędzią-krzywą; BRAND „jasne sekcje dzielą długie strony” — pasmo zamiast boxu; bez kropki na końcu linii (ink na deep = za mały kontrast)
+- 2026-09-26: prompt 2 sprawdzony na podglądzie Vercel — krawędź-krzywa i pasmo deep na 1440 i 390, `scrollWidth` 390; zrzuty `studio-1440.png`, `studio-390.png`
