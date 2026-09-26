@@ -5,9 +5,9 @@ type StudioProps = {
   content: SiteContent["studio"];
 };
 
-// Part of the light tail (LightScope): the ground is the dark
+// Part of the light band (LightScope): the ground is the dark
 // theme's `deep`, tokens inside are the light theme's, so `ink` here is
-// dark text. The curve edge above the tail lives in page.tsx (CurveEdge).
+// dark text. The curve edges around the band live in page.tsx (CurveEdge).
 export function Studio({ content }: StudioProps) {
   return (
     <section id="studio" className="py-space-16">

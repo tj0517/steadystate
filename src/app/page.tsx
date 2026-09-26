@@ -23,8 +23,9 @@ export default function Home() {
       <LightScope>
         <Process content={site.process} />
         <Studio content={site.studio} />
-        <ContactCta content={site.cta} />
       </LightScope>
+      <CurveEdge direction="out" />
+      <ContactCta content={site.cta} />
       <RevealObserver />
     </>
   );

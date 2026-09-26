@@ -6,7 +6,7 @@
   --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
 }
 
-/* Ground of the page tail (Studio, contact, footer): the dark theme's
+/* Ground of the light band (process, studio): the dark theme's
  * `deep`, resolved here so it survives the light-token scope inside
  * LightScope. CurveEdge fills with it too. */
 :root {

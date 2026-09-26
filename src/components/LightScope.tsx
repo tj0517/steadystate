@@ -5,7 +5,7 @@ type LightScopeProps = {
   className?: string;
 };
 
-// The tail of the page (Studio, contact, footer) on the light stone `deep`
+// The light band of the page (process, studio) on the light stone `deep`
 // of the dark theme. Inside, tokens switch to the light theme
 // (`[data-theme="light"]` in tokens.generated.css) so text, lines, boxes
 // and the `signal` button get their light-surface values — but the ground
