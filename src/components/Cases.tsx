@@ -11,7 +11,6 @@ export function Cases({ content }: CasesProps) {
     <section id="realizacje" className="py-space-16">
       <Container className="flex flex-col gap-space-8">
         <div className="flex max-w-[720px] flex-col gap-space-4">
-          <span className="text-label uppercase text-ink-muted">{content.label}</span>
           <h2 className="text-h1 text-ink">{content.heading}</h2>
         </div>
 

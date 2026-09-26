@@ -13,6 +13,9 @@ const accents = {
 
 export function CaseCard({ content }: CaseCardProps) {
   const accent = accents[content.accent];
+  // Until SS-1.10 ships the subpages every case href is a section anchor —
+  // a link that scrolls you to where you already are. Don't render it.
+  const hasSubpage = !content.caseHref.startsWith("#");
 
   return (
     <article className="grid grid-cols-1 gap-space-6 rounded-lg border border-line bg-surface-raised p-space-8 lg:grid-cols-12 lg:gap-x-space-6">
@@ -25,12 +28,19 @@ export function CaseCard({ content }: CaseCardProps) {
       <div className="flex flex-col gap-space-4 text-body lg:col-span-5">
         <p className="text-ink">{content.description}</p>
         <p className="text-ink-muted">{content.note}</p>
-        <a
-          href={content.caseHref}
-          className={`text-small font-medium ${accent.text}`}
-        >
-          {content.caseLabel}
-        </a>
+        {content.stack && (
+          <span className="text-label uppercase text-ink-muted">
+            {content.stack.join(" · ")}
+          </span>
+        )}
+        {hasSubpage && (
+          <a
+            href={content.caseHref}
+            className={`text-small font-medium underline-offset-4 hover:underline ${accent.text}`}
+          >
+            {content.caseLabel}
+          </a>
+        )}
       </div>
 
       <div

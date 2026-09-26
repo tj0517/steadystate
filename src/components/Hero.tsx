@@ -22,28 +22,25 @@ export function Hero({ content }: HeroProps) {
           <div className="mt-space-2 flex flex-wrap items-center gap-space-4">
             <a
               href={content.primaryCta.href}
-              className="inline-flex h-[52px] items-center rounded-md bg-signal px-space-6 text-body font-medium text-on-signal"
+              className="inline-flex h-[52px] items-center rounded-md bg-signal px-space-6 text-body font-medium text-on-signal hover:bg-signal-hover"
             >
               {content.primaryCta.label}
             </a>
             <a
               href={content.secondaryCta.href}
-              className="inline-flex h-[52px] items-center rounded-md border border-line bg-surface-raised px-space-6 text-body font-medium text-ink"
+              className="inline-flex h-[52px] items-center rounded-md border border-line bg-surface-raised px-space-6 text-body font-medium text-ink hover:border-ink-muted"
             >
               {content.secondaryCta.label}
             </a>
           </div>
         </div>
 
-        <div className="flex flex-col gap-space-4 lg:col-span-6">
-          <div className="flex flex-col gap-space-6 rounded-lg border border-line bg-surface-raised p-space-8">
-            <div className="flex flex-col gap-space-2 text-label text-ink-muted md:flex-row md:items-baseline md:justify-between">
-              <span className="uppercase">{content.chart.captionLeft}</span>
-              <span className="uppercase">{content.chart.captionRight}</span>
-            </div>
-            <SteadyCurveChart content={content.chart} />
+        <div className="flex flex-col gap-space-6 rounded-lg border border-line bg-surface-raised p-space-8 lg:col-span-6">
+          <div className="flex flex-col gap-space-2 text-label text-ink-muted md:flex-row md:items-baseline md:justify-between">
+            <span className="uppercase">{content.chart.captionLeft}</span>
+            <span className="uppercase">{content.chart.captionRight}</span>
           </div>
-          <p className="px-space-1 text-small text-ink-muted">{content.chart.note}</p>
+          <SteadyCurveChart content={content.chart} />
         </div>
       </Container>
     </section>

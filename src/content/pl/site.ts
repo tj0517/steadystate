@@ -13,9 +13,6 @@ export const site: SiteContent = {
       captionLeft: "Pożary w firmie / tydzień",
       captionRight: "przed → po wdrożeniu",
       badge: "STAN USTALONY",
-      startLabel: "START",
-      endLabel: "TYDZIEŃ 8",
-      note: "Stan ustalony to moment, w którym układ przestaje oscylować. Tak projektujemy systemy: raz wdrożone, działają bez nadzoru.",
     },
   },
   proofStrip: {
@@ -30,19 +27,14 @@ export const site: SiteContent = {
         caption: "produktów importowanych automatycznie każdego dnia",
       },
       {
-        value: "3+",
+        value: "3",
         caption: "dostawców spiętych w jeden katalog, bez ręcznej pracy",
-      },
-      {
-        value: "5",
-        caption: "systemów w portfolio: od dokumentacji offshore po sprzedaż wypraw",
       },
     ],
   },
   services: {
-    label: "Dwie linie usług",
     heading: "Jeden system do pracy. Jeden do sprzedaży.",
-    lead: "Nie sprzedajemy godzin programisty. Sprzedajemy działający system z jasno opisanym stanem końcowym.",
+    lead: "Umowa na działający system, nie na godziny. Stan końcowy opisujemy przed startem.",
     ops: {
       tag: "Steady Ops",
       tagline: "System do pracy",
@@ -56,8 +48,6 @@ export const site: SiteContent = {
         "Integracje: BaseLinker, płatności, księgowość, magazyn",
       ],
       credit: "Realizacje: Sea Clouds DCS, Hydra Arms",
-      caseHref: "#realizacje",
-      caseLabel: "Zobacz case →",
     },
     sales: {
       tag: "Steady Sales",
@@ -72,12 +62,9 @@ export const site: SiteContent = {
         "Jeden panel: skąd przyszło zapytanie i na jakim jest etapie",
       ],
       credit: "Realizacja: Fjordanglers",
-      caseHref: "#realizacje",
-      caseLabel: "Zobacz case →",
     },
   },
   cases: {
-    label: "Realizacje",
     heading: "Każdy projekt kończy się tym samym: opisem, co teraz działa samo.",
     items: [
       {
@@ -86,14 +73,15 @@ export const site: SiteContent = {
         name: "Hydra Arms",
         sector: "Sektor obronny. Wcześniej bez sklepu internetowego.",
         description:
-          "Strona i sklep od zera: Next.js, Supabase, BaseLinker. Katalog składany codziennie z plików XML trzech dostawców, ponad 2 000 produktów, bez ręcznego przepisywania cen i stanów.",
+          "Strona i sklep B2B od zera. Katalog składany co noc z plików XML trzech dostawców: ponad 2 000 produktów, ceny i stany bez ręcznego przepisywania.",
         note: "Start produkcyjny po dwóch tygodniach od pierwszej rozmowy.",
+        stack: ["Next.js", "Supabase", "BaseLinker"],
         steadyState: {
           label: "Stan ustalony",
           text: "Katalog aktualizuje się sam każdej nocy. Zespół obsługuje zamówienia, nie dane.",
         },
         caseHref: "#realizacje",
-        caseLabel: "Zobacz case →",
+        caseLabel: "Zobacz realizację →",
       },
       {
         accent: "signal",
@@ -108,7 +96,7 @@ export const site: SiteContent = {
           text: "Każda rewizja ma właściciela i status. Nikt nie pyta, która wersja jest aktualna.",
         },
         caseHref: "#realizacje",
-        caseLabel: "Zobacz case →",
+        caseLabel: "Zobacz realizację →",
       },
       {
         accent: "amber",
@@ -123,12 +111,11 @@ export const site: SiteContent = {
           text: "Zapytanie dostaje odpowiedź w minuty, a człowiek wchodzi dopiero przy gotowym kliencie.",
         },
         caseHref: "#realizacje",
-        caseLabel: "Zobacz case →",
+        caseLabel: "Zobacz realizację →",
       },
     ],
   },
   process: {
-    label: "Proces",
     heading: "Krótkie etapy, każdy z jasnym „gotowe, gdy”.",
     steps: [
       {
@@ -158,18 +145,17 @@ export const site: SiteContent = {
     ],
   },
   studio: {
-    label: "Studio",
     heading:
       "Małe studio. Jedna osoba odpowiedzialna od pierwszej rozmowy do produkcji.",
     paragraphs: [
-      "Pracujemy z architekturą i procesem zbudowanymi wokół agentów AI. Dzięki temu dostarczamy w tygodniach to, co zwykle zajmuje kwartały, i prowadzimy kilka projektów naraz bez rozmywania odpowiedzialności.",
-      "Nie ma account managera między Tobą a osobą, która pisze kod. Każda decyzja techniczna jest tłumaczona na to, co zmienia w Twojej firmie.",
+      "Kod powstaje z agentami AI, ale czyta go, testuje i odpowiada za niego jedna osoba. Dlatego sklep Hydra Arms wystartował po dwóch tygodniach, a kilka projektów naraz nie oznacza kolejki.",
+      "Nie ma account managera między Tobą a osobą, która pisze kod. O każdej decyzji technicznej mówimy językiem skutku: co przestanie się psuć i ile to kosztuje.",
     ],
     stack: ["Next.js", "Supabase", "BaseLinker", "Google Ads"],
   },
   cta: {
     heading: "Opowiedz, co dziś gasisz ręcznie.",
-    lead: "30 minut rozmowy. Wychodzisz z opinią, czy to jest problem na system, i z szacunkiem, ile zajmie doprowadzenie go do stanu ustalonego.",
+    lead: "30 minut rozmowy. Wychodzisz z opinią, czy to jest problem na system, i z szacunkiem, ile to zajmie.",
     // href docelowy (kalendarz / mailto) uzupełnia SS-1.07 — na razie kotwica sekcji.
     button: { href: "#kontakt", label: "Umów rozmowę" },
     fit: {

@@ -15,8 +15,6 @@ export type ServiceCard = {
   description: string;
   bullets: string[];
   credit: string;
-  caseHref: string;
-  caseLabel: string;
 };
 
 export type Accent = "signal" | "amber";
@@ -32,6 +30,10 @@ export type CaseCard = {
     label: string;
     text: string;
   };
+  // Technology line in mono under the description; optional until the
+  // client supplies it (O-07, T4).
+  stack?: string[];
+  // Rendered only when it points at a real subpage (SS-1.10), not at an anchor.
   caseHref: string;
   caseLabel: string;
 };
@@ -54,9 +56,6 @@ export type SiteContent = {
       captionLeft: string;
       captionRight: string;
       badge: string;
-      startLabel: string;
-      endLabel: string;
-      note: string;
     };
   };
   proofStrip: {
@@ -64,24 +63,20 @@ export type SiteContent = {
     metrics: Metric[];
   };
   services: {
-    label: string;
     heading: string;
     lead: string;
     ops: ServiceCard;
     sales: ServiceCard;
   };
   cases: {
-    label: string;
     heading: string;
     items: CaseCard[];
   };
   process: {
-    label: string;
     heading: string;
     steps: ProcessStep[];
   };
   studio: {
-    label: string;
     heading: string;
     paragraphs: string[];
     stack: string[];

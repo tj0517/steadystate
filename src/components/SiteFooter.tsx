@@ -19,7 +19,7 @@ export function SiteFooter({ content }: SiteFooterProps) {
           </div>
           <div className="flex flex-wrap gap-space-6">
             {links.map((link) => (
-              <a key={link.href} href={link.href} className="text-ink-muted">
+              <a key={link.href} href={link.href} className="text-ink-muted hover:text-ink">
                 {link.label}
               </a>
             ))}
