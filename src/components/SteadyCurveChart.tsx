@@ -55,7 +55,7 @@ export function SteadyCurveChart({ content }: SteadyCurveChartProps) {
         <circle cx="530" cy="212" r="8" className="curve-dot fill-ink" />
       </svg>
 
-      <span className="curve-badge absolute right-[3.2%] bottom-[3.8%] inline-flex items-center whitespace-nowrap rounded-sm bg-signal-soft px-space-2 py-1 text-label uppercase text-signal">
+      <span className="curve-badge absolute right-[3.2%] bottom-0 inline-flex items-center whitespace-nowrap rounded-sm bg-signal-soft px-space-2 py-1 text-label uppercase text-signal">
         {content.badge}
       </span>
     </div>
