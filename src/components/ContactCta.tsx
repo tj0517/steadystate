@@ -26,7 +26,7 @@ export function ContactCta({ content }: ContactCtaProps) {
         </div>
 
         <div data-reveal className="lg:col-span-4 lg:col-start-9">
-          <CurveCard fill="surface-raised" bordered className="flex flex-col gap-space-4 px-space-8 pt-space-4 pb-space-8">
+          <CurveCard fill="surface-raised" bordered className="flex flex-col gap-space-4 px-space-8 py-space-4">
           <span className="text-label uppercase text-ink-muted">{content.fit.label}</span>
           <ul className="flex flex-col gap-space-4 text-small text-ink">
             {content.fit.items.map((item) => (

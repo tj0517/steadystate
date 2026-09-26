@@ -64,8 +64,7 @@ export function CaseCard({ content, index }: CaseCardProps) {
       <div className="self-start lg:col-span-3 lg:col-start-10">
         <CurveCard
           fill={accent.box}
-          radius="md"
-          className="flex flex-col gap-space-2 px-space-6 pt-space-2 pb-space-6"
+          className="flex flex-col gap-space-2 px-space-6 py-space-2"
         >
           <span className={`text-label uppercase ${accent.text}`}>
             {content.steadyState.label}

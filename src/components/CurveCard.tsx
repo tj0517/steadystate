@@ -8,7 +8,6 @@ type CurveCardProps = {
   // Hairline around the card (services and contact cards); the steady-state
   // boxes in the cases register have none.
   bordered?: boolean;
-  radius?: "md" | "lg";
   className?: string;
   as?: "article" | "div";
   reveal?: boolean;
@@ -33,19 +32,37 @@ const BG = {
 // light-surface values. The cap is an SVG filled with the ground; bordered
 // cards get a 1 px `line` stroke along the curve and down the cap's sides
 // (non-scaling, so `preserveAspectRatio="none"` does not distort it),
-// meeting the body's own border. Top corners are square — the curve
-// replaces them — bottom corners keep the card radius.
+// meeting the body's own side borders. The bottom cap is the same SVG
+// rotated 180°, so the card closes with the curve it opened with, like the
+// band (CurveEdge). No corner radius — the curves replace the corners.
 export function CurveCard({
   children,
   fill,
   bordered = false,
-  radius = "lg",
   className = "",
   as = "div",
   reveal = false,
 }: CurveCardProps) {
   const Tag = as;
-  const bodyRadius = radius === "lg" ? "rounded-b-lg" : "rounded-b-md";
+  const cap = (position: "top" | "bottom") => (
+    <svg
+      viewBox={`0 0 ${CURVE_WIDTH} ${CURVE_HEIGHT}`}
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      className={`block h-[32px] w-full overflow-visible md:h-[44px] ${position === "bottom" ? "rotate-180" : ""}`}
+    >
+      <path d={CURVE_FILL} className={FILL[fill]} />
+      {bordered && (
+        <path
+          d={`M0 ${CURVE_HEIGHT} L0 104 ${CURVE_LINE.slice(6)} L${CURVE_WIDTH} ${CURVE_HEIGHT}`}
+          fill="none"
+          strokeWidth="1"
+          vectorEffect="non-scaling-stroke"
+          className="stroke-line"
+        />
+      )}
+    </svg>
+  );
 
   return (
     <Tag
@@ -53,28 +70,13 @@ export function CurveCard({
       data-reveal={reveal ? "" : undefined}
       className="flex flex-col text-ink"
     >
-      <svg
-        viewBox={`0 0 ${CURVE_WIDTH} ${CURVE_HEIGHT}`}
-        preserveAspectRatio="none"
-        aria-hidden="true"
-        className="block h-[32px] w-full overflow-visible md:h-[44px]"
-      >
-        <path d={CURVE_FILL} className={FILL[fill]} />
-        {bordered && (
-          <path
-            d={`M0 ${CURVE_HEIGHT} L0 104 ${CURVE_LINE.slice(6)} L${CURVE_WIDTH} ${CURVE_HEIGHT}`}
-            fill="none"
-            strokeWidth="1"
-            vectorEffect="non-scaling-stroke"
-            className="stroke-line"
-          />
-        )}
-      </svg>
+      {cap("top")}
       <div
-        className={`flex-1 ${bodyRadius} ${BG[fill]} ${bordered ? "border border-t-0 border-line" : ""} ${className}`}
+        className={`flex-1 ${BG[fill]} ${bordered ? "border-x border-line" : ""} ${className}`}
       >
         {children}
       </div>
+      {cap("bottom")}
     </Tag>
   );
 }
