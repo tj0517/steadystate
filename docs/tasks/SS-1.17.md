@@ -40,6 +40,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 13 „płynniej, mniej agresywnie”: `SettlingEdge` — wejście 35% zamiast 60%, pociągnięcie 0,045 zamiast 0,09 (zasięg 140 px), amplituda 26 px (karty 16 px), sprzężenie 0,2, tłumienie 0,085 — jedno miękkie wahnięcie, spoczynek po ~1,2 s
 - [x] prompt 14 „zrób coś z tą linią między sekcjami, jest cienka i nie wygląda dobrze”: pasek liczb bez hairline'ów `border-y` — pełnoszerokie pasmo `surface-raised` (BRAND: „odcinają się tonem, nie cieniem”)
 - [x] prompt 15 „lepiej u góry pasek z logami partnerów”: `PartnerStrip` zamiast paska liczb — pasmo `surface-raised`, trzy pozycje (Hydra Arms, Sea Clouds DCS, Fjordanglers) jako wordmarki mono `ink-muted`; pole `logo` (SVG w `/public`) podmienia wordmark na obraz 32 px, gdy pliki będą; treść `partners` w `site.ts` (aria-label „Klienci” — nowe copy do akceptacji tj); `proofStrip` w treści zostaje, komponent `ProofStrip` nieużywany
+- [x] prompt 16 „wrzucone do public, pasek ma wyglądać gładziej”: logo w `public/partners/` (hydra-arms, sea-clouds, fjordanglers — PNG przycięte do zawartości, Sea Clouds z wyciętym białym tłem), w treści `logo`/`width`/`height`; `PartnerStrip` bez pasma i linii: jeden cichy rząd na `surface`, logo jako monochrom (`grayscale(1) invert(1)`, zachowuje detale), opacity 55% → 90% hover, wysokości per logo (Hydra 36/44, Sea Clouds 48/56, Fjord 24/28 px), `unoptimized` (cache optymalizatora podawał stary plik)
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
@@ -81,3 +82,4 @@ zostało zmienione i dlaczego.
 - 2026-09-26: prompt 13 — symulacja offline: spoczynek po 74 klatkach (1,23 s); pomiar lokalny 1440, krawędź „out”: wejście 127 → 117 → 120 (spoczynek) co 100 ms, pociągnięcie +20 px, SVG wraca po zwolnieniu; bez pushu
 - 2026-09-26: prompt 14 — interpretacja: linie wokół paska liczb (hero → liczby → usługi); zamiast nich ton `surface-raised`; sprawdzone lokalnie 1440; bez pushu
 - 2026-09-26: prompt 15 — brak plików logo w repo (public/ ma tylko domyślne SVG Next); wordmarki tekstowe do czasu dostarczenia SVG; pasek liczb (O-07) zdjęty ze strony decyzją tj, treść zostaje; sprawdzone lokalnie 1440; bez pushu
+- 2026-09-26: prompt 16 — pliki od tj: `dark logo.png` (FjordAnglers), `logo-footer.png` (Hydra Arms), `logo.png` (Sea Clouds, 500×500 z białym wnętrzem); po obróbce Sea Clouds 41% pikseli kryjących zamiast 98%; sprawdzone lokalnie 1440; bez pushu

@@ -35,9 +35,9 @@ export const site: SiteContent = {
   partners: {
     ariaLabel: "Klienci",
     items: [
-      { name: "Hydra Arms" },
-      { name: "Sea Clouds DCS" },
-      { name: "Fjordanglers" },
+      { name: "Hydra Arms", logo: "/partners/hydra-arms.png", width: 2220, height: 825 },
+      { name: "Sea Clouds DCS", logo: "/partners/sea-clouds.png", width: 270, height: 260 },
+      { name: "Fjordanglers", logo: "/partners/fjordanglers.png", width: 1350, height: 264 },
     ],
   },
   services: {

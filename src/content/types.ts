@@ -66,9 +66,10 @@ export type SiteContent = {
   };
   partners: {
     ariaLabel: string;
-    // `logo`: path under /public to an SVG wordmark; until it exists the
-    // name renders as a mono wordmark.
-    items: { name: string; logo?: string }[];
+    // `logo`: path under /public (PNG/SVG on transparent); rendered as a
+    // monochrome silhouette at `height` px. Without it the name renders as
+    // a mono wordmark.
+    items: { name: string; logo?: string; width?: number; height?: number }[];
   };
   services: {
     heading: string;
