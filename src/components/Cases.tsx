@@ -14,9 +14,9 @@ export function Cases({ content }: CasesProps) {
           <h2 className="text-h1 text-ink">{content.heading}</h2>
         </div>
 
-        <div className="flex flex-col gap-space-4">
-          {content.items.map((item) => (
-            <CaseCard key={item.name} content={item} />
+        <div className="flex flex-col border-b border-line">
+          {content.items.map((item, index) => (
+            <CaseCard key={item.name} content={item} index={index} />
           ))}
         </div>
       </Container>

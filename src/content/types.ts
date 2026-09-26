@@ -33,6 +33,8 @@ export type CaseCard = {
   // Technology line in mono under the description; optional until the
   // client supplies it (O-07, T4).
   stack?: string[];
+  // Flow-diagram labels, in order (SS-1.16). Geometry lives in FlowDiagram.
+  flow: string[];
   // Rendered only when it points at a real subpage (SS-1.10), not at an anchor.
   caseHref: string;
   caseLabel: string;

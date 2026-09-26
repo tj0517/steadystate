@@ -76,6 +76,7 @@ export const site: SiteContent = {
           "Strona i sklep B2B od zera. Katalog składany co noc z plików XML trzech dostawców: ponad 2 000 produktów, ceny i stany bez ręcznego przepisywania.",
         note: "Start produkcyjny po dwóch tygodniach od pierwszej rozmowy.",
         stack: ["Next.js", "Supabase", "BaseLinker"],
+        flow: ["XML ×3 dostawców", "import nocny", "katalog 2 000+", "zamówienia"],
         steadyState: {
           label: "Stan ustalony",
           text: "Katalog aktualizuje się sam każdej nocy. Zespół obsługuje zamówienia, nie dane.",
@@ -91,6 +92,7 @@ export const site: SiteContent = {
         description:
           "Document Control System z rejestracją czasu pracy: rewizje, transmittale, akceptacje i rozliczenie godzin na projekt w jednym miejscu zamiast w mailach i arkuszach.",
         note: "Budowany etapami, każdy etap z kryteriami „gotowe, gdy”.",
+        flow: ["rewizja", "transmittal", "akceptacja", "rozliczenie godzin"],
         steadyState: {
           label: "Stan ustalony",
           text: "Każda rewizja ma właściciela i status. Nikt nie pyta, która wersja jest aktualna.",
@@ -106,6 +108,7 @@ export const site: SiteContent = {
         description:
           "Od reklamy do rezerwacji: landing, kampanie, formularz zapytania, kwalifikacja z użyciem AI i automatyczna pierwsza odpowiedź. Oferta i płatność online.",
         note: "Nasz własny produkt: testujemy na sobie to, co sprzedajemy.",
+        flow: ["reklama", "formularz", "kwalifikacja", "oferta", "płatność"],
         steadyState: {
           label: "Stan ustalony",
           text: "Zapytanie dostaje odpowiedź w minuty, a człowiek wchodzi dopiero przy gotowym kliencie.",
