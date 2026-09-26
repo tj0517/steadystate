@@ -17,11 +17,11 @@ type SettlingEdgeProps = {
 };
 
 const SPACING = 6; // viewBox units between mass points
-const REACH_PX = 110;
+const REACH_PX = 140;
 const REST_EPS = 0.04;
-// Initial overshoot: the edge appears with its wave 60 % larger than the
-// final shape and settles into it.
-const ENTRY_OVERSHOOT = 0.6;
+// Initial overshoot: the edge appears with its wave 35 % larger than the
+// final shape and eases into it.
+const ENTRY_OVERSHOOT = 0.35;
 
 // Motion for a curved edge (CurveEdge, CurveCard caps). The boundary is
 // the same coupled-spring system as the hero line (SettlingLine), drawn as
@@ -39,7 +39,7 @@ export function SettlingEdge({
   direction,
   fill,
   stroke = false,
-  amplitude = 36,
+  amplitude = 26,
 }: SettlingEdgeProps) {
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -125,9 +125,9 @@ export function SettlingEdge({
       const acc = new Array<number>(n).fill(0);
       for (let i = 1; i < n - 1; i++) {
         let a =
-          0.26 * (disp[i - 1] + disp[i + 1] - 2 * disp[i]) -
-          0.014 * disp[i] -
-          0.055 * vel[i];
+          0.2 * (disp[i - 1] + disp[i + 1] - 2 * disp[i]) -
+          0.012 * disp[i] -
+          0.085 * vel[i];
         if (pointer) {
           const dx = Math.abs(px(rest[i][0]) - pointer[0]);
           if (dx < REACH_PX) {
@@ -135,7 +135,7 @@ export function SettlingEdge({
             const restPx = py(rest[i][1] * sy) - pad;
             const pull = direction === "out" ? -(pointer[1] - restPx) : pointer[1] - restPx;
             const target = Math.max(-amplitude, Math.min(amplitude, pull));
-            a += (target - disp[i]) * 0.09 * w * w;
+            a += (target - disp[i]) * 0.045 * w * w;
           }
         }
         acc[i] = a;

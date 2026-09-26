@@ -37,6 +37,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 10 „w hero za mało miejsca między h1 a wykresem”: wykres w kolumnach 8–12 (`lg:col-span-5 lg:col-start-8`), tekst zostaje w 1–6; odstęp h1→wykres 126 px zamiast 24 px na 1440, wykres 486 px szerokości
 - [x] prompt 11 „spróbuj dodać ruch do tych zakrzywionych sekcji”: `SettlingEdge` — krawędzie pasma jako ten sam układ sprężyn co linia w hero, rysowany jako wypełnienie na canvasie nad statycznym SVG: przy pierwszym odsłonięciu fala startuje 60% większa i osiada w docelowy kształt (~2 s, raz); z myszą krawędź daje się pociągnąć (±36 px, zasięg 110 px) i wraca; canvas przejmuje tylko w ruchu i oddaje SVG w spoczynku; `prefers-reduced-motion` = bez ruchu; `curve.ts` trzyma segmenty krzywej i `sampleCurve`
 - [x] prompt 12 „to samo na dwóch kartach; przy dużej amplitudzie przepływ jest przycinany”: canvas `SettlingEdge` sięga pół wysokości boxu nad i pod krawędź (`-top-1/2 h-[200%]`), więc wychylenie nie jest przycinane; `SettlingEdge` sparametryzowany (`fill` = `tail` | `surface-raised`, `stroke` dla ramki, `amplitude`); czapki kart Steady Ops / Steady Sales dostają osiadanie przy odsłonięciu i pociągnięcie (±22 px) z ramką rysowaną na canvasie; korpus karty `relative z-10` nad canvasami
+- [x] prompt 13 „płynniej, mniej agresywnie”: `SettlingEdge` — wejście 35% zamiast 60%, pociągnięcie 0,045 zamiast 0,09 (zasięg 140 px), amplituda 26 px (karty 16 px), sprzężenie 0,2, tłumienie 0,085 — jedno miękkie wahnięcie, spoczynek po ~1,2 s
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
@@ -75,3 +76,4 @@ zostało zmienione i dlaczego.
 - 2026-09-26: prompt 11 — pomiar lokalny 1440: wejście krawędzi „out” (maks. y canvasu): 83 → 64 → 75 → 70 → spoczynek i opacity SVG z powrotem po ~3 s; pociągnięcie krawędzi „in”: pas 21–95 px, SVG ukryty w ruchu; bez pushu
 - 2026-09-26: prompt 12 — pomiar lokalny 1440: czapka karty 44 px, canvas 88 px (box w wierszach 22–66), pociągnięta granica dochodzi do wiersza 22 bez przycięcia; SVG ukryty w ruchu, z powrotem w spoczynku; bez pushu
 - 2026-09-26: prompt 12 — poprawka: wyjście myszy z okna (`pointerout` bez `relatedTarget`) zwalnia pociągnięcie, inaczej pętla i wychylenie zostawały; 390: `scrollWidth` 390, czapki w spoczynku
+- 2026-09-26: prompt 13 — symulacja offline: spoczynek po 74 klatkach (1,23 s); pomiar lokalny 1440, krawędź „out”: wejście 127 → 117 → 120 (spoczynek) co 100 ms, pociągnięcie +20 px, SVG wraca po zwolnieniu; bez pushu
