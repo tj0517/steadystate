@@ -32,6 +32,14 @@ export const site: SiteContent = {
       },
     ],
   },
+  partners: {
+    ariaLabel: "Klienci",
+    items: [
+      { name: "Hydra Arms" },
+      { name: "Sea Clouds DCS" },
+      { name: "Fjordanglers" },
+    ],
+  },
   services: {
     heading: "Jeden system do pracy. Jeden do sprzedaży.",
     lead: "Umowa na działający system, nie na godziny. Stan końcowy opisujemy przed startem.",

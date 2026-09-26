@@ -4,7 +4,7 @@ import { LightScope } from "@/components/LightScope";
 import { ContactCta } from "@/components/ContactCta";
 import { Hero } from "@/components/Hero";
 import { Process } from "@/components/Process";
-import { ProofStrip } from "@/components/ProofStrip";
+import { PartnerStrip } from "@/components/PartnerStrip";
 import { Services } from "@/components/Services";
 import { RevealObserver } from "@/components/RevealObserver";
 import { Studio } from "@/components/Studio";
@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <Hero content={site.hero} />
-      <ProofStrip content={site.proofStrip} />
+      <PartnerStrip content={site.partners} />
       <Services content={site.services} />
       <Cases content={site.cases} />
       <div className="mt-space-16">

@@ -39,6 +39,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 12 „to samo na dwóch kartach; przy dużej amplitudzie przepływ jest przycinany”: canvas `SettlingEdge` sięga pół wysokości boxu nad i pod krawędź (`-top-1/2 h-[200%]`), więc wychylenie nie jest przycinane; `SettlingEdge` sparametryzowany (`fill` = `tail` | `surface-raised`, `stroke` dla ramki, `amplitude`); czapki kart Steady Ops / Steady Sales dostają osiadanie przy odsłonięciu i pociągnięcie (±22 px) z ramką rysowaną na canvasie; korpus karty `relative z-10` nad canvasami
 - [x] prompt 13 „płynniej, mniej agresywnie”: `SettlingEdge` — wejście 35% zamiast 60%, pociągnięcie 0,045 zamiast 0,09 (zasięg 140 px), amplituda 26 px (karty 16 px), sprzężenie 0,2, tłumienie 0,085 — jedno miękkie wahnięcie, spoczynek po ~1,2 s
 - [x] prompt 14 „zrób coś z tą linią między sekcjami, jest cienka i nie wygląda dobrze”: pasek liczb bez hairline'ów `border-y` — pełnoszerokie pasmo `surface-raised` (BRAND: „odcinają się tonem, nie cieniem”)
+- [x] prompt 15 „lepiej u góry pasek z logami partnerów”: `PartnerStrip` zamiast paska liczb — pasmo `surface-raised`, trzy pozycje (Hydra Arms, Sea Clouds DCS, Fjordanglers) jako wordmarki mono `ink-muted`; pole `logo` (SVG w `/public`) podmienia wordmark na obraz 32 px, gdy pliki będą; treść `partners` w `site.ts` (aria-label „Klienci” — nowe copy do akceptacji tj); `proofStrip` w treści zostaje, komponent `ProofStrip` nieużywany
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
@@ -79,3 +80,4 @@ zostało zmienione i dlaczego.
 - 2026-09-26: prompt 12 — poprawka: wyjście myszy z okna (`pointerout` bez `relatedTarget`) zwalnia pociągnięcie, inaczej pętla i wychylenie zostawały; 390: `scrollWidth` 390, czapki w spoczynku
 - 2026-09-26: prompt 13 — symulacja offline: spoczynek po 74 klatkach (1,23 s); pomiar lokalny 1440, krawędź „out”: wejście 127 → 117 → 120 (spoczynek) co 100 ms, pociągnięcie +20 px, SVG wraca po zwolnieniu; bez pushu
 - 2026-09-26: prompt 14 — interpretacja: linie wokół paska liczb (hero → liczby → usługi); zamiast nich ton `surface-raised`; sprawdzone lokalnie 1440; bez pushu
+- 2026-09-26: prompt 15 — brak plików logo w repo (public/ ma tylko domyślne SVG Next); wordmarki tekstowe do czasu dostarczenia SVG; pasek liczb (O-07) zdjęty ze strony decyzją tj, treść zostaje; sprawdzone lokalnie 1440; bez pushu
