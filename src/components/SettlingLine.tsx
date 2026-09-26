@@ -125,14 +125,18 @@ export function SettlingLine({
 
     // One physics step at ~60 fps. Coupled damped springs: the return to
     // rest is the ease-out the brand asks for; the coupling lets a pull
-    // travel along the line instead of staying a local bump.
+    // travel along the line instead of staying a local bump. A full pull
+    // settles in about 2.5 s (offline simulation, SS-1.17 notes).
     const step = () => {
       const n = rest.length;
-      let energy = 0;
+      // Two passes: accelerations from the previous frame's state for every
+      // point, then the update — reading already-updated neighbours in one
+      // pass makes the explicit scheme diverge.
+      const acc = new Array<number>(n).fill(0);
       for (let i = 1; i < n; i++) {
         const left = disp[i - 1];
         const right = i < n - 1 ? disp[i + 1] : disp[i];
-        let acc = 0.28 * (left + right - 2 * disp[i]) - 0.012 * disp[i] - 0.06 * vel[i];
+        let a = 0.28 * (left + right - 2 * disp[i]) - 0.012 * disp[i] - 0.06 * vel[i];
         if (pointer) {
           const dx = Math.abs(rest[i][0] - pointer[0]);
           if (dx < REACH_PX) {
@@ -141,15 +145,19 @@ export function SettlingLine({
               -amplitude,
               Math.min(amplitude, pointer[1] - rest[i][1]),
             );
-            acc += (target - disp[i]) * 0.1 * w * w;
+            a += (target - disp[i]) * 0.1 * w * w;
           }
         }
-        vel[i] += acc;
+        acc[i] = a;
+      }
+      let energy = 0;
+      for (let i = 1; i < n; i++) {
+        vel[i] += acc[i];
         disp[i] += vel[i];
         energy += Math.abs(disp[i]) + Math.abs(vel[i]);
       }
       draw();
-      if (energy / n > REST_EPS || pointer) {
+      if (Number.isFinite(energy) && (energy / n > REST_EPS || pointer)) {
         frame = requestAnimationFrame(step);
       } else {
         disp.fill(0);
