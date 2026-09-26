@@ -12,6 +12,20 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Interaction states — colour, border and underline only; nothing moves.
+ * BRAND.md „Ruch”: ease-out, elements come to rest. */
+a,
+button {
+  transition-property: color, background-color, border-color, text-decoration-color;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;

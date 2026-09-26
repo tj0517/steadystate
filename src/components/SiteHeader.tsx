@@ -55,13 +55,17 @@ export function SiteHeader({ content }: SiteHeaderProps) {
           className="hidden items-center gap-space-8 text-body font-medium md:flex"
         >
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="text-ink">
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-ink underline-offset-4 hover:underline"
+            >
               {link.label}
             </a>
           ))}
           <a
             href={content.cta.href}
-            className="inline-flex h-11 items-center rounded-md px-space-6 font-medium text-ink"
+            className="inline-flex h-11 items-center rounded-md border border-line px-space-6 font-medium text-ink hover:border-ink-muted"
           >
             {content.cta.label}
           </a>
@@ -73,7 +77,7 @@ export function SiteHeader({ content }: SiteHeaderProps) {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((value) => !value)}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line text-ink md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line text-ink hover:border-ink-muted md:hidden"
         >
           <span className="sr-only">
             {open ? content.menuCloseLabel : content.menuOpenLabel}
@@ -118,7 +122,12 @@ export function SiteHeader({ content }: SiteHeaderProps) {
             className="flex flex-col items-center gap-space-8 text-h3"
           >
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} onClick={closeMenu} className="text-ink">
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={closeMenu}
+                className="text-ink underline-offset-4 hover:underline"
+              >
                 {link.label}
               </a>
             ))}
@@ -126,7 +135,7 @@ export function SiteHeader({ content }: SiteHeaderProps) {
           <a
             href={content.cta.href}
             onClick={closeMenu}
-            className="inline-flex h-12 items-center rounded-md bg-signal px-space-8 font-medium text-on-signal"
+            className="inline-flex h-12 items-center rounded-md bg-signal px-space-8 font-medium text-on-signal hover:bg-signal-hover"
           >
             {content.cta.label}
           </a>

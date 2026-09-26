@@ -11,6 +11,7 @@
   --signal: #7FB2E5; /* Atrament — akcent marki: główne CTA, aktywny stan, krzywa stanu ustalonego, kluczowe liczby. Jeden akcent na ekran. */
   --signal-soft: #1A2B3D; /* Tło wyróżnień za tekstem signal (tagi, boxy „Stan ustalony”). */
   --on-signal: #14171C; /* Tekst i ikony na wypełnieniu signal (etykieta głównego przycisku). */
+  --signal-hover: #A6CBEF; /* Signal w stanie hover/active: przycisk główny, linki. Tylko jako reakcja na wskaźnik, nigdy jako kolor spoczynkowy. */
   --amber: #E6A652; /* Akcent pomocniczy: linia Steady Sales, ostrzeżenia. Nigdy obok signal w tym samym komponencie. */
   --amber-soft: #2E2414; /* Tło wyróżnień za tekstem amber. */
   --link: var(--signal); /* Linki — alias signal. */
@@ -38,6 +39,7 @@
   --signal: #1F4E79;
   --signal-soft: #DCE6F0;
   --on-signal: #FFFFFF;
+  --signal-hover: #1A4267;
   --amber: #8F5C0C;
   --amber-soft: #F4E6C8;
   --link: var(--signal);

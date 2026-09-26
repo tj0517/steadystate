@@ -17,7 +17,7 @@ export function ContactCta({ content }: ContactCtaProps) {
           <div className="mt-space-2 flex flex-wrap items-center gap-space-4">
             <a
               href={content.button.href}
-              className="inline-flex h-[52px] items-center rounded-md bg-signal px-space-6 text-body font-medium text-on-signal"
+              className="inline-flex h-[52px] items-center rounded-md bg-signal px-space-6 text-body font-medium text-on-signal hover:bg-signal-hover"
             >
               {content.button.label}
             </a>
