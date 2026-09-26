@@ -8,7 +8,7 @@ type SteadyOpsCardProps = {
 // Work-systems line card — accent `signal` only, per BRAND.md ("Nigdy obu w jednym komponencie").
 export function SteadyOpsCard({ content }: SteadyOpsCardProps) {
   return (
-    <CurveCard as="article" reveal fill="surface-raised" bordered className="flex flex-col gap-space-6 px-space-8 py-space-4">
+    <CurveCard as="article" reveal bordered className="flex flex-col gap-space-6 px-space-8 py-space-4">
       <div className="flex items-center justify-between">
         <span className="inline-flex h-7 items-center rounded-sm bg-signal-soft px-space-2 text-label uppercase text-signal">
           {content.tag}

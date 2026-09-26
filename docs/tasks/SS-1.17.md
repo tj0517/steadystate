@@ -33,6 +33,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 6 „ten efekt na kartach w całej stronie”: `CurveCard` — karta z górną krawędzią-krzywą (ta sama ścieżka, czapka 40/56 px, wypełnienie = tło karty, dla kart z ramką 1 px `line` wzdłuż krzywej i boków czapki); użyta w kartach Steady Ops / Steady Sales, boxach „Stan ustalony” w rejestrze (bez ramki, `signal-soft`/`amber-soft`) i boxie „Dobrze pasujemy” w kontakcie; górne narożniki proste, dolne z radiusem karty
 - [x] prompt 7 „dłuższa krzywa o mniejszej amplitudzie, ta sama na krawędziach sekcji, karty na biało”: wspólna ścieżka w `curve.ts` (oscylacje gasną przez ~80% szerokości, szczyt y=30, płaska y=64 w viewBoxie 120) używana przez `CurveEdge` (48/72/96 px) i `CurveCard` (32/44 px); karty jako scope tokenów jasnych (`data-theme="light"`): tło białe (`surface-raised` jasne), boxy „Stan ustalony” w jasnych tintach signal/amber, tekst i tagi w wartościach jasnych
 - [x] prompt 8 „dodaj lustrzane na dole”: `CurveCard` zamyka kartę tą samą czapką obróconą o 180° (jak pasmo); korpus bez radiusa i bez ramki górnej/dolnej — tylko boki, ramka biegnie po krzywych
+- [x] prompt 9 „zostaw na tych dwóch dużych, usuń z pozostałych”: `CurveCard` tylko na kartach Steady Ops / Steady Sales; boxy „Stan ustalony” i box „Dobrze pasujemy” wracają do stanu z `main`
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
@@ -66,3 +67,4 @@ zostało zmienione i dlaczego.
 - 2026-09-26: prompt 6 — CurveCard na 5 kartach; sprawdzone lokalnie 1440 i 390, bez pushu
 - 2026-09-26: prompt 7 — jedna krzywa dla krawędzi i kart, karty białe; sprawdzone lokalnie 1440 i 390, bez pushu
 - 2026-09-26: prompt 8 — lustrzana czapka na dole kart; sprawdzone lokalnie 1440 i 390, bez pushu
+- 2026-09-26: prompt 9 — CurveCard tylko na dwóch kartach usług; sprawdzone lokalnie, bez pushu

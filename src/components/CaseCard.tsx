@@ -1,5 +1,4 @@
 import type { CaseCard as CaseCardContent } from "@/content/types";
-import { CurveCard } from "./CurveCard";
 import { FlowDiagram } from "./FlowDiagram";
 
 type CaseCardProps = {
@@ -10,8 +9,8 @@ type CaseCardProps = {
 // Accent classes written out literally — the Tailwind scanner only sees full
 // class names in the source, never strings built at runtime.
 const accents = {
-  signal: { text: "text-signal", box: "signal-soft" },
-  amber: { text: "text-amber", box: "amber-soft" },
+  signal: { text: "text-signal", box: "bg-signal-soft" },
+  amber: { text: "text-amber", box: "bg-amber-soft" },
 } as const;
 
 // A register row, not a card (SS-1.16): hairline on top, mono index, flow
@@ -61,16 +60,13 @@ export function CaseCard({ content, index }: CaseCardProps) {
         )}
       </div>
 
-      <div className="self-start lg:col-span-3 lg:col-start-10">
-        <CurveCard
-          fill={accent.box}
-          className="flex flex-col gap-space-2 px-space-6 py-space-2"
-        >
-          <span className={`text-label uppercase ${accent.text}`}>
-            {content.steadyState.label}
-          </span>
-          <span className="text-small text-ink">{content.steadyState.text}</span>
-        </CurveCard>
+      <div
+        className={`flex flex-col gap-space-2 self-start rounded-md p-space-6 lg:col-span-3 lg:col-start-10 ${accent.box}`}
+      >
+        <span className={`text-label uppercase ${accent.text}`}>
+          {content.steadyState.label}
+        </span>
+        <span className="text-small text-ink">{content.steadyState.text}</span>
       </div>
     </article>
   );
