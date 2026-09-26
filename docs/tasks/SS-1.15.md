@@ -61,3 +61,4 @@ Wszystko wygasające, bez bounce, bez pulsowania, bez ruchu przy `prefers-reduce
 - 2026-09-26: zadanie z audytu slop (faza 2 z 3); jedyny „efekt” na stronie to krzywa, która dochodzi do spoczynku
 - 2026-09-26 tj: CLS mierzony w Playwright (wpisy layout-shift na podglądzie) zamiast Lighthouse — Lighthouse zostaje w SS-1.08; tło opakowania wykresu: przezroczyste lub surface (liczy się brak ramki i surface-raised)
 - 2026-09-26: implementacja gotowa do review — branch `feat/hero-motion`, PR #8; pomiary Playwright na podglądzie Vercel i zrzuty w `.playwright-mcp/ss-1.15/`; wykonane na modelu Fable 5.1 (zadanie zakładało Sonnet — do potwierdzenia przez tj)
+- 2026-09-26 tj: hero bez dodatkowego ruchu (opcja A). B odrzucone (łamie „hero nie” i limit 2,5 s); C („cel rysuje się pierwszy”) do rozważenia przy SS-1.16 razem z procesem na krzywej, nie w tym PR
