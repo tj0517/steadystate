@@ -4,7 +4,7 @@ title: Realizacje jako rejestr z diagramami, proces na krzywej, pasek liczb
 status: review
 difficulty: M
 model: fable-5.1
-model_approved: null
+model_approved: fable by tj 2026-09-26 (po fakcie)
 effort: medium
 branch: feat/cases-register
 due: null
@@ -38,8 +38,8 @@ Pasek liczb schodzi do trzech uczciwych liczb.
 
 ## Gotowe, gdy
 - realizacje bez kart z ramką — `grep -c 'rounded-lg border' src/components/CaseCard.tsx` = 0; Playwright 1440: w `#realizacje` jedynymi elementami, których `background-color` nie jest przezroczyste (`rgba(0, 0, 0, 0)`) ani `surface` (`rgb(20, 23, 28)`), są trzy boxy „Stan ustalony”. *(Zmiana tj 2026-09-26: elementy bez własnego tła raportują przezroczyste.)*
-- diagram na każdą realizację — Playwright: `#realizacje svg[role="img"]` = 3, każdy z niepustym `aria-label`; wszystkie `stroke-width` w tych SVG ≤ 1,5
-- jeden akcent na diagram — Playwright: dla każdego z trzech SVG zebrać obliczone kolory `stroke` i `fill` jego elementów, pomijając `none`/przezroczyste i neutralne tokeny `line`/`ink`/`ink-muted`; Fjordanglers daje tylko amber (`rgb(230, 166, 82)`), Hydra Arms i Sea Clouds tylko signal (`rgb(127, 178, 229)`); zestawy kolorów per diagram w raporcie. *(Zmiana tj 2026-09-26: zastępuje grep, który istniejąca mapa akcentów w `CaseCard.tsx` zawsze by oblała.)*
+- diagram na każdą realizację — Playwright 1440: widocznych `#realizacje svg[role="img"]` = 3, każdy z niepustym `aria-label`, wszystkie `stroke-width` ≤ 1,5; Playwright 390: wszystkie trzy SVG mają `display: none`, a każda realizacja pokazuje przepływ jako tekst z obliczonym `font-size` ≥ 11px, w całości w viewporcie (bez uciętych etykiet). *(Zmiana tj 2026-09-26: przepływ tekstowy poniżej `lg`.)*
+- jeden akcent na diagram — Playwright: dla każdego z trzech SVG zebrać obliczone kolory `stroke` i `fill` jego elementów, pomijając `none`/przezroczyste i neutralne tokeny `line`/`ink`/`ink-muted`; Fjordanglers daje tylko amber (`rgb(230, 166, 82)`), Hydra Arms i Sea Clouds tylko signal (`rgb(127, 178, 229)`); zestawy kolorów per diagram w raporcie. *(Zmiana tj 2026-09-26: zastępuje grep, który istniejąca mapa akcentów w `CaseCard.tsx` zawsze by oblała.)* Na 390 kolor strzałek per realizacja: tylko amber dla Fjordanglers, tylko signal dla dwóch pozostałych. *(Uzupełnienie tj 2026-09-26.)*
 - proces na krzywej — Playwright 1440: `#proces svg` widoczny (`display` ≠ `none`), `#proces ol li` = 4; Playwright 390: `#proces svg` ma `display: none`, lista czytelna w kolumnie
 - pasek liczb wg O-07 — liczba `.text-metric` w sekcji „Liczby” = 3 (lub 4, jeśli O-07 zachowuje cztery; cytat odpowiedzi w raporcie); `grep -c '3+' src/content/pl/site.ts` = 0, gdy T8 przyjęte
 - bez cieni, gradientów, emoji — `grep -rnE 'shadow|gradient' src --include='*.tsx' --include='*.css' | grep -v tokens.generated.css` puste; `find src -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) -exec perl -CSD -ne 'print "$ARGV:$.: $_" if /[\x{1F300}-\x{1FAFF}]/; close ARGV if eof' {} +` puste (macOS `grep` nie ma `-P`)
@@ -68,3 +68,6 @@ Pasek liczb schodzi do trzech uczciwych liczb.
 - 2026-09-26: zadanie z audytu slop (faza 3 z 3); jedyny „kreatywny” element strukturalny to krzywa jako oś procesu — motyw marki jako układ, nie dekoracja
 - 2026-09-26 tj: tło w #realizacje poza boxami — przezroczyste lub surface; jeden akcent na diagram sprawdzany w Playwright (kolory linii w SVG), nie grepem; Lighthouse dostępność przeniesiona do SS-1.08; Studio bez linii mono („5 systemów” nie wraca)
 - 2026-09-26: implementacja gotowa do review — branch `feat/cases-register`, PR #9; pomiary Playwright na podglądzie Vercel i zrzuty w `.playwright-mcp/ss-1.16/`; wykonane na modelu Fable 5.1 (prompt zakładał Sonnet medium)
+- 2026-09-26 tj: diagramy poniżej `lg` jako tekst mono ze strzałkami, łamany w wierszach; SVG tylko od `lg` (etykiety ~9 px na 390 były nieczytelne)
+- 2026-09-26 tj: kroki procesu bez kreski nad sobą — zostaje (krzywa jest osią na desktopie, hairline'y na telefonie)
+- 2026-09-26 tj: Fable 5.1 zatwierdzony po fakcie
