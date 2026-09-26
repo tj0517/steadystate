@@ -22,6 +22,11 @@ zostało zmienione i dlaczego.
 
 ## Zakres
 (uzupełniany na bieżąco — jeden punkt na prompt tj)
+- [x] prompt 1 „komponenty UI, które podniosą stronę wizualnie i dodadzą życia tłu”:
+  - `GridBackdrop` — siatka hairline (`line`, 24/96 px) za hero, wjeżdża z `curve-grid`
+  - `SectionMarker` — indeks mono `01`–`05` + etykieta z nawigacji na hairline u góry sekcji usługi, realizacje, proces, studio, kontakt (bez nowego copy)
+  - `CountUp` — liczby w pasku liczą od 0 i dochodzą do wartości (900 ms, ease-out, raz, tylko poniżej folda, `prefers-reduced-motion` = bez ruchu; HTML z serwera ma wartość końcową)
+  - `CurveBackdrop` — duża krzywa stanu ustalonego w `line` 1,5 px za sekcją kontakt, rysuje się raz przy odsłonięciu (RevealObserver + `stroke-dashoffset`)
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
@@ -43,3 +48,4 @@ zostało zmienione i dlaczego.
 
 ## Notatki z realizacji
 - 2026-09-26: zadanie założone jako otwarte — zakres powstaje z kolejnych promptów tj
+- 2026-09-26: prompt 1 — cztery komponenty tła/rytmu; tylko tokeny neutralne w tle, jeden akcent na ekran bez zmian; brak gradientów (siatka i krzywa jako SVG)
