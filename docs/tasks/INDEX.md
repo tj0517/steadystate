@@ -18,6 +18,6 @@ Etap 1: strona steadystate.pl na produkcji (PL główna → produkcja, potem cas
 | SS-1.11 | Case'y Sea Clouds DCS i Fjordanglers | todo | S | SS-1.10 | O-03, O-04 | – |
 | SS-1.12 | Wersja EN strony głównej | todo | M | SS-1.09 | O-05 | – |
 | SS-1.13 | Case'y po angielsku | todo | S | SS-1.11, SS-1.12 | O-05 | – |
-| SS-1.14 | Stany hover/focus, CTA w nagłówku i poprawki tekstu po audycie | in_progress | S | SS-1.06 | O-06, O-07 | – |
+| SS-1.14 | Stany hover/focus, CTA w nagłówku i poprawki tekstu po audycie | review | S | SS-1.06 | O-06, O-07 | – |
 | SS-1.15 | Hero — krzywa, która się rysuje, i odsłanianie sekcji | todo | M | SS-1.14 | – | – |
 | SS-1.16 | Realizacje jako rejestr z diagramami, proces na krzywej, pasek liczb | todo | M | SS-1.15 | O-07 | – |

@@ -1,7 +1,7 @@
 ---
 id: SS-1.14
 title: Stany hover/focus, CTA w nagłówku i poprawki tekstu po audycie
-status: in_progress
+status: review
 difficulty: S
 model: fable-5.1
 model_approved: null
@@ -12,7 +12,7 @@ depends_on: [SS-1.06]
 blocked_by_questions: [O-06, O-07]
 touches_db: false
 touches_prod: false
-pr: null
+pr: 7
 ---
 
 ## Cel
@@ -79,3 +79,4 @@ z generatora. Bez ruchu, bez nowych efektów — tylko kolor, ramka i podkreśle
 - 2026-09-26: T4 — `stack` tylko dla Hydra Arms; Sea Clouds i Fjordanglers czekają na listę od tj (klucz opcjonalny, linia mono renderuje się, gdy jest)
 - 2026-09-26: po usunięciu etykiet osi na dole karty wykresu został pusty pas (~50 px w viewBox 560×300); geometria zostaje dla SS-1.15, które i tak przebudowuje hero (notatka w SS-1.15)
 - 2026-09-26: wyniki lokalne (dev server, Playwright): fokus 2px `rgb(127, 178, 229)` offset 2px na wszystkich 15 elementach fokusowalnych strony (jedyny bez obrysu to przycisk overlaya Next.js dev, poza stroną); hover główny `rgb(166, 203, 239)` = `#A6CBEF`, `transform: none`, `transition-duration: 0.2s`, `cubic-bezier(0, 0, 0.2, 1)`; CTA w nagłówku `border 1px`, linki `0px`; reduced motion: 0 animacji; 390: `scrollWidth` 390; `npm run lint`, `npm run typecheck`, `npm run tokens` bez zmian — OK. Podgląd Vercel: po otwarciu PR
+- 2026-09-26: implementacja gotowa do review — branch `feat/interaction-states`, PR #7
