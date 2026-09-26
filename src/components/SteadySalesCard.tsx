@@ -1,4 +1,5 @@
 import type { ServiceCard } from "@/content/types";
+import { CurveCard } from "./CurveCard";
 
 type SteadySalesCardProps = {
   content: ServiceCard;
@@ -7,7 +8,7 @@ type SteadySalesCardProps = {
 // Sales-systems line card — the only place `amber` is used, per BRAND.md.
 export function SteadySalesCard({ content }: SteadySalesCardProps) {
   return (
-    <article data-reveal className="flex flex-col gap-space-6 rounded-lg border border-line bg-surface-raised p-space-8">
+    <CurveCard as="article" reveal fill="surface-raised" bordered className="flex flex-col gap-space-6 px-space-8 pt-space-4 pb-space-8">
       <div className="flex items-center justify-between">
         <span className="inline-flex h-7 items-center rounded-sm bg-amber-soft px-space-2 text-label uppercase text-amber">
           {content.tag}
@@ -30,6 +31,6 @@ export function SteadySalesCard({ content }: SteadySalesCardProps) {
       <div className="mt-space-2 border-t border-line pt-space-6 text-small text-ink-muted">
         {content.credit}
       </div>
-    </article>
+    </CurveCard>
   );
 }

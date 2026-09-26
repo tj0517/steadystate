@@ -30,6 +30,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 3 „wszystkie sekcje pod krawędzią w tym kolorze, efekt paralaksy na granicy dwóch kolorów, usuń linie nad i pod”: `LightScope` — Studio, kontakt i stopka na tle `deep` (ciemnego motywu, `--tail` na `:root`) z tokenami motywu jasnego (`[data-theme="light"]`), więc tekst, box, hairline'y i przycisk `signal` dostają wartości na jasne tło; `CurveEdge` wypełnia `--tail`; usunięte: `CurveBackdrop` za kontaktem i hairline nad stopką. Paralaksa napisana i wycofana w tej samej turze („remove animation”) — krawędź statyczna
 - [x] prompt 4 „przesuń ten efekt wyżej, do końca strony”: krawędź-krzywa nad sekcją proces; jasny blok obejmuje proces, studio, kontakt i stopkę (krzywa procesu i numer 04 w `signal` motywu jasnego)
 - [x] prompt 5 „w środku, zakończ wyżej tym samym efektem, nie do końca strony”: jasne pasmo = proces + studio; `CurveEdge direction="out"` (ta sama ścieżka obrócona o 180°) zamyka pasmo nad kontaktem; kontakt i stopka z powrotem na ciemnym, hairline stopki przywrócony
+- [x] prompt 6 „ten efekt na kartach w całej stronie”: `CurveCard` — karta z górną krawędzią-krzywą (ta sama ścieżka, czapka 40/56 px, wypełnienie = tło karty, dla kart z ramką 1 px `line` wzdłuż krzywej i boków czapki); użyta w kartach Steady Ops / Steady Sales, boxach „Stan ustalony” w rejestrze (bez ramki, `signal-soft`/`amber-soft`) i boxie „Dobrze pasujemy” w kontakcie; górne narożniki proste, dolne z radiusem karty
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
@@ -60,3 +61,4 @@ zostało zmienione i dlaczego.
 - 2026-09-26: prompt 3 — dół strony jako jasny blok (deep) od krawędzi-krzywej po stopkę; paralaksa krawędzi wycofana na polecenie tj; sprawdzone lokalnie na dev tj (localhost:3000) 1440 i 390, bez pushu — tj powie kiedy
 - 2026-09-26: prompt 4 — jasny blok od procesu do końca strony; sprawdzone lokalnie 1440 i 390, bez pushu
 - 2026-09-26: prompt 5 — pasmo proces+studio z krawędzią-krzywą na wejściu i wyjściu; sprawdzone lokalnie 1440 i 390, bez pushu
+- 2026-09-26: prompt 6 — CurveCard na 5 kartach; sprawdzone lokalnie 1440 i 390, bez pushu

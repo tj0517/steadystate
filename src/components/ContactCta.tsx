@@ -1,5 +1,6 @@
 import type { SiteContent } from "@/content/types";
 import { Container } from "./Container";
+import { CurveCard } from "./CurveCard";
 
 type ContactCtaProps = {
   content: SiteContent["cta"];
@@ -24,7 +25,8 @@ export function ContactCta({ content }: ContactCtaProps) {
           </div>
         </div>
 
-        <div data-reveal className="flex flex-col gap-space-4 rounded-lg border border-line bg-surface-raised p-space-8 lg:col-span-4 lg:col-start-9">
+        <div data-reveal className="lg:col-span-4 lg:col-start-9">
+          <CurveCard fill="surface-raised" bordered className="flex flex-col gap-space-4 px-space-8 pt-space-4 pb-space-8">
           <span className="text-label uppercase text-ink-muted">{content.fit.label}</span>
           <ul className="flex flex-col gap-space-4 text-small text-ink">
             {content.fit.items.map((item) => (
@@ -37,6 +39,7 @@ export function ContactCta({ content }: ContactCtaProps) {
               </li>
             ))}
           </ul>
+          </CurveCard>
         </div>
       </Container>
     </section>
