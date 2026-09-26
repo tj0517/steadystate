@@ -5,12 +5,12 @@ type StudioProps = {
   content: SiteContent["studio"];
 };
 
-// First section of the light tail (LightScope): the ground is the dark
+// Part of the light tail (LightScope): the ground is the dark
 // theme's `deep`, tokens inside are the light theme's, so `ink` here is
-// dark text. The curve edge above it lives in page.tsx (CurveEdge).
+// dark text. The curve edge above the tail lives in page.tsx (CurveEdge).
 export function Studio({ content }: StudioProps) {
   return (
-    <section id="studio" className="pt-space-8 pb-space-16">
+    <section id="studio" className="py-space-16">
       <Container>
         <div data-reveal className="grid grid-cols-1 gap-space-8 lg:grid-cols-12 lg:gap-x-space-6">
           <div className="flex flex-col gap-space-4 lg:col-span-6">

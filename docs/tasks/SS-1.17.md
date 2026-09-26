@@ -28,6 +28,7 @@ zostało zmienione i dlaczego.
   - `CurveBackdrop` — duża krzywa w `line` 1,5 px za sekcją kontakt, rysuje się raz przy odsłonięciu, ogon żywy jak w hero (amplituda 48 px)
 - [x] prompt 2 „zmień gdzieś kolor tła, a krawędź w kształcie naszej krzywej”: Studio jako pełnoszerokie pasmo `deep` (zamiast boxu z zaokrągleniem); `CurveEdge` — SVG wypełniony `deep`, którego górna krawędź to krzywa stanu ustalonego (skok, dwie gasnące oscylacje, płaska linia), 64/96/120 px wysokości, `preserveAspectRatio="none"`; dolna krawędź prosta
 - [x] prompt 3 „wszystkie sekcje pod krawędzią w tym kolorze, efekt paralaksy na granicy dwóch kolorów, usuń linie nad i pod”: `LightScope` — Studio, kontakt i stopka na tle `deep` (ciemnego motywu, `--tail` na `:root`) z tokenami motywu jasnego (`[data-theme="light"]`), więc tekst, box, hairline'y i przycisk `signal` dostają wartości na jasne tło; `CurveEdge` wypełnia `--tail`; usunięte: `CurveBackdrop` za kontaktem i hairline nad stopką. Paralaksa napisana i wycofana w tej samej turze („remove animation”) — krawędź statyczna
+- [x] prompt 4 „przesuń ten efekt wyżej, do końca strony”: krawędź-krzywa nad sekcją proces; jasny blok obejmuje proces, studio, kontakt i stopkę (krzywa procesu i numer 04 w `signal` motywu jasnego)
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
@@ -56,3 +57,4 @@ zostało zmienione i dlaczego.
 - 2026-09-26: prompt 2 — Studio pełnoszerokie w `deep` z krawędzią-krzywą; BRAND „jasne sekcje dzielą długie strony” — pasmo zamiast boxu; bez kropki na końcu linii (ink na deep = za mały kontrast)
 - 2026-09-26: prompt 2 sprawdzony na podglądzie Vercel — krawędź-krzywa i pasmo deep na 1440 i 390, `scrollWidth` 390; zrzuty `studio-1440.png`, `studio-390.png`
 - 2026-09-26: prompt 3 — dół strony jako jasny blok (deep) od krawędzi-krzywej po stopkę; paralaksa krawędzi wycofana na polecenie tj; sprawdzone lokalnie na dev tj (localhost:3000) 1440 i 390, bez pushu — tj powie kiedy
+- 2026-09-26: prompt 4 — jasny blok od procesu do końca strony; sprawdzone lokalnie 1440 i 390, bez pushu

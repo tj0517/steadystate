@@ -17,11 +17,11 @@ export default function Home() {
       <ProofStrip content={site.proofStrip} />
       <Services content={site.services} />
       <Cases content={site.cases} />
-      <Process content={site.process} />
       <div className="mt-space-16">
         <CurveEdge />
       </div>
       <LightScope>
+        <Process content={site.process} />
         <Studio content={site.studio} />
         <ContactCta content={site.cta} />
       </LightScope>
