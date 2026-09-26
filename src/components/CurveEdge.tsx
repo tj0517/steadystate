@@ -1,3 +1,5 @@
+import { CURVE_FILL, CURVE_HEIGHT, CURVE_WIDTH } from "./curve";
+
 type CurveEdgeProps = {
   // `in`: dark page above, light band below (the default).
   // `out`: light band above, dark page below — the same shape rotated
@@ -5,24 +7,20 @@ type CurveEdgeProps = {
   direction?: "in" | "out";
 };
 
-// Band edge shaped like the steady-state curve: the boundary between the
-// dark page and the light band (LightScope). Filled with `--tail` (the dark
-// theme's `deep`); the top follows the logo/hero family: jump, two decaying
-// oscillations, flat line. `preserveAspectRatio="none"` so the edge spans
-// any width; the height steps down below `lg`. Static — no parallax
-// (tj, 2026-09-26).
+// Band edge shaped like the steady-state curve (curve.ts, shared with the
+// cards): the boundary between the dark page and the light band
+// (LightScope). Filled with `--tail` (the dark theme's `deep`).
+// `preserveAspectRatio="none"` so the edge spans any width; the height
+// steps down below `lg`. Static — no parallax (tj, 2026-09-26).
 export function CurveEdge({ direction = "in" }: CurveEdgeProps) {
   return (
     <svg
-      viewBox="0 0 1440 120"
+      viewBox={`0 0 ${CURVE_WIDTH} ${CURVE_HEIGHT}`}
       preserveAspectRatio="none"
       aria-hidden="true"
-      className={`block h-[64px] w-full md:h-[96px] lg:h-[120px] ${direction === "out" ? "rotate-180" : ""}`}
+      className={`block h-[48px] w-full md:h-[72px] lg:h-[96px] ${direction === "out" ? "rotate-180" : ""}`}
     >
-      <path
-        d="M0 118 C60 118 70 8 140 8 C200 8 200 104 260 104 C310 104 320 44 370 44 C420 44 420 88 470 88 C520 88 560 72 640 72 L1440 72 L1440 120 L0 120 Z"
-        style={{ fill: "var(--tail)" }}
-      />
+      <path d={CURVE_FILL} style={{ fill: "var(--tail)" }} />
     </svg>
   );
 }
