@@ -12,7 +12,7 @@ export function SiteFooter({ content }: SiteFooterProps) {
   return (
     <footer>
       <Container>
-        <div className="flex flex-col gap-space-6 border-t border-line py-space-8 text-small text-ink-muted md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-space-6 py-space-8 text-small text-ink-muted md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-space-2">
             <Logo size="sm" />
             <span>{content.tagline}</span>

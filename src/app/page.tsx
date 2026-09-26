@@ -1,4 +1,6 @@
 import { Cases } from "@/components/Cases";
+import { CurveEdge } from "@/components/CurveEdge";
+import { LightScope } from "@/components/LightScope";
 import { ContactCta } from "@/components/ContactCta";
 import { Hero } from "@/components/Hero";
 import { Process } from "@/components/Process";
@@ -16,8 +18,13 @@ export default function Home() {
       <Services content={site.services} />
       <Cases content={site.cases} />
       <Process content={site.process} />
-      <Studio content={site.studio} />
-      <ContactCta content={site.cta} />
+      <div className="mt-space-16">
+        <CurveEdge />
+      </div>
+      <LightScope>
+        <Studio content={site.studio} />
+        <ContactCta content={site.cta} />
+      </LightScope>
       <RevealObserver />
     </>
   );

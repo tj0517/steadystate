@@ -1,6 +1,5 @@
 import type { SiteContent } from "@/content/types";
 import { Container } from "./Container";
-import { CurveBackdrop } from "./CurveBackdrop";
 
 type ContactCtaProps = {
   content: SiteContent["cta"];
@@ -8,8 +7,7 @@ type ContactCtaProps = {
 
 export function ContactCta({ content }: ContactCtaProps) {
   return (
-    <section id="kontakt" className="relative isolate py-space-16" data-settle-area>
-      <CurveBackdrop />
+    <section id="kontakt" className="py-space-16">
       <Container className="grid grid-cols-1 gap-space-8 lg:grid-cols-12 lg:gap-x-space-6">
         <div data-reveal className="flex flex-col gap-space-6 lg:col-span-7">
           <h2 className="text-h1 text-ink lg:text-[56px] lg:leading-[60px] lg:tracking-[-0.03em]">

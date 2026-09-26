@@ -6,6 +6,13 @@
   --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
 }
 
+/* Ground of the page tail (Studio, contact, footer): the dark theme's
+ * `deep`, resolved here so it survives the light-token scope inside
+ * LightScope. CurveEdge fills with it too. */
+:root {
+  --tail: var(--deep);
+}
+
 body {
   background: var(--surface);
   color: var(--ink);
@@ -115,30 +122,6 @@ button {
   }
 
   [data-reveal]:not(.reveal-hidden) {
-    transition: none;
-  }
-}
-
-/* Background curve (CurveBackdrop) — draws once as its section is revealed.
- * Hidden state = full dash offset, set by RevealObserver via `reveal-hidden`
- * on the wrapper; removing the class transitions the offsets to 0, the
- * oscillation first and the tail right after it. Same ease-out family as
- * the hero, slower because the line is longer. */
-[data-reveal].reveal-hidden .backdrop-curve {
-  stroke-dashoffset: var(--curve-len);
-}
-
-[data-reveal]:not(.reveal-hidden) .backdrop-curve {
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset 1100ms linear;
-}
-
-[data-reveal]:not(.reveal-hidden) .backdrop-curve-tail {
-  transition: stroke-dashoffset 700ms cubic-bezier(0, 0, 0.2, 1) 1100ms;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal]:not(.reveal-hidden) .backdrop-curve {
     transition: none;
   }
 }
