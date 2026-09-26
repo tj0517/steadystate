@@ -1,7 +1,7 @@
 ---
 id: SS-1.17
 title: Ulepszenia strony z promptów tj (zadanie otwarte)
-status: in_progress
+status: review
 difficulty: M
 model: fable-5.1
 model_approved: fable by tj 2026-09-26
@@ -12,7 +12,7 @@ depends_on: [SS-1.16]
 blocked_by_questions: []
 touches_db: false
 touches_prod: false
-pr: null
+pr: 10
 ---
 
 ## Cel
@@ -49,3 +49,4 @@ zostało zmienione i dlaczego.
 ## Notatki z realizacji
 - 2026-09-26: zadanie założone jako otwarte — zakres powstaje z kolejnych promptów tj
 - 2026-09-26: prompt 1 — cztery komponenty tła/rytmu; tylko tokeny neutralne w tle, jeden akcent na ekran bez zmian; brak gradientów (siatka i krzywa jako SVG)
+- 2026-09-26: implementacja prompt 1 gotowa do review — branch `feat/site-upgrades`, PR #10
