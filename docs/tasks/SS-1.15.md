@@ -1,10 +1,10 @@
 ---
 id: SS-1.15
 title: Hero — krzywa, która się rysuje, i odsłanianie sekcji
-status: review
+status: done
 difficulty: M
 model: fable-5.1
-model_approved: null
+model_approved: fable by tj 2026-09-26 (po fakcie)
 effort: medium
 branch: feat/hero-motion
 due: null
@@ -62,3 +62,5 @@ Wszystko wygasające, bez bounce, bez pulsowania, bez ruchu przy `prefers-reduce
 - 2026-09-26 tj: CLS mierzony w Playwright (wpisy layout-shift na podglądzie) zamiast Lighthouse — Lighthouse zostaje w SS-1.08; tło opakowania wykresu: przezroczyste lub surface (liczy się brak ramki i surface-raised)
 - 2026-09-26: implementacja gotowa do review — branch `feat/hero-motion`, PR #8; pomiary Playwright na podglądzie Vercel i zrzuty w `.playwright-mcp/ss-1.15/`; wykonane na modelu Fable 5.1 (zadanie zakładało Sonnet — do potwierdzenia przez tj)
 - 2026-09-26 tj: hero bez dodatkowego ruchu (opcja A). B odrzucone (łamie „hero nie” i limit 2,5 s); C („cel rysuje się pierwszy”) do rozważenia przy SS-1.16 razem z procesem na krzywej, nie w tym PR
+- 2026-09-26 tj: Fable 5.1 zatwierdzony po fakcie (prompt zakładał Sonnet medium)
+- 2026-09-26 tj: przyjęte w review (PR #8) — stan ukryty dodawany po zamontowaniu i tylko poniżej pierwszego ekranu; reduced motion bez animacji; ease-out bez przestrzelenia, jednorazowo, ~2,1 s; hero bez ramki; pomiary z podglądu wklejone w PR
