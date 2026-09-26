@@ -1,4 +1,5 @@
 import { CURVE_FILL, CURVE_HEIGHT, CURVE_LINE, CURVE_WIDTH } from "./curve";
+import { SettlingEdge } from "./SettlingEdge";
 
 type CurveCardProps = {
   children: React.ReactNode;
@@ -28,24 +29,34 @@ export function CurveCard({
   reveal = false,
 }: CurveCardProps) {
   const Tag = as;
+  // Each cap: static SVG (resting state) plus SettlingEdge, which draws the
+  // same boundary on a canvas while it moves (see SettlingEdge).
   const cap = (position: "top" | "bottom") => (
-    <svg
-      viewBox={`0 0 ${CURVE_WIDTH} ${CURVE_HEIGHT}`}
-      preserveAspectRatio="none"
-      aria-hidden="true"
-      className={`block h-[32px] w-full overflow-visible md:h-[44px] ${position === "bottom" ? "rotate-180" : ""}`}
-    >
-      <path d={CURVE_FILL} className="fill-surface-raised" />
-      {bordered && (
-        <path
-          d={`M0 ${CURVE_HEIGHT} L0 104 ${CURVE_LINE.slice(6)} L${CURVE_WIDTH} ${CURVE_HEIGHT}`}
-          fill="none"
-          strokeWidth="1"
-          vectorEffect="non-scaling-stroke"
-          className="stroke-line"
-        />
-      )}
-    </svg>
+    <div className="relative h-[32px] md:h-[44px]">
+      <svg
+        viewBox={`0 0 ${CURVE_WIDTH} ${CURVE_HEIGHT}`}
+        preserveAspectRatio="none"
+        aria-hidden="true"
+        className={`block h-full w-full overflow-visible ${position === "bottom" ? "rotate-180" : ""}`}
+      >
+        <path d={CURVE_FILL} className="fill-surface-raised" />
+        {bordered && (
+          <path
+            d={`M0 ${CURVE_HEIGHT} L0 104 ${CURVE_LINE.slice(6)} L${CURVE_WIDTH} ${CURVE_HEIGHT}`}
+            fill="none"
+            strokeWidth="1"
+            vectorEffect="non-scaling-stroke"
+            className="stroke-line"
+          />
+        )}
+      </svg>
+      <SettlingEdge
+        direction={position === "top" ? "in" : "out"}
+        fill="surface-raised"
+        stroke={bordered}
+        amplitude={22}
+      />
+    </div>
   );
 
   return (
@@ -56,7 +67,7 @@ export function CurveCard({
     >
       {cap("top")}
       <div
-        className={`flex-1 bg-surface-raised ${bordered ? "border-x border-line" : ""} ${className}`}
+        className={`relative z-10 flex-1 bg-surface-raised ${bordered ? "border-x border-line" : ""} ${className}`}
       >
         {children}
       </div>

@@ -26,7 +26,7 @@ export function CurveEdge({ direction = "in" }: CurveEdgeProps) {
       >
         <path d={CURVE_FILL} style={{ fill: "var(--tail)" }} />
       </svg>
-      <SettlingEdge direction={direction} />
+      <SettlingEdge direction={direction} fill="tail" />
     </div>
   );
 }
