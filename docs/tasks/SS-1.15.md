@@ -1,12 +1,12 @@
 ---
 id: SS-1.15
 title: Hero — krzywa, która się rysuje, i odsłanianie sekcji
-status: todo
+status: in_progress
 difficulty: M
-model: null
+model: fable-5.1
 model_approved: null
-effort: null
-branch: null
+effort: medium
+branch: feat/hero-motion
 due: null
 depends_on: [SS-1.14]
 blocked_by_questions: []
@@ -38,8 +38,8 @@ Wszystko wygasające, bez bounce, bez pulsowania, bez ruchu przy `prefers-reduce
 - reduced motion = statycznie — Playwright z `reducedMotion: 'reduce'`: `document.getAnimations().length === 0` po załadowaniu, `stroke-dashoffset` ścieżki = 0 i `opacity` kropki = 1 od razu
 - odsłanianie działa i odpala się raz — Playwright 1440: element `[data-reveal]` poniżej viewportu ma `opacity: 0`; po `scrollIntoView` i 500 ms `opacity: 1` i `transform: none`; po przewinięciu z powrotem na górę i ponownym zjeździe dalej `opacity: 1`
 - bez JS wszystko widoczne — `curl -s <podgląd> | grep -c 'opacity-0'` = 0 (stan ukryty nie jest w HTML z serwera)
-- bez ramki wokół wykresu — Playwright: `border-width` opakowania wykresu w hero = `0px`, `background-color` = `rgb(20, 23, 28)`
-- bez przesunięć układu — Lighthouse (mobile i desktop) na podglądzie: CLS < 0,1; odsłanianie zmienia tylko `opacity` i `transform`
+- bez ramki wokół wykresu — Playwright: `border-width` opakowania wykresu w hero = `0px`, a `background-color` to przezroczyste (`rgba(0, 0, 0, 0)`) albo `surface` (`rgb(20, 23, 28)`), nigdy `surface-raised` (`rgb(30, 35, 41)`). *(Zmiana tj 2026-09-26: opakowanie bez własnego tła raportuje przezroczyste.)*
+- bez przesunięć układu — Playwright na podglądzie: wpisy `layout-shift` zbierane `PerformanceObserver` (`buffered: true`, pomijając wpisy z `hadRecentInput`) podczas ładowania i przewinięcia do dołu, przy 1440 i 390; suma `value` < 0,1 w obu; odsłanianie zmienia tylko `opacity` i `transform`. *(Zmiana tj 2026-09-26: zastępuje CLS z Lighthouse; Lighthouse zostaje w SS-1.08.)*
 - telefon bez poziomego przewijania — Playwright 390×844: `scrollWidth <= 390`
 - `npm run lint`, `npm run typecheck` przechodzą lokalnie, a build podglądu PR na Vercelu jest zielony (check Vercel na PR)
 
@@ -59,3 +59,4 @@ Wszystko wygasające, bez bounce, bez pulsowania, bez ruchu przy `prefers-reduce
 
 ## Notatki z realizacji
 - 2026-09-26: zadanie z audytu slop (faza 2 z 3); jedyny „efekt” na stronie to krzywa, która dochodzi do spoczynku
+- 2026-09-26 tj: CLS mierzony w Playwright (wpisy layout-shift na podglądzie) zamiast Lighthouse — Lighthouse zostaje w SS-1.08; tło opakowania wykresu: przezroczyste lub surface (liczy się brak ramki i surface-raised)
