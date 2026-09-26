@@ -1,7 +1,7 @@
 ---
 id: SS-1.16
 title: Realizacje jako rejestr z diagramami, proces na krzywej, pasek liczb
-status: review
+status: done
 difficulty: M
 model: fable-5.1
 model_approved: fable by tj 2026-09-26 (po fakcie)
@@ -71,3 +71,4 @@ Pasek liczb schodzi do trzech uczciwych liczb.
 - 2026-09-26 tj: diagramy poniżej `lg` jako tekst mono ze strzałkami, łamany w wierszach; SVG tylko od `lg` (etykiety ~9 px na 390 były nieczytelne)
 - 2026-09-26 tj: kroki procesu bez kreski nad sobą — zostaje (krzywa jest osią na desktopie, hairline'y na telefonie)
 - 2026-09-26 tj: Fable 5.1 zatwierdzony po fakcie
+- 2026-09-26 tj: przyjęte w review (PR #9) — rejestr realizacji z jedynym boxem „Stan ustalony”; 3 diagramy SVG od lg (1 px, jeden akcent), poniżej lg tekst mono 12 px bez ucięć; proces na krzywej od lg, lista z hairline'ami poniżej; pasek 3 liczb; scrollWidth 390; checki zielone
