@@ -35,7 +35,7 @@ export function Hero({ content }: HeroProps) {
           </div>
         </div>
 
-        <div className="flex flex-col gap-space-6 rounded-lg border border-line bg-surface-raised p-space-8 lg:col-span-6">
+        <div className="flex flex-col gap-space-6 lg:col-span-6">
           <div className="flex flex-col gap-space-2 text-label text-ink-muted md:flex-row md:items-baseline md:justify-between">
             <span className="uppercase">{content.chart.captionLeft}</span>
             <span className="uppercase">{content.chart.captionRight}</span>

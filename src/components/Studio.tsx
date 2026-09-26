@@ -11,7 +11,7 @@ export function Studio({ content }: StudioProps) {
   return (
     <section id="studio" className="py-space-16">
       <Container>
-        <div className="grid grid-cols-1 gap-space-8 rounded-lg bg-deep p-space-8 text-on-deep md:p-space-16 lg:grid-cols-12 lg:gap-x-space-6">
+        <div data-reveal className="grid grid-cols-1 gap-space-8 rounded-lg bg-deep p-space-8 text-on-deep md:p-space-16 lg:grid-cols-12 lg:gap-x-space-6">
           <div className="flex flex-col gap-space-4 lg:col-span-6">
             <h2 className="text-h2 text-on-deep md:text-[36px] md:leading-[42px] md:tracking-[-0.02em]">
               {content.heading}

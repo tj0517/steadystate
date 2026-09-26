@@ -31,3 +31,77 @@ button {
     scroll-behavior: smooth;
   }
 }
+
+/* Hero curve — draws itself once after load and comes to rest
+ * (BRAND.md „Ruch”). Order: grid fades in, the path draws from the left,
+ * the dot lands as the line reaches it, the STAN USTALONY label appears
+ * last. Everything ends by ~2.1 s; every curve is an ease-out with no
+ * overshoot. Path length constant: see SteadyCurveChart.tsx. */
+@keyframes curve-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes curve-draw {
+  from { stroke-dashoffset: 900; }
+  to { stroke-dashoffset: 0; }
+}
+
+.curve-grid,
+.curve-path,
+.curve-dot,
+.curve-badge {
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+.curve-grid {
+  animation-name: curve-fade;
+  animation-duration: 300ms;
+}
+
+.curve-path {
+  animation-name: curve-draw;
+  animation-duration: 1400ms;
+  animation-delay: 200ms;
+}
+
+.curve-dot {
+  animation-name: curve-fade;
+  animation-duration: 300ms;
+  animation-delay: 1500ms;
+}
+
+.curve-badge {
+  animation-name: curve-fade;
+  animation-duration: 300ms;
+  animation-delay: 1800ms;
+}
+
+/* Section reveal — the hidden class is added by RevealObserver after mount,
+ * so server HTML and no-JS render everything visible. Only opacity and
+ * transform change; the stagger is set inline per batch. */
+[data-reveal] {
+  transition-property: opacity, transform;
+  transition-duration: 350ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+[data-reveal].reveal-hidden {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curve-grid,
+  .curve-path,
+  .curve-dot,
+  .curve-badge {
+    animation: none;
+  }
+
+  [data-reveal] {
+    transition: none;
+  }
+}

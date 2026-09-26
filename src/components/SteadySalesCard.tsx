@@ -7,7 +7,7 @@ type SteadySalesCardProps = {
 // Sales-systems line card — the only place `amber` is used, per BRAND.md.
 export function SteadySalesCard({ content }: SteadySalesCardProps) {
   return (
-    <article className="flex flex-col gap-space-6 rounded-lg border border-line bg-surface-raised p-space-8">
+    <article data-reveal className="flex flex-col gap-space-6 rounded-lg border border-line bg-surface-raised p-space-8">
       <div className="flex items-center justify-between">
         <span className="inline-flex h-7 items-center rounded-sm bg-amber-soft px-space-2 text-label uppercase text-amber">
           {content.tag}

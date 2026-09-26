@@ -9,7 +9,7 @@ export function Process({ content }: ProcessProps) {
   return (
     <section id="proces" className="py-space-16">
       <Container className="flex flex-col gap-space-8">
-        <div className="flex max-w-[720px] flex-col gap-space-4">
+        <div data-reveal className="flex max-w-[720px] flex-col gap-space-4">
           <h2 className="text-h1 text-ink">{content.heading}</h2>
         </div>
 
@@ -22,6 +22,7 @@ export function Process({ content }: ProcessProps) {
             return (
               <li
                 key={step.number}
+                data-reveal
                 className={`flex flex-col gap-space-4 border-t-2 pt-space-6 ${
                   isLast ? "border-signal" : "border-ink"
                 }`}

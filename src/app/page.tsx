@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { Process } from "@/components/Process";
 import { ProofStrip } from "@/components/ProofStrip";
 import { Services } from "@/components/Services";
+import { RevealObserver } from "@/components/RevealObserver";
 import { Studio } from "@/components/Studio";
 import { site } from "@/content/pl/site";
 
@@ -17,6 +18,7 @@ export default function Home() {
       <Process content={site.process} />
       <Studio content={site.studio} />
       <ContactCta content={site.cta} />
+      <RevealObserver />
     </>
   );
 }

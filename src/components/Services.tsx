@@ -11,7 +11,7 @@ export function Services({ content }: ServicesProps) {
   return (
     <section id="uslugi" className="py-space-16">
       <Container className="flex flex-col gap-space-8">
-        <div className="flex max-w-[720px] flex-col gap-space-4">
+        <div data-reveal className="flex max-w-[720px] flex-col gap-space-4">
           <h2 className="text-h1 text-ink">{content.heading}</h2>
           <p className="text-lead text-ink-muted">{content.lead}</p>
         </div>
