@@ -35,6 +35,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 8 „dodaj lustrzane na dole”: `CurveCard` zamyka kartę tą samą czapką obróconą o 180° (jak pasmo); korpus bez radiusa i bez ramki górnej/dolnej — tylko boki, ramka biegnie po krzywych
 - [x] prompt 9 „zostaw na tych dwóch dużych, usuń z pozostałych”: `CurveCard` tylko na kartach Steady Ops / Steady Sales; boxy „Stan ustalony” i box „Dobrze pasujemy” wracają do stanu z `main`
 - [x] prompt 10 „w hero za mało miejsca między h1 a wykresem”: wykres w kolumnach 8–12 (`lg:col-span-5 lg:col-start-8`), tekst zostaje w 1–6; odstęp h1→wykres 126 px zamiast 24 px na 1440, wykres 486 px szerokości
+- [x] prompt 11 „spróbuj dodać ruch do tych zakrzywionych sekcji”: `SettlingEdge` — krawędzie pasma jako ten sam układ sprężyn co linia w hero, rysowany jako wypełnienie na canvasie nad statycznym SVG: przy pierwszym odsłonięciu fala startuje 60% większa i osiada w docelowy kształt (~2 s, raz); z myszą krawędź daje się pociągnąć (±36 px, zasięg 110 px) i wraca; canvas przejmuje tylko w ruchu i oddaje SVG w spoczynku; `prefers-reduced-motion` = bez ruchu; `curve.ts` trzyma segmenty krzywej i `sampleCurve`
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
@@ -70,3 +71,4 @@ zostało zmienione i dlaczego.
 - 2026-09-26: prompt 8 — lustrzana czapka na dole kart; sprawdzone lokalnie 1440 i 390, bez pushu
 - 2026-09-26: prompt 9 — CurveCard tylko na dwóch kartach usług; sprawdzone lokalnie, bez pushu
 - 2026-09-26: prompt 10 — odstęp w hero; sprawdzone lokalnie 1440, bez pushu
+- 2026-09-26: prompt 11 — pomiar lokalny 1440: wejście krawędzi „out” (maks. y canvasu): 83 → 64 → 75 → 70 → spoczynek i opacity SVG z powrotem po ~3 s; pociągnięcie krawędzi „in”: pas 21–95 px, SVG ukryty w ruchu; bez pushu
