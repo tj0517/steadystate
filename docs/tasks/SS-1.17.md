@@ -22,11 +22,10 @@ zostało zmienione i dlaczego.
 
 ## Zakres
 (uzupełniany na bieżąco — jeden punkt na prompt tj)
-- [x] prompt 1 „komponenty UI, które podniosą stronę wizualnie i dodadzą życia tłu”:
-  - `GridBackdrop` — siatka hairline (`line`, 24/96 px) za hero, wjeżdża z `curve-grid`
-  - `SectionMarker` — indeks mono `01`–`05` + etykieta z nawigacji na hairline u góry sekcji usługi, realizacje, proces, studio, kontakt (bez nowego copy)
-  - `CountUp` — liczby w pasku liczą od 0 i dochodzą do wartości (900 ms, ease-out, raz, tylko poniżej folda, `prefers-reduced-motion` = bez ruchu; HTML z serwera ma wartość końcową)
-  - `CurveBackdrop` — duża krzywa stanu ustalonego w `line` 1,5 px za sekcją kontakt, rysuje się raz przy odsłonięciu (RevealObserver + `stroke-dashoffset`)
+- [x] prompt 1 „komponenty UI, które podniosą stronę wizualnie i dodadzą życia tłu” — pierwsza wersja (siatka za hero, indeksy sekcji, liczby liczące od 0) odrzucona przez tj jako „AI slop”; zostaje:
+  - `SettlingLine` — płaska linia stanu ustalonego jako fizyczny układ (sprężyny z tłumieniem, sprzężone sąsiadami): wskaźnik ciągnie linię do siebie, po zejściu linia oscyluje raz–dwa i wraca do spoczynku; pętla rAF tylko gdy linia jest wychylona, tylko mysz, `prefers-reduced-motion` i brak JS = statyczny SVG
+  - hero: `SteadyCurveChart` rysuje krzywą w dwóch ścieżkach (oscylacja + ogon); po animacji rysowania ogon przejmuje canvas (`signal`, 5 jednostek, amplituda 28 px)
+  - `CurveBackdrop` — duża krzywa w `line` 1,5 px za sekcją kontakt, rysuje się raz przy odsłonięciu, ogon żywy jak w hero (amplituda 48 px)
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
@@ -48,5 +47,6 @@ zostało zmienione i dlaczego.
 
 ## Notatki z realizacji
 - 2026-09-26: zadanie założone jako otwarte — zakres powstaje z kolejnych promptów tj
-- 2026-09-26: prompt 1 — cztery komponenty tła/rytmu; tylko tokeny neutralne w tle, jeden akcent na ekran bez zmian; brak gradientów (siatka i krzywa jako SVG)
+- 2026-09-26: prompt 1, wersja 1 (siatka, indeksy sekcji, liczniki) — tj: „life, not AI slop”; wycofane w tej samej gałęzi
+- 2026-09-26: prompt 1, wersja 2 — linia stanu ustalonego jako układ tłumiony (SettlingLine) w hero i za kontaktem; ruch tylko w odpowiedzi na wskaźnik, zawsze kończy się spoczynkiem (BRAND „Ruch”)
 - 2026-09-26: implementacja prompt 1 gotowa do review — branch `feat/site-upgrades`, PR #10
