@@ -18,7 +18,7 @@ export function CaseCard({ content }: CaseCardProps) {
   const hasSubpage = !content.caseHref.startsWith("#");
 
   return (
-    <article className="grid grid-cols-1 gap-space-6 rounded-lg border border-line bg-surface-raised p-space-8 lg:grid-cols-12 lg:gap-x-space-6">
+    <article data-reveal className="grid grid-cols-1 gap-space-6 rounded-lg border border-line bg-surface-raised p-space-8 lg:grid-cols-12 lg:gap-x-space-6">
       <div className="flex flex-col gap-space-2 lg:col-span-3">
         <span className={`text-label uppercase ${accent.text}`}>{content.tag}</span>
         <h3 className="text-h2 text-ink">{content.name}</h3>
