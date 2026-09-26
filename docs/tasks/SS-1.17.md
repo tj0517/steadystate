@@ -74,3 +74,4 @@ zostało zmienione i dlaczego.
 - 2026-09-26: prompt 10 — odstęp w hero; sprawdzone lokalnie 1440, bez pushu
 - 2026-09-26: prompt 11 — pomiar lokalny 1440: wejście krawędzi „out” (maks. y canvasu): 83 → 64 → 75 → 70 → spoczynek i opacity SVG z powrotem po ~3 s; pociągnięcie krawędzi „in”: pas 21–95 px, SVG ukryty w ruchu; bez pushu
 - 2026-09-26: prompt 12 — pomiar lokalny 1440: czapka karty 44 px, canvas 88 px (box w wierszach 22–66), pociągnięta granica dochodzi do wiersza 22 bez przycięcia; SVG ukryty w ruchu, z powrotem w spoczynku; bez pushu
+- 2026-09-26: prompt 12 — poprawka: wyjście myszy z okna (`pointerout` bez `relatedTarget`) zwalnia pociągnięcie, inaczej pętla i wychylenie zostawały; 390: `scrollWidth` 390, czapki w spoczynku

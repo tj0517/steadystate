@@ -185,6 +185,15 @@ export function SettlingEdge({
       }
     };
 
+    // Mouse leaving the window: no further pointermove will arrive, so
+    // release the pull here and let the edge settle.
+    const onLeaveWindow = (event: PointerEvent) => {
+      if (event.relatedTarget === null && pointer) {
+        pointer = null;
+        wake();
+      }
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entered || !entries.some((e) => e.isIntersecting)) return;
@@ -205,11 +214,13 @@ export function SettlingEdge({
     const resize = new ResizeObserver(() => layout());
     resize.observe(box);
     document.addEventListener("pointermove", onMove, { passive: true });
+    document.addEventListener("pointerout", onLeaveWindow);
 
     return () => {
       observer.disconnect();
       resize.disconnect();
       document.removeEventListener("pointermove", onMove);
+      document.removeEventListener("pointerout", onLeaveWindow);
       if (frame) cancelAnimationFrame(frame);
       svg.style.opacity = "";
     };
