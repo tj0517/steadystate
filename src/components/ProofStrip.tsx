@@ -1,6 +1,5 @@
 import type { SiteContent } from "@/content/types";
 import { Container } from "./Container";
-import { CountUp } from "./CountUp";
 
 type ProofStripProps = {
   content: SiteContent["proofStrip"];
@@ -16,7 +15,7 @@ export function ProofStrip({ content }: ProofStripProps) {
               key={metric.caption}
               className="flex flex-col gap-space-2 border-t border-line py-space-6 first:border-t-0 first:pt-0 last:pb-0 lg:border-t-0 lg:py-0"
             >
-              <CountUp value={metric.value} className="text-metric text-ink" />
+              <span className="text-metric text-ink">{metric.value}</span>
               <span className="text-small text-ink-muted">{metric.caption}</span>
             </div>
           ))}

@@ -1,19 +1,16 @@
 import type { SiteContent } from "@/content/types";
 import { Container } from "./Container";
-import { SectionMarker } from "./SectionMarker";
 
 type StudioProps = {
   content: SiteContent["studio"];
-  marker: { index: string; label: string };
 };
 
 // Inverted section — `deep` / `on-deep` — splitting the long dark page,
 // per BRAND.md ("Jasne sekcje (`deep` + `on-deep`) dzielą długie strony").
-export function Studio({ content, marker }: StudioProps) {
+export function Studio({ content }: StudioProps) {
   return (
     <section id="studio" className="py-space-16">
-      <Container className="flex flex-col gap-space-8">
-        <SectionMarker index={marker.index} label={marker.label} />
+      <Container>
         <div data-reveal className="grid grid-cols-1 gap-space-8 rounded-lg bg-deep p-space-8 text-on-deep md:p-space-16 lg:grid-cols-12 lg:gap-x-space-6">
           <div className="flex flex-col gap-space-4 lg:col-span-6">
             <h2 className="text-h2 text-on-deep md:text-[36px] md:leading-[42px] md:tracking-[-0.02em]">

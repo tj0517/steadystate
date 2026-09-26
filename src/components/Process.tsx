@@ -1,10 +1,8 @@
 import type { SiteContent } from "@/content/types";
 import { Container } from "./Container";
-import { SectionMarker } from "./SectionMarker";
 
 type ProcessProps = {
   content: SiteContent["process"];
-  marker: { index: string; label: string };
 };
 
 // Process on the steady-state curve (SS-1.16). The `ol` keeps the semantics
@@ -14,11 +12,10 @@ type ProcessProps = {
 // (4 columns, 24 gaps) are 141, 447, 753 and 1059; the curve's extremes and
 // the dot sit on them. Below `lg` the curve is hidden and the list is a
 // column with hairlines.
-export function Process({ content, marker }: ProcessProps) {
+export function Process({ content }: ProcessProps) {
   return (
     <section id="proces" className="py-space-16">
       <Container className="flex flex-col gap-space-8">
-        <SectionMarker index={marker.index} label={marker.label} />
         <div data-reveal className="flex max-w-[720px] flex-col gap-space-4">
           <h2 className="text-h1 text-ink">{content.heading}</h2>
         </div>
