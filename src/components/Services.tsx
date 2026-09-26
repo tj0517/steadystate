@@ -1,16 +1,19 @@
 import type { SiteContent } from "@/content/types";
 import { Container } from "./Container";
+import { SectionMarker } from "./SectionMarker";
 import { SteadyOpsCard } from "./SteadyOpsCard";
 import { SteadySalesCard } from "./SteadySalesCard";
 
 type ServicesProps = {
   content: SiteContent["services"];
+  marker: { index: string; label: string };
 };
 
-export function Services({ content }: ServicesProps) {
+export function Services({ content, marker }: ServicesProps) {
   return (
     <section id="uslugi" className="py-space-16">
       <Container className="flex flex-col gap-space-8">
+        <SectionMarker index={marker.index} label={marker.label} />
         <div data-reveal className="flex max-w-[720px] flex-col gap-space-4">
           <h2 className="text-h1 text-ink">{content.heading}</h2>
           <p className="text-lead text-ink-muted">{content.lead}</p>

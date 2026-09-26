@@ -1,5 +1,6 @@
 import type { SiteContent } from "@/content/types";
 import { Container } from "./Container";
+import { GridBackdrop } from "./GridBackdrop";
 import { SteadyCurveChart } from "./SteadyCurveChart";
 
 type HeroProps = {
@@ -8,7 +9,8 @@ type HeroProps = {
 
 export function Hero({ content }: HeroProps) {
   return (
-    <section id="top">
+    <section id="top" className="relative isolate">
+      <GridBackdrop />
       <Container className="grid grid-cols-1 items-center gap-space-8 py-space-16 lg:grid-cols-12 lg:gap-x-space-6 lg:pt-[calc(var(--space-16)+var(--space-8))] lg:pb-[calc(var(--space-16)+var(--space-6))]">
         <div className="flex flex-col gap-space-8 lg:col-span-6">
           <div className="inline-flex items-center gap-space-2 text-label text-ink-muted">
