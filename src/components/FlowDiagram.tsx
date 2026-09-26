@@ -46,6 +46,7 @@ export function FlowDiagram({ steps, accent, ariaLabel }: FlowDiagramProps) {
       height={HEIGHT}
       role="img"
       aria-label={ariaLabel}
+      fill="none"
       className="h-auto max-w-full"
     >
       {nodes.map((node, index) => {
