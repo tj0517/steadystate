@@ -7,7 +7,7 @@ type ProofStripProps = {
 
 export function ProofStrip({ content }: ProofStripProps) {
   return (
-    <section aria-label={content.ariaLabel} className="border-y border-line">
+    <section aria-label={content.ariaLabel} className="bg-surface-raised">
       <Container>
         <div className="grid grid-cols-1 py-space-8 lg:grid-cols-3 lg:gap-x-space-6">
           {content.metrics.map((metric) => (

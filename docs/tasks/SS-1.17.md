@@ -38,6 +38,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 11 „spróbuj dodać ruch do tych zakrzywionych sekcji”: `SettlingEdge` — krawędzie pasma jako ten sam układ sprężyn co linia w hero, rysowany jako wypełnienie na canvasie nad statycznym SVG: przy pierwszym odsłonięciu fala startuje 60% większa i osiada w docelowy kształt (~2 s, raz); z myszą krawędź daje się pociągnąć (±36 px, zasięg 110 px) i wraca; canvas przejmuje tylko w ruchu i oddaje SVG w spoczynku; `prefers-reduced-motion` = bez ruchu; `curve.ts` trzyma segmenty krzywej i `sampleCurve`
 - [x] prompt 12 „to samo na dwóch kartach; przy dużej amplitudzie przepływ jest przycinany”: canvas `SettlingEdge` sięga pół wysokości boxu nad i pod krawędź (`-top-1/2 h-[200%]`), więc wychylenie nie jest przycinane; `SettlingEdge` sparametryzowany (`fill` = `tail` | `surface-raised`, `stroke` dla ramki, `amplitude`); czapki kart Steady Ops / Steady Sales dostają osiadanie przy odsłonięciu i pociągnięcie (±22 px) z ramką rysowaną na canvasie; korpus karty `relative z-10` nad canvasami
 - [x] prompt 13 „płynniej, mniej agresywnie”: `SettlingEdge` — wejście 35% zamiast 60%, pociągnięcie 0,045 zamiast 0,09 (zasięg 140 px), amplituda 26 px (karty 16 px), sprzężenie 0,2, tłumienie 0,085 — jedno miękkie wahnięcie, spoczynek po ~1,2 s
+- [x] prompt 14 „zrób coś z tą linią między sekcjami, jest cienka i nie wygląda dobrze”: pasek liczb bez hairline'ów `border-y` — pełnoszerokie pasmo `surface-raised` (BRAND: „odcinają się tonem, nie cieniem”)
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
@@ -77,3 +78,4 @@ zostało zmienione i dlaczego.
 - 2026-09-26: prompt 12 — pomiar lokalny 1440: czapka karty 44 px, canvas 88 px (box w wierszach 22–66), pociągnięta granica dochodzi do wiersza 22 bez przycięcia; SVG ukryty w ruchu, z powrotem w spoczynku; bez pushu
 - 2026-09-26: prompt 12 — poprawka: wyjście myszy z okna (`pointerout` bez `relatedTarget`) zwalnia pociągnięcie, inaczej pętla i wychylenie zostawały; 390: `scrollWidth` 390, czapki w spoczynku
 - 2026-09-26: prompt 13 — symulacja offline: spoczynek po 74 klatkach (1,23 s); pomiar lokalny 1440, krawędź „out”: wejście 127 → 117 → 120 (spoczynek) co 100 ms, pociągnięcie +20 px, SVG wraca po zwolnieniu; bez pushu
+- 2026-09-26: prompt 14 — interpretacja: linie wokół paska liczb (hero → liczby → usługi); zamiast nich ton `surface-raised`; sprawdzone lokalnie 1440; bez pushu
