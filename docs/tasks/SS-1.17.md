@@ -50,3 +50,4 @@ zostało zmienione i dlaczego.
 - 2026-09-26: prompt 1, wersja 1 (siatka, indeksy sekcji, liczniki) — tj: „life, not AI slop”; wycofane w tej samej gałęzi
 - 2026-09-26: prompt 1, wersja 2 — linia stanu ustalonego jako układ tłumiony (SettlingLine) w hero i za kontaktem; ruch tylko w odpowiedzi na wskaźnik, zawsze kończy się spoczynkiem (BRAND „Ruch”)
 - 2026-09-26: implementacja prompt 1 gotowa do review — branch `feat/site-upgrades`, PR #10
+- 2026-09-26: pomiary Playwright na podglądzie Vercel (1440×900): po 2,6 s ogon SVG ma opacity 0 i canvas rysuje linię w spoczynku (pas 215–225 px, rest 223); po przeciągnięciu wskaźnika pas 194–240 (wychylenie ~28 px), po zejściu wskaźnika wraca do 215–225 po 3 s; tło kontaktu analogicznie (rest 279, przy wskaźniku 235–300); 390×844: `scrollWidth` 390, canvas rysuje ogon; zrzuty w `.playwright-mcp/ss-1.17/`. Symulacja offline: pełne wychylenie gaśnie w ~2,6 s
