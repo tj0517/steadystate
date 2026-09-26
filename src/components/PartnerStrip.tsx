@@ -17,20 +17,27 @@ const LOGO_HEIGHT: Record<string, string> = {
 // Client logos under the hero (replaces the numbers strip, tj 2026-09-26).
 // The source files are dark on transparent, so each is turned light with
 // `grayscale(1) invert(1)` (keeps inner detail such as the Sea Clouds
-// waves, unlike a flat silhouette) and dimmed — one quiet monochrome row
-// on the page surface, no band, no hairlines; near-full opacity on hover.
+// waves, unlike a flat silhouette) and dimmed to 75 % — one monochrome row
+// on the page surface, no band, no hairlines; full opacity on hover. The
+// row is anchored by the hero's label device (signal dash + mono caption,
+// the section's existing name), so it does not get lost between hero and
+// services (tj, 2026-09-26).
 // Served `unoptimized`: three small static PNGs, and the optimizer cache
 // would otherwise keep serving an old file after a swap in /public.
 // An item without a `logo` falls back to a mono wordmark.
 export function PartnerStrip({ content }: PartnerStripProps) {
   return (
-    <section aria-label={content.ariaLabel}>
-      <Container>
-        <ul className="flex flex-wrap items-center justify-center gap-x-space-16 gap-y-space-8 py-space-8 lg:justify-between lg:px-space-16">
+    <section aria-labelledby="partners-label">
+      <Container className="flex flex-col gap-space-6 py-space-8 lg:flex-row lg:items-center lg:gap-space-16">
+        <div className="inline-flex shrink-0 items-center gap-space-2 text-label uppercase text-ink-muted">
+          <span className="inline-block h-px w-6 bg-signal" aria-hidden="true" />
+          <span id="partners-label">{content.ariaLabel}</span>
+        </div>
+        <ul className="flex flex-1 flex-wrap items-center justify-center gap-x-space-16 gap-y-space-8 lg:justify-between">
           {content.items.map((item) => (
             <li
               key={item.name}
-              className="flex items-center opacity-55 transition-opacity duration-300 ease-out hover:opacity-90"
+              className="flex items-center opacity-75 transition-opacity duration-300 ease-out hover:opacity-100"
             >
               {item.logo && item.width && item.height ? (
                 <Image
