@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { SiteContent } from "@/content/types";
-import { Container } from "./Container";
 import { Logo } from "./Logo";
 
 type SiteHeaderProps = {
@@ -38,16 +37,21 @@ export function SiteHeader({ content }: SiteHeaderProps) {
   }, [open]);
 
   return (
+    // Floating pill navigation (SS-1.17, tj 2026-09-27, after the Tailark
+    // reference): the bar is a centred rounded capsule with a hairline at
+    // the top of the page (not sticky — tj), on a translucent surface. Mark + wordmark left, links, the CTA as a pill.
     <header
-      className={`border-b border-line bg-surface ${open ? "fixed inset-x-0 top-0 z-50" : "relative"}`}
+      className={`${open ? "fixed inset-x-0 top-0 z-50" : "relative"} px-space-4 pt-space-4`}
     >
-      <Container className="flex h-[84px] items-center justify-between">
+      <div
+        className="mx-auto flex h-[60px] w-full max-w-[880px] items-center justify-between rounded-full border border-line bg-surface/85 pl-space-6 pr-space-2 backdrop-blur-md md:pl-space-8"
+      >
         <a
           href="#top"
           aria-label={content.logoAriaLabel}
           className="flex items-center text-ink"
         >
-          <Logo />
+          <Logo size="sm" />
         </a>
 
         <nav
@@ -58,14 +62,14 @@ export function SiteHeader({ content }: SiteHeaderProps) {
             <a
               key={link.href}
               href={link.href}
-              className="text-ink underline-offset-4 hover:underline"
+              className="text-ink-muted hover:text-ink"
             >
               {link.label}
             </a>
           ))}
           <a
             href={content.cta.href}
-            className="inline-flex h-11 items-center rounded-md border border-line px-space-6 font-medium text-ink hover:border-ink-muted"
+            className="inline-flex h-11 items-center rounded-full border border-line bg-surface-raised px-space-6 font-medium text-ink hover:border-ink-muted"
           >
             {content.cta.label}
           </a>
@@ -77,7 +81,7 @@ export function SiteHeader({ content }: SiteHeaderProps) {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((value) => !value)}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line text-ink hover:border-ink-muted md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line text-ink hover:border-ink-muted md:hidden"
         >
           <span className="sr-only">
             {open ? content.menuCloseLabel : content.menuOpenLabel}
@@ -110,12 +114,12 @@ export function SiteHeader({ content }: SiteHeaderProps) {
             </svg>
           )}
         </button>
-      </Container>
+      </div>
 
       {open && (
         <div
           id="mobile-menu"
-          className="fixed inset-x-0 top-[84px] bottom-0 z-40 flex flex-col items-center justify-center gap-space-8 bg-surface md:hidden"
+          className="fixed inset-x-0 top-[76px] bottom-0 z-40 flex flex-col items-center justify-center gap-space-8 bg-surface md:hidden"
         >
           <nav
             aria-label={content.navAriaLabel}
