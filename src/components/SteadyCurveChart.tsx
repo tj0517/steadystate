@@ -1,5 +1,4 @@
 import type { SiteContent } from "@/content/types";
-import { SettlingLine } from "./SettlingLine";
 
 type SteadyCurveChartProps = {
   content: SiteContent["hero"]["chart"];
@@ -12,12 +11,6 @@ type SteadyCurveChartProps = {
 // `--curve-len`). Recompute if a `d` changes.
 const OSC_LENGTH = 600;
 const TAIL_LENGTH = 300;
-const TAIL: [[number, number], [number, number], [number, number], [number, number]] = [
-  [262, 208],
-  [300, 210],
-  [380, 212],
-  [560, 212],
-];
 
 // Chart geometry from the reference HERO
 // (design/steadystate-brand/reference/homepage-desktop.html) — colours come
@@ -26,12 +19,10 @@ const TAIL: [[number, number], [number, number], [number, number], [number, numb
 // narrow screens. The viewBox is cropped to 260 high: the axis captions
 // that used the bottom band went in SS-1.14 and the curve starts at y=250.
 // Grid lines removed (tj, 2026-09-27) — only the dashed steady-state
-// baseline stays. The draw-in animation lives in globals.css (`.curve-*`). After it,
-// SettlingLine takes over the tail: the steady state reacts to the pointer
-// and settles back (SS-1.17).
+// baseline stays. The draw-in animation lives in globals.css (`.curve-*`).
 export function SteadyCurveChart({ content }: SteadyCurveChartProps) {
   return (
-    <div className="relative pb-space-4 md:pb-0" data-settle-area>
+    <div className="relative pb-space-4 md:pb-0">
       <div className="relative">
         <svg
           viewBox="0 0 560 260"
@@ -72,15 +63,6 @@ export function SteadyCurveChart({ content }: SteadyCurveChartProps) {
           />
           <circle cx="530" cy="212" r="8" className="curve-dot fill-ink" />
         </svg>
-        <SettlingLine
-          tail={TAIL}
-          viewBox={{ width: 560, height: 260 }}
-          preserve
-          tailId="hero-curve-tail"
-          strokeWidth={5}
-          color="signal"
-          amplitude={28}
-        />
       </div>
 
       <span className="curve-badge absolute right-[3.2%] bottom-0 inline-flex items-center whitespace-nowrap rounded-sm bg-signal-soft px-space-2 py-1 text-label uppercase text-signal">
