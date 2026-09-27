@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Accent } from "@/content/types";
 
 type CaseShowcaseProps = {
@@ -49,7 +50,8 @@ function Chip({ a, children, strong = false }: { a: A; children: React.ReactNode
 }
 
 // Rebuilt screens of the three systems (SS-1.17, tj 2026-09-27, from
-// screenshots tj provided): the same structure as the real views —
+// screenshots tj provided; Hydra Arms is the real screenshot): the same
+// structure as the real views —
 // navigation, headers, tabs, field grids, pipelines — redrawn in the site's
 // tokens with mock data and no client branding, until screenshots can be
 // used. Decorative; the panel's text carries the meaning.
@@ -130,42 +132,19 @@ export function CaseShowcase({ name, accent }: CaseShowcaseProps) {
   }
 
   if (name === "Hydra Arms") {
-    // The site's hero: mono meta lines, nav with the shop in brackets, big
-    // two-line heading, bracket buttons. Dark, with a faint grid instead of
-    // the photograph.
+    // Real screenshot of the site's hero (tj, 2026-09-27) in the same
+    // cropped window as the rebuilt screens; the image is a 1400 px JPEG
+    // in /public/cases, covered from the top.
     return (
       <Window dark>
-        <div className="relative flex h-full flex-col justify-between p-space-6">
-          <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full opacity-40">
-            <defs>
-              <pattern id="hydra-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M40 0H0V40" fill="none" className="stroke-line" strokeWidth="1" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#hydra-grid)" />
-          </svg>
-          <div className="relative flex items-center justify-between">
-            <span className={`${t.md} whitespace-nowrap font-semibold uppercase tracking-[0.08em] text-ink`}>Hydra Arms</span>
-            <span className={`hidden gap-space-4 md:flex ${t.xs} uppercase tracking-[0.12em] text-ink-muted`}>
-              <span>Usługi</span><span>O nas</span><span>Współpraca</span><span>Kontakt</span>
-              <span className={a.text}>[ Sklep ]</span>
-            </span>
-          </div>
-          <div className={`relative flex justify-between ${t.mono} ${a.text}`}>
-            <span className="flex flex-col gap-[2px]"><span>{"// PL-2026"}</span><span>{"// KRAKÓW, PL"}</span></span>
-            <span className="flex flex-col items-end gap-[2px]"><span>[ 050°04&apos;N ]</span><span>[ 019°57&apos;E ]</span></span>
-          </div>
-          <div className="relative flex flex-col gap-space-4">
-            <span className={`${t.mono} ${a.text}`}>{"// HYDRA ARMS – PL-2026"}</span>
-            <span className="font-sans text-[22px] leading-[26px] tracking-[-0.02em] text-ink">
-              Zaawansowana inżynieria obronna<br />Obrót nowoczesnym uzbrojeniem
-            </span>
-            <span className={`flex gap-space-4 ${t.sm} ${a.text}`}>
-              <span className={`border-x ${a.border} px-space-4 py-[3px]`}>Nasze usługi</span>
-              <span className={`border-x ${a.border} px-space-4 py-[3px]`}>Sklep</span>
-            </span>
-          </div>
-        </div>
+        <Image
+          src="/cases/hydra-arms.jpg"
+          alt=""
+          width={1400}
+          height={764}
+          sizes="(min-width: 1024px) 560px, 100vw"
+          className="h-full w-full object-cover object-top"
+        />
       </Window>
     );
   }
