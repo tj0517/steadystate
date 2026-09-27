@@ -1,3 +1,4 @@
+import { Clock, CreditCard, FileText, LayoutDashboard, Megaphone, MessageSquare, Plug, Store } from "lucide-react";
 import type { Accent, ServiceCard } from "@/content/types";
 import { ServiceVisual } from "./ServiceVisual";
 
@@ -14,8 +15,16 @@ type ServiceColumnProps = {
 // Accent classes written out literally — the Tailwind scanner only sees full
 // class names in the source, never strings built at runtime.
 const accents = {
-  signal: { tag: "bg-signal-soft text-signal", dash: "bg-signal" },
-  amber: { tag: "bg-amber-soft text-amber", dash: "bg-amber" },
+  signal: { tag: "bg-signal-soft text-signal", icon: "text-signal" },
+  amber: { tag: "bg-amber-soft text-amber", icon: "text-amber" },
+} as const;
+
+// One lucide icon per bullet, in content order (tj, 2026-09-27): Ops —
+// documents, time, B2B shop, integrations; Sales — ads, qualification,
+// offer & payment, one panel.
+const BULLET_ICONS = {
+  ops: [FileText, Clock, Store, Plug],
+  sales: [Megaphone, MessageSquare, CreditCard, LayoutDashboard],
 } as const;
 
 // One service line as an open column (SS-1.17, after the Tailark
@@ -36,12 +45,15 @@ export function ServiceColumn({ content, line, accent, before, after }: ServiceC
         <ServiceVisual line={line} accent={accent} before={before} after={after} />
       </div>
       <ul className="grid grid-cols-1 gap-x-space-6 gap-y-space-4 text-small text-ink md:grid-cols-2">
-        {content.bullets.map((bullet) => (
-          <li key={bullet} className="flex items-start gap-space-4">
-            <span className={`mt-[9px] h-0.5 w-4 shrink-0 ${a.dash}`} aria-hidden="true" />
-            <span>{bullet}</span>
-          </li>
-        ))}
+        {content.bullets.map((bullet, i) => {
+          const Icon = BULLET_ICONS[line][i] ?? BULLET_ICONS[line][0];
+          return (
+            <li key={bullet} className="flex items-start gap-space-4">
+              <Icon size={16} strokeWidth={1.75} className={`mt-[3px] shrink-0 ${a.icon}`} aria-hidden="true" />
+              <span>{bullet}</span>
+            </li>
+          );
+        })}
       </ul>
       <div className="border-t border-line pt-space-4 text-small text-ink-muted">{content.credit}</div>
     </article>
