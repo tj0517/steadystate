@@ -45,6 +45,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 19 „krzywa pod 4 krokami grubsza”: `Process` — stroke 1,5 → 4 (jednostki viewBox 1200, ~4 px na 1440), kropka r 5 → 7
 - [x] prompt 20 „animacja tej linii”: krzywa procesu rysuje się raz przy odsłonięciu (svg z `data-reveal`, `stroke-dashoffset` 1260 → 0 przez 1400 ms liniowo, kropka pojawia się po 1300 ms), `prefers-reduced-motion` = bez przejścia
 - [x] prompt 21 „hero wg zrzutu Tailark hero-section-1” (wcześniejszy zrzut hero-section-2, wersja wyśrodkowana, odrzucona w trakcie): lewa kolumna (5/12) — etykieta, h1, lead, CTA, pod spodem podpis „Klienci” (istniejąca nazwa sekcji) i logo klientów (`PartnerLogos`, 70% → 100%); prawa (7/12) — panel `surface-raised` z hairline'em, +160 px poza kontener, ucięty prawą krawędzią (`overflow-hidden`), w środku wykres z podpisami; `PartnerStrip` usunięty; poniżej `lg` kolumna, panel pełnej szerokości
+- [x] prompt 22 „usuń animację siatki linii, wdróż 1:1”: cztery poziome linie siatki wykresu usunięte (zostaje kreskowana linia stanu ustalonego, klasa `curve-baseline`); hero domierzone do wzorca: lewa kolumna max 460 px, h1 62 px / 1.0, podpis „Klienci” w `text-body`, panel od 6. kolumny, +200 px poza kontener, perspektywa `rotateY(-6deg) rotateX(4deg)` od `lg` (płaski poniżej), wykres z prawym marginesem 200 px, żeby kropka i etykieta zostały w kadrze
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
@@ -92,3 +93,4 @@ zostało zmienione i dlaczego.
 - 2026-09-27: prompt 19 — grubsza krzywa procesu; sprawdzone lokalnie 1440; bez pushu
 - 2026-09-27: prompt 20 — pomiar lokalny: przed odsłonięciem offset 1260 i kropka 0, po 1250 ms offset 0 i kropka 0,9 → 1; bez pushu
 - 2026-09-27: prompt 21 — hero z panelem wychodzącym poza krawędź; sprawdzone lokalnie 1440 i 390; bez pushu
+- 2026-09-27: prompt 22 — pomiar lokalny 1440: brak `<g>` siatki, ogon canvas działa po pochyleniu (pas 290–319 przy pociągnięciu); 390 kolumna bez przewijania; bez pushu

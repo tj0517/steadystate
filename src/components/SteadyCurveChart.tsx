@@ -25,7 +25,8 @@ const TAIL: [[number, number], [number, number], [number, number], [number, numb
 // readable at a fixed size instead of scaling down with the chart on
 // narrow screens. The viewBox is cropped to 260 high: the axis captions
 // that used the bottom band went in SS-1.14 and the curve starts at y=250.
-// The draw-in animation lives in globals.css (`.curve-*` classes). After it,
+// Grid lines removed (tj, 2026-09-27) — only the dashed steady-state
+// baseline stays. The draw-in animation lives in globals.css (`.curve-*`). After it,
 // SettlingLine takes over the tail: the steady state reacts to the pointer
 // and settles back (SS-1.17).
 export function SteadyCurveChart({ content }: SteadyCurveChartProps) {
@@ -40,18 +41,12 @@ export function SteadyCurveChart({ content }: SteadyCurveChartProps) {
           aria-label={content.ariaLabel}
           className="h-auto w-full"
         >
-          <g className="curve-grid stroke-line" strokeWidth="1">
-            <line x1="0" y1="60" x2="560" y2="60" />
-            <line x1="0" y1="120" x2="560" y2="120" />
-            <line x1="0" y1="180" x2="560" y2="180" />
-            <line x1="0" y1="240" x2="560" y2="240" />
-          </g>
           <line
             x1="0"
             y1="212"
             x2="560"
             y2="212"
-            className="curve-grid stroke-signal"
+            className="curve-baseline stroke-signal"
             strokeWidth="1.5"
             strokeDasharray="6 6"
           />

@@ -40,7 +40,7 @@ button {
 }
 
 /* Hero curve — draws itself once after load and comes to rest
- * (BRAND.md „Ruch”). Order: grid fades in, the path draws from the left,
+ * (BRAND.md „Ruch”). Order: baseline fades in, the path draws from the left,
  * the dot lands as the line reaches it, the STAN USTALONY label appears
  * last. Everything ends by ~2.1 s; every curve is an ease-out with no
  * overshoot. Path length constant: see SteadyCurveChart.tsx. */
@@ -54,7 +54,7 @@ button {
   to { stroke-dashoffset: 0; }
 }
 
-.curve-grid,
+.curve-baseline,
 .curve-path,
 .curve-tail,
 .curve-dot,
@@ -64,7 +64,7 @@ button {
   animation-fill-mode: both;
 }
 
-.curve-grid {
+.curve-baseline {
   animation-name: curve-fade;
   animation-duration: 300ms;
 }
@@ -113,7 +113,7 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .curve-grid,
+  .curve-baseline,
   .curve-path,
   .curve-tail,
   .curve-dot,
