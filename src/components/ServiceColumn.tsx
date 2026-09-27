@@ -1,13 +1,13 @@
 import type { Accent, ServiceCard } from "@/content/types";
 import { ServiceVisual } from "./ServiceVisual";
 
+type Notice = { app: string; title: string; body: string; time: string };
+
 type ServiceColumnProps = {
   content: ServiceCard;
-  line: "ops" | "sales";
   accent: Accent;
-  before: string[];
-  captionBefore: string;
-  captionAfter: string;
+  before: Notice;
+  after: Notice;
 };
 
 // Accent classes written out literally — the Tailwind scanner only sees full
@@ -18,10 +18,10 @@ const accents = {
 } as const;
 
 // One service line as an open column (SS-1.17, after the Tailark
-// two-column reference): tag, heading, description, the pain → solution
+// two-column reference): tag, heading, description, the two-notification
 // visual, then the four bullets as a small two-by-two grid and the credit.
 // No card box — the columns are split by a hairline in Services.
-export function ServiceColumn({ content, line, accent, before, captionBefore, captionAfter }: ServiceColumnProps) {
+export function ServiceColumn({ content, accent, before, after }: ServiceColumnProps) {
   const a = accents[accent];
   return (
     <article className="flex flex-col gap-space-6">
@@ -32,7 +32,7 @@ export function ServiceColumn({ content, line, accent, before, captionBefore, ca
       <h3 className="text-h2 text-ink">{content.heading}</h3>
       <p className="text-body text-ink-muted">{content.description}</p>
       <div className="py-space-2">
-        <ServiceVisual line={line} accent={accent} before={before} captionBefore={captionBefore} captionAfter={captionAfter} />
+        <ServiceVisual accent={accent} before={before} after={after} />
       </div>
       <ul className="grid grid-cols-1 gap-x-space-6 gap-y-space-4 text-small text-ink md:grid-cols-2">
         {content.bullets.map((bullet) => (
