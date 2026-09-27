@@ -12,7 +12,7 @@ import { site } from "@/content/pl/site";
 export default function Home() {
   return (
     <>
-      <Hero content={site.hero} partners={site.partners} />
+      <Hero content={site.hero} partners={site.partners} metrics={site.proofStrip.metrics} />
       <Services content={site.services} />
       <Cases content={site.cases} />
       <div className="mt-space-16">

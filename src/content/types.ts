@@ -59,6 +59,14 @@ export type SiteContent = {
       captionRight: string;
       badge: string;
     };
+    // Decorative dashboard chrome around the chart (hero panel, SS-1.17).
+    dashboard: {
+      workspace: string;
+      nav: string[];
+      filters: string[];
+      overview: string;
+      activity: string;
+    };
   };
   proofStrip: {
     ariaLabel: string;

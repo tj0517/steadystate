@@ -14,6 +14,15 @@ export const site: SiteContent = {
       captionRight: "przed → po wdrożeniu",
       badge: "STAN USTALONY",
     },
+    // Etykiety panelu-dashboardu w hero (dekoracyjne, aria-hidden). Słowa
+    // z opisów usług; „Przegląd”/„Aktywność”/„Ostatnie 30 dni” — do akceptacji tj.
+    dashboard: {
+      workspace: "Steady Ops",
+      nav: ["Przegląd", "Zamówienia", "Dokumenty", "Zapytania", "Czas pracy", "Finanse"],
+      filters: ["Ostatnie 30 dni", "Tydzień"],
+      overview: "Przegląd",
+      activity: "Aktywność",
+    },
   },
   proofStrip: {
     ariaLabel: "Liczby",
