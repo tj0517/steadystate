@@ -13,8 +13,8 @@ type CurveEdgeProps = {
 // (LightScope). Filled with `--tail` (the dark theme's `deep`).
 // `preserveAspectRatio="none"` so the edge spans any width; the height
 // steps down below `lg`. The SVG is the resting state; SettlingEdge draws
-// the same boundary on a canvas while it moves (settle-in on reveal,
-// pointer pull on desktop) and hands back when it is at rest.
+// the same boundary on a canvas while it settles in on reveal and hands
+// back when it is at rest.
 export function CurveEdge({ direction = "in" }: CurveEdgeProps) {
   return (
     <div className="relative h-[48px] md:h-[72px] lg:h-[96px]">

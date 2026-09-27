@@ -54,7 +54,6 @@ export function CurveCard({
         direction={position === "top" ? "in" : "out"}
         fill="surface-raised"
         stroke={bordered}
-        amplitude={16}
       />
     </div>
   );

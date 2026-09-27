@@ -21,7 +21,8 @@ const accents = {
 // from the clicked item; hovering or focusing the list pauses it, so does
 // a hidden tab and `prefers-reduced-motion`. On every change the opened
 // details and the right panel come in with the page's reveal motion
-// (`.case-swap`: fade + 8 px settle, ease-out), keyed so they re-mount.
+// (`.case-swap`: fade + 12 px settle, 600 ms ease-out, the panel 120 ms
+// later), keyed so they re-mount; the accordion body eases its height.
 const AUTOPLAY_MS = 5000;
 
 const REDUCED = "(prefers-reduced-motion: reduce)";
@@ -181,27 +182,40 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
                     {item.tag}
                   </span>
                 </button>
+                {/* Accordion body: height eases via grid rows 0fr → 1fr,
+                    so opening and closing settle instead of snapping. */}
                 <div
                   id={detailsId}
-                  key={isActive ? `open-${cycle}` : "closed"}
-                  hidden={!isActive}
-                  className="case-swap flex flex-col gap-space-6 px-space-6 pb-space-6"
+                  inert={!isActive}
+                  aria-hidden={!isActive}
+                  className="grid"
+                  style={{
+                    gridTemplateRows: isActive ? "1fr" : "0fr",
+                    transition: "grid-template-rows 500ms cubic-bezier(0, 0, 0.2, 1)",
+                  }}
                 >
-                  <div className="flex flex-col gap-space-4">
-                    <span className="text-small text-ink-muted">{item.sector}</span>
-                    <p className="text-body text-ink-muted">{item.description}</p>
-                    <ul className="flex flex-col gap-space-2 text-small text-ink">
-                      {item.features.map((feature, featureIndex) => (
-                        <li key={feature} className="flex gap-space-4">
-                          <span className="font-mono text-label text-ink-muted">
-                            {String(featureIndex + 1).padStart(2, "0")}
-                          </span>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="min-h-0 overflow-hidden">
+                    <div
+                      key={isActive ? `open-${cycle}` : "closed"}
+                      className={`flex flex-col gap-space-6 px-space-6 pb-space-6 ${isActive ? "case-swap" : ""}`}
+                    >
+                      <div className="flex flex-col gap-space-4">
+                        <span className="text-small text-ink-muted">{item.sector}</span>
+                        <p className="text-body text-ink-muted">{item.description}</p>
+                        <ul className="flex flex-col gap-space-2 text-small text-ink">
+                          {item.features.map((feature, featureIndex) => (
+                            <li key={feature} className="flex gap-space-4">
+                              <span className="font-mono text-label text-ink-muted">
+                                {String(featureIndex + 1).padStart(2, "0")}
+                              </span>
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="lg:hidden">{panel(index)}</div>
+                    </div>
                   </div>
-                  <div className="lg:hidden">{panel(index)}</div>
                 </div>
               </li>
             );
@@ -209,7 +223,7 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
         </ul>
 
         <div data-reveal className="hidden lg:col-span-7 lg:block">
-          <div key={`${active}-${cycle}`} className="case-swap">
+          <div key={`${active}-${cycle}`} className="case-swap case-swap-late">
             {panel(active)}
           </div>
         </div>

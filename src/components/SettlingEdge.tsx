@@ -12,12 +12,9 @@ type SettlingEdgeProps = {
   // Draw a 1 px `line` hairline along the boundary and down the box sides
   // (bordered cards).
   stroke?: boolean;
-  // How far (px) the pointer may pull the boundary.
-  amplitude?: number;
 };
 
 const SPACING = 6; // viewBox units between mass points
-const REACH_PX = 140;
 const REST_EPS = 0.04;
 // Initial overshoot: the edge appears with its wave 35 % larger than the
 // final shape and eases into it.
@@ -27,19 +24,15 @@ const ENTRY_OVERSHOOT = 0.35;
 // the same coupled-spring system as the hero line (SettlingLine), drawn as
 // a filled area on a canvas that covers the static SVG and reaches half a
 // box height above and below it, so a big swing is never cropped:
-//  - on first reveal it starts with a larger wave and settles into the
-//    final curve — one ease-out that ends at rest (BRAND.md „Ruch”);
-//  - with a mouse, moving over the edge pulls the boundary toward the
-//    pointer; leaving lets it swing back and settle.
-// The loop runs only while the edge is displaced. Touch devices get the
-// settle-in on reveal but no pull. Reduced motion and no JS keep the static
-// SVG; the canvas takes over only while it has something to draw and hands
-// back at rest, so the hand-over is invisible.
+// on first reveal it starts with a larger wave and settles into the final
+// curve — one ease-out that ends at rest (BRAND.md „Ruch”). No pointer
+// interaction (tj, 2026-09-27). The loop runs only while the edge is
+// displaced. Reduced motion and no JS keep the static SVG; the canvas takes
+// over only while it has something to draw and hands back at rest.
 export function SettlingEdge({
   direction,
   fill,
   stroke = false,
-  amplitude = 26,
 }: SettlingEdgeProps) {
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -69,7 +62,6 @@ export function SettlingEdge({
     let sx = 1;
     let sy = 1;
     let frame = 0;
-    let pointer: [number, number] | null = null; // relative to the box
     let fillColor = "";
     let strokeColor = "";
     let live = false;
@@ -124,20 +116,10 @@ export function SettlingEdge({
     const step = () => {
       const acc = new Array<number>(n).fill(0);
       for (let i = 1; i < n - 1; i++) {
-        let a =
+        const a =
           0.2 * (disp[i - 1] + disp[i + 1] - 2 * disp[i]) -
           0.012 * disp[i] -
           0.085 * vel[i];
-        if (pointer) {
-          const dx = Math.abs(px(rest[i][0]) - pointer[0]);
-          if (dx < REACH_PX) {
-            const w = 1 - dx / REACH_PX;
-            const restPx = py(rest[i][1] * sy) - pad;
-            const pull = direction === "out" ? -(pointer[1] - restPx) : pointer[1] - restPx;
-            const target = Math.max(-amplitude, Math.min(amplitude, pull));
-            a += (target - disp[i]) * 0.045 * w * w;
-          }
-        }
         acc[i] = a;
       }
       let energy = 0;
@@ -147,7 +129,7 @@ export function SettlingEdge({
         energy += Math.abs(disp[i]) + Math.abs(vel[i]);
       }
       draw();
-      if (Number.isFinite(energy) && (energy / n > REST_EPS || pointer)) {
+      if (Number.isFinite(energy) && energy / n > REST_EPS) {
         frame = requestAnimationFrame(step);
       } else {
         disp.fill(0);
@@ -168,31 +150,6 @@ export function SettlingEdge({
       if (frame === 0) frame = requestAnimationFrame(step);
     };
 
-    const onMove = (event: PointerEvent) => {
-      if (event.pointerType !== "mouse") return;
-      const b = box.getBoundingClientRect();
-      const inside =
-        event.clientY > b.top - 80 &&
-        event.clientY < b.bottom + 80 &&
-        event.clientX >= b.left &&
-        event.clientX <= b.right;
-      if (inside) {
-        pointer = [event.clientX - b.left, event.clientY - b.top];
-        wake();
-      } else if (pointer) {
-        pointer = null;
-        wake();
-      }
-    };
-
-    // Mouse leaving the window: no further pointermove will arrive, so
-    // release the pull here and let the edge settle.
-    const onLeaveWindow = (event: PointerEvent) => {
-      if (event.relatedTarget === null && pointer) {
-        pointer = null;
-        wake();
-      }
-    };
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -213,18 +170,14 @@ export function SettlingEdge({
     observer.observe(box);
     const resize = new ResizeObserver(() => layout());
     resize.observe(box);
-    document.addEventListener("pointermove", onMove, { passive: true });
-    document.addEventListener("pointerout", onLeaveWindow);
 
     return () => {
       observer.disconnect();
       resize.disconnect();
-      document.removeEventListener("pointermove", onMove);
-      document.removeEventListener("pointerout", onLeaveWindow);
       if (frame) cancelAnimationFrame(frame);
       svg.style.opacity = "";
     };
-  }, [direction, fill, stroke, amplitude]);
+  }, [direction, fill, stroke]);
 
   return (
     <canvas
