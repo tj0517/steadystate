@@ -1,8 +1,7 @@
 import type { Accent } from "@/content/types";
 
 type CaseShowcaseProps = {
-  // Keyed by case name — the showcases are hand-built per case, like the
-  // reference illustrations; an unknown name falls back to the last one.
+  // Keyed by case name — one rebuilt screen per case.
   name: string;
   accent: Accent;
 };
@@ -10,17 +9,37 @@ type CaseShowcaseProps = {
 // Accent classes written out literally — the Tailwind scanner only sees full
 // class names in the source, never strings built at runtime.
 const accents = {
-  signal: { text: "text-signal", soft: "bg-signal-soft", bg: "bg-signal", on: "text-on-signal", stroke: "stroke-signal", border: "border-signal" },
-  amber: { text: "text-amber", soft: "bg-amber-soft", bg: "bg-amber", on: "text-on-signal", stroke: "stroke-amber", border: "border-amber" },
+  signal: { text: "text-signal", soft: "bg-signal-soft", bg: "bg-signal", on: "text-on-signal", border: "border-signal" },
+  amber: { text: "text-amber", soft: "bg-amber-soft", bg: "bg-amber", on: "text-on-signal", border: "border-amber" },
 } as const;
-type AccentClasses = (typeof accents)[Accent];
+type A = (typeof accents)[Accent];
 
-const mono = "font-mono text-[12px] leading-[16px] normal-case tracking-normal";
+// Screen typography: everything a step smaller than the page, so the
+// window reads as a screenshot, not as page content.
+const t = {
+  xs: "font-sans text-[9px] leading-[12px]",
+  sm: "font-sans text-[10px] leading-[14px]",
+  md: "font-sans text-[11px] leading-[15px]",
+  mono: "font-mono text-[9px] leading-[12px] normal-case tracking-normal",
+};
 
-function Badge({ a, children, strong = false }: { a: AccentClasses; children: React.ReactNode; strong?: boolean }) {
+// Cropped window: the real screen's proportions, cut at the bottom like a
+// screenshot; hairline frame, tone only.
+function Window({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`h-[340px] w-full max-w-[560px] overflow-hidden rounded-md border border-line ${dark ? "bg-surface" : "bg-surface-raised"}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+function Chip({ a, children, strong = false }: { a: A; children: React.ReactNode; strong?: boolean }) {
   return (
     <span
-      className={`inline-flex h-[22px] items-center rounded-sm px-space-2 ${mono} ${
+      className={`inline-flex h-[18px] items-center whitespace-nowrap rounded-full px-space-2 ${t.xs} ${
         strong ? `${a.bg} ${a.on}` : `${a.soft} ${a.text}`
       }`}
     >
@@ -29,188 +48,190 @@ function Badge({ a, children, strong = false }: { a: AccentClasses; children: Re
   );
 }
 
-// Two offset cards behind the main one — the reference's stacked depth,
-// with hairlines instead of shadows.
-function Stack({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative w-full pt-[16px]">
-      <span aria-hidden="true" className="absolute inset-x-[24px] top-0 h-[16px] rounded-t-md border border-b-0 border-line bg-surface" />
-      <span aria-hidden="true" className="absolute inset-x-[12px] top-[8px] h-[16px] rounded-t-md border border-b-0 border-line bg-surface" />
-      <div className="relative rounded-md border border-line bg-surface">{children}</div>
-    </div>
-  );
-}
-
-function Mark({ a }: { a: AccentClasses }) {
-  return (
-    <svg viewBox="0 0 50 40" width="30" height="24" fill="none" strokeWidth="3" strokeLinecap="round" className={a.stroke} aria-hidden="true">
-      <path d="M3 34 C10 34 11 6 17 6 C23 6 22 28 28 28 C33 28 33 16 38 16 C42 16 42 20 47 20" />
-    </svg>
-  );
-}
-
-// Small document thumbnail, as in the invoice reference.
-function DocThumb() {
-  return (
-    <div className="hidden h-[96px] w-[76px] shrink-0 flex-col gap-[7px] rounded-md border border-line bg-surface-raised p-space-2 md:flex" aria-hidden="true">
-      <span className="flex items-center gap-[4px]">
-        <span className="h-[8px] w-[8px] rounded-full bg-line" />
-        <span className="h-[3px] w-[16px] rounded-full bg-line" />
-      </span>
-      <span className="h-[3px] w-[40px] rounded-full bg-line" />
-      <span className="h-[3px] w-[52px] rounded-full bg-line" />
-      <span className="h-[3px] w-[46px] rounded-full bg-line" />
-      <span className="h-[3px] w-[30px] rounded-full bg-line" />
-    </div>
-  );
-}
-
-// Per-case UI showcase for the explorer panel (SS-1.17, tj 2026-09-27,
-// after the Tailark feature references: one big element per case with a
-// focal number, stacked cards for depth, a segmented bar, a timeline, a
-// chat exchange). Labels are mock data, not claims. Decorative.
+// Rebuilt screens of the three systems (SS-1.17, tj 2026-09-27, from
+// screenshots tj provided): the same structure as the real views —
+// navigation, headers, tabs, field grids, pipelines — redrawn in the site's
+// tokens with mock data and no client branding, until screenshots can be
+// used. Decorative; the panel's text carries the meaning.
 export function CaseShowcase({ name, accent }: CaseShowcaseProps) {
   const a = accents[accent];
 
-  if (name === "Hydra Arms") {
-    // Hydra Arms: the catalogue after the nightly import — big count,
-    // document thumb, a bar split by supplier.
-    const suppliers = [
-      ["dostawca A", "812", "40%"],
-      ["dostawca B", "640", "32%"],
-      ["dostawca C", "562", "28%"],
-    ];
+  if (name === "Fjordanglers") {
+    // Inquiry page: header with contact and status, trip fields, the
+    // eight-step pipeline with the current step, tabs, next-step card.
+    const steps = ["New", "Qualifying", "Waiting guide", "Offer presented", "Awaiting payment", "Paid", "Handed over", "Completed"];
+    const current = 3;
     return (
-      <div aria-hidden="true" className="w-full max-w-[520px]">
-        <Stack>
-          <div className="flex flex-col gap-space-6 p-space-6">
-            <div className="flex items-start justify-between gap-space-6">
-              <div className="flex flex-col gap-space-4">
-                <Mark a={a} />
-                <div className="flex flex-col gap-space-1">
-                  <span className={`${mono} text-ink-muted`}>katalog B2B · import 02:14</span>
-                  <span className="whitespace-nowrap font-mono text-[36px] leading-none text-ink">2 014</span>
-                  <span className="text-small text-ink-muted">produktów, ceny i stany z tej nocy</span>
-                </div>
+      <Window>
+        <div className="flex h-full">
+          <aside className="hidden w-[118px] shrink-0 flex-col gap-space-4 bg-surface p-space-4 md:flex">
+            <span className={`${t.md} font-medium text-ink`}>Admin panel</span>
+            <ul className={`flex flex-col gap-[6px] ${t.sm} text-ink-muted`}>
+              {["Weekly", "Overview", "Guides", "Experiences", "Inquiries", "Pipeline", "Ads", "Finances"].map((item) => (
+                <li key={item} className={item === "Inquiries" ? `rounded-sm px-space-2 py-[3px] ${a.soft} ${a.text}` : "px-space-2 py-[3px]"}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </aside>
+          <div className="flex min-w-0 flex-1 flex-col gap-space-4 p-space-4">
+            <span className={`${t.xs} text-ink-muted`}>Admin › Inquiries › <span className={a.text}>Jonas K.</span></span>
+            <div className="flex flex-col gap-space-4 rounded-md border border-line bg-surface p-space-4">
+              <div className="flex items-center gap-space-2">
+                <span className={`flex h-[26px] w-[26px] items-center justify-center rounded-full ${a.bg} ${a.on} ${t.sm} font-medium`}>J</span>
+                <span className="flex flex-col">
+                  <span className={`${t.md} font-medium text-ink`}>Jonas K.</span>
+                  <span className={`${t.xs} text-ink-muted`}>jonas@example.com · +47 …</span>
+                </span>
+                <span className={`ml-auto ${t.xs} text-ink-muted`}>Received 24 Sept</span>
+                <Chip a={a}>Offer presented</Chip>
               </div>
-              <DocThumb />
+              <div className={`grid grid-cols-2 gap-space-2 border-t border-line pt-space-2 md:grid-cols-4 ${t.xs}`}>
+                {[["Trip", "Fly fishing"], ["Country", "Norway"], ["Group", "3 people"], ["Dates", "12–15 Jun"]].map(([k, v]) => (
+                  <span key={k} className="flex flex-col">
+                    <span className="uppercase tracking-[0.06em] text-ink-muted">{k}</span>
+                    <span className={`${t.sm} text-ink`}>{v}</span>
+                  </span>
+                ))}
+              </div>
+              <div className="flex gap-[3px]">
+                {steps.map((s, i) => (
+                  <span key={s} className="flex flex-1 flex-col gap-[4px]">
+                    <span className={`h-[3px] rounded-full ${i <= current ? a.bg : "bg-line"}`} />
+                    <span className={`${t.xs} truncate ${i === current ? "font-medium text-ink" : "text-ink-muted"}`}>{s}</span>
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="flex flex-col gap-space-4 border-t border-line pt-space-6">
-              <div className="flex h-[10px] w-full gap-[3px] overflow-hidden rounded-full">
-                {suppliers.map(([name, , width], i) => (
-                  <span
-                    key={name}
-                    className={`h-full ${i === 0 ? a.bg : i === 1 ? a.soft : "bg-line"}`}
-                    style={{ width }}
-                  />
+            <div className={`flex gap-space-4 overflow-hidden whitespace-nowrap ${t.sm} text-ink-muted`}>
+              {["Overview", "Conversation", "Brief", "Guide", "Offer & payment"].map((tab) => (
+                <span key={tab} className={tab === "Offer & payment" ? "rounded-sm border border-line bg-surface px-space-2 py-[2px] text-ink" : "py-[2px]"}>
+                  {tab}
+                </span>
+              ))}
+            </div>
+            <div className="grid grid-cols-1 gap-space-4 md:grid-cols-[1fr_120px]">
+              <div className="flex flex-col gap-space-2 rounded-md border border-line bg-surface p-space-4">
+                <span className={`${t.xs} uppercase tracking-[0.06em] text-ink-muted`}>Next step</span>
+                <span className={`${t.md} font-medium text-ink`}>Offer sent, awaiting payment</span>
+                <span className={`${t.xs} text-ink-muted`}>The angler received the offer and the payment link automatically.</span>
+              </div>
+              <div className={`flex flex-col gap-[6px] rounded-md border border-line bg-surface p-space-4 ${t.xs}`}>
+                <span className="uppercase tracking-[0.06em] text-ink-muted">Deal</span>
+                {[["Offer", "4 800 €"], ["Deposit", "1 200 €"], ["Guide", "Erik"]].map(([k, v]) => (
+                  <span key={k} className="flex justify-between"><span className="text-ink-muted">{k}</span><span className="font-mono text-ink">{v}</span></span>
                 ))}
               </div>
-              <ul className="flex flex-col gap-space-2">
-                {suppliers.map(([name, count, width], i) => (
-                  <li key={name} className={`flex items-center gap-space-2 ${mono}`}>
-                    <span className={`h-[6px] w-[6px] rounded-full ${i === 0 ? a.bg : i === 1 ? a.soft : "bg-line"}`} />
-                    <span className="text-ink">{name}</span>
-                    <span className="text-ink-muted">({width})</span>
-                    <span className="ml-auto text-ink">{count}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
-        </Stack>
-      </div>
+        </div>
+      </Window>
     );
   }
 
-  if (name === "Sea Clouds DCS") {
-    // Sea Clouds DCS: a revision's day as a timeline with the transmittal
-    // highlighted, and the hours on the project as the focal number.
-    const events: [string, string, boolean][] = [
-      ["08:10", "Rev C wgrana", false],
-      ["11:45", "Transmittal T-31 wysłany", true],
-      ["16:20", "Rev C zatwierdzona", false],
-    ];
+  if (name === "Hydra Arms") {
+    // The site's hero: mono meta lines, nav with the shop in brackets, big
+    // two-line heading, bracket buttons. Dark, with a faint grid instead of
+    // the photograph.
     return (
-      <div aria-hidden="true" className="grid w-full max-w-[520px] grid-cols-1 gap-space-6 md:grid-cols-[1fr_200px]">
-        <ol className="relative flex flex-col gap-space-4 py-space-2 pl-space-6">
-          <span aria-hidden="true" className="absolute left-[7px] top-0 h-full w-px border-l border-dashed border-line" />
-          {events.map(([time, label, current]) => (
-            <li key={time} className="relative flex items-center gap-space-4">
-              <span
-                className={`absolute -left-[22px] h-[10px] w-[10px] rounded-full border ${current ? `${a.border} ${a.bg}` : "border-line bg-surface"}`}
-              />
-              {current ? (
-                <span className="flex items-center gap-space-4 rounded-md border border-line bg-surface px-space-4 py-space-2">
-                  <span className={`${mono} text-ink-muted`}>{time}</span>
-                  <span className="text-small text-ink">{label}</span>
-                  <Badge a={a} strong>wysłano</Badge>
-                </span>
-              ) : (
-                <>
-                  <span className={`${mono} text-ink-muted`}>{time}</span>
-                  <span className="text-small text-ink">{label}</span>
-                </>
-              )}
-            </li>
-          ))}
-        </ol>
-        <div className="flex flex-col gap-space-4 rounded-md border border-line bg-surface p-space-4">
-          <div className="flex items-center justify-between">
-            <span className={`${mono} text-ink-muted`}>P-104 · godziny</span>
-            <Mark a={a} />
+      <Window dark>
+        <div className="relative flex h-full flex-col justify-between p-space-6">
+          <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full opacity-40">
+            <defs>
+              <pattern id="hydra-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M40 0H0V40" fill="none" className="stroke-line" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hydra-grid)" />
+          </svg>
+          <div className="relative flex items-center justify-between">
+            <span className={`${t.md} whitespace-nowrap font-semibold uppercase tracking-[0.08em] text-ink`}>Hydra Arms</span>
+            <span className={`hidden gap-space-4 md:flex ${t.xs} uppercase tracking-[0.12em] text-ink-muted`}>
+              <span>Usługi</span><span>O nas</span><span>Współpraca</span><span>Kontakt</span>
+              <span className={a.text}>[ Sklep ]</span>
+            </span>
           </div>
-          <span className="whitespace-nowrap font-mono text-[36px] leading-none text-ink">07:30</span>
-          <span className="text-small text-ink-muted">ten tydzień, 3 osoby</span>
-          <div className="flex h-[24px] items-end gap-[3px]">
-            {[40, 60, 100, 70, 50, 30, 20, 80, 90, 60, 45, 100, 65, 35].map((h, i) => (
-              <span key={i} className={`w-full rounded-sm ${i < 9 ? a.bg : "bg-line"}`} style={{ height: `${h}%` }} />
+          <div className={`relative flex justify-between ${t.mono} ${a.text}`}>
+            <span className="flex flex-col gap-[2px]"><span>{"// PL-2026"}</span><span>{"// KRAKÓW, PL"}</span></span>
+            <span className="flex flex-col items-end gap-[2px]"><span>[ 050°04&apos;N ]</span><span>[ 019°57&apos;E ]</span></span>
+          </div>
+          <div className="relative flex flex-col gap-space-4">
+            <span className={`${t.mono} ${a.text}`}>{"// HYDRA ARMS – PL-2026"}</span>
+            <span className="font-sans text-[22px] leading-[26px] tracking-[-0.02em] text-ink">
+              Zaawansowana inżynieria obronna<br />Obrót nowoczesnym uzbrojeniem
+            </span>
+            <span className={`flex gap-space-4 ${t.sm} ${a.text}`}>
+              <span className={`border-x ${a.border} px-space-4 py-[3px]`}>Nasze usługi</span>
+              <span className={`border-x ${a.border} px-space-4 py-[3px]`}>Sklep</span>
+            </span>
+          </div>
+        </div>
+      </Window>
+    );
+  }
+
+  // Sea Clouds DCS: document page — sidebar, breadcrumb, document number
+  // with workflow status, tabs, field grid, current-revision column.
+  const fields: [string, string][] = [
+    ["SCL number", "SC2699-SCL-AA-0002-EN"],
+    ["Client number", "—"],
+    ["Project", "SC2699 — Create Project MDR"],
+    ["Document type", "AA — Accounting / Budget"],
+    ["Discipline", "B00 — Procurement & SCM"],
+    ["Area", "10 — Offshore"],
+    ["Language", "EN — English"],
+    ["Originator", "ADMIN"],
+  ];
+  return (
+    <Window>
+      <div className="flex h-full">
+        <aside className="hidden w-[104px] shrink-0 flex-col gap-space-4 border-r border-line p-space-4 md:flex">
+          <span className="flex items-center gap-space-2">
+            <span className={`flex h-[18px] w-[18px] items-center justify-center rounded-sm ${a.bg} ${a.on} ${t.xs} font-medium`}>SC</span>
+            <span className={`${t.md} font-medium text-ink`}>SCL DCS</span>
+          </span>
+          <ul className={`flex flex-col gap-[6px] ${t.sm} text-ink-muted`}>
+            {["Projects", "MDR", "Dictionaries", "Clients"].map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </aside>
+        <div className="flex min-w-0 flex-1 flex-col gap-space-2 p-space-4">
+          <span className={`${t.xs} truncate text-ink-muted`}>SC2699 — DCS Demo — Create Project MDR — documents / SC2699-SCL-AA-0002-EN</span>
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-[13px] leading-[18px] text-ink">SC2699-SCL-AA-0002-EN</span>
+            <span className={`rounded-sm border border-line px-space-2 py-[2px] ${t.xs} text-ink`}>STARTED</span>
+          </div>
+          <div className={`flex gap-space-4 overflow-hidden whitespace-nowrap ${t.sm} text-ink-muted`}>
+            {["Information", "Revisions", "Plan", "Comments", "References", "Transmittals", "History"].map((tab) => (
+              <span key={tab} className={tab === "Information" ? "rounded-sm border border-line px-space-2 py-[2px] text-ink" : "py-[2px]"}>
+                {tab}
+              </span>
             ))}
           </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Fjordanglers: the enquiry and the automatic reply, then the paid offer
-  // as a stacked card with the focal amount.
-  return (
-    <div aria-hidden="true" className="flex w-full max-w-[520px] flex-col gap-space-6">
-      <div className="flex flex-col gap-space-4">
-        <div className="flex flex-col gap-space-2">
-          <span className="flex items-center gap-space-2 text-small text-ink">
-            <span className="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-line font-mono text-[10px] text-ink">JK</span>
-            Jonas · zapytanie 12:04
-          </span>
-          <p className="max-w-[360px] rounded-md rounded-tl-none border border-line bg-surface px-space-4 py-space-4 text-small text-ink">
-            Hi, 3 osoby, 12–15 czerwca, łowienie z łodzi. Wolne?
-          </p>
-        </div>
-        <div className="flex flex-col items-end gap-space-2">
-          <span className="flex items-center gap-space-2 text-small text-ink">
-            Fjordanglers · odpowiedź 12:05
-            <Badge a={a}>auto</Badge>
-          </span>
-          <p className={`max-w-[360px] rounded-md rounded-tr-none border ${a.border} bg-surface px-space-4 py-space-4 text-small text-ink`}>
-            Hi Jonas, 12–15 czerwca mamy wolną łódź i przewodnika. Oferta i link do płatności poniżej.
-          </p>
-        </div>
-      </div>
-      <Stack>
-        <div className="flex items-start justify-between gap-space-6 p-space-6">
-          <div className="flex flex-col gap-space-4">
-            <Mark a={a} />
-            <div className="flex flex-col gap-space-1">
-              <span className={`${mono} text-ink-muted`}>oferta 2041 · 3 osoby · 4 dni</span>
-              <span className="whitespace-nowrap font-mono text-[36px] leading-none text-ink">4 800 €</span>
-              <span className="text-small text-ink-muted">zaliczka opłacona online</span>
+          <div className="grid grid-cols-1 gap-space-4 md:grid-cols-[1fr_150px]">
+            <div className={`grid grid-cols-1 gap-x-space-4 gap-y-space-2 rounded-md border border-line p-space-4 md:grid-cols-2 ${t.xs}`}>
+              {fields.map(([k, v]) => (
+                <span key={k} className="flex flex-col">
+                  <span className="text-ink-muted">{k}</span>
+                  <span className={`${t.sm} truncate text-ink`}>{v}</span>
+                </span>
+              ))}
+            </div>
+            <div className={`flex flex-col gap-[6px] rounded-md border border-line p-space-4 ${t.xs}`}>
+              <span className={`${t.sm} font-medium text-ink`}>Current revision</span>
+              {[["SCL revision", "A"], ["Step", "IDC"], ["Revision date", "2026-09-22"]].map(([k, v]) => (
+                <span key={k} className="flex justify-between border-b border-line pb-[4px] last:border-b-0">
+                  <span className="text-ink-muted">{k}</span><span className="text-ink">{v}</span>
+                </span>
+              ))}
+              <span className="flex justify-between"><span className="text-ink-muted">Status</span><Chip a={a}>IDC</Chip></span>
+              <span className={`mt-space-2 flex h-[20px] items-center justify-center rounded-sm ${a.bg} ${a.on} ${t.xs}`}>New revision</span>
+              <span className={`flex h-[20px] items-center justify-center rounded-sm border border-line ${t.xs} text-ink`}>Add file</span>
             </div>
           </div>
-          <div className="flex flex-col items-end gap-space-4">
-            <Badge a={a} strong>opłacono</Badge>
-            <DocThumb />
-          </div>
         </div>
-      </Stack>
-    </div>
+      </div>
+    </Window>
   );
 }
