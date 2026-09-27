@@ -55,12 +55,12 @@ export function Process({ content }: ProcessProps) {
             <path
               d="M0 104 C70 104 100 16 141 16 C200 16 390 92 447 92 C505 92 690 40 753 40 C800 40 850 60 900 60 L1200 60"
               fill="none"
-              strokeWidth="1.5"
+              strokeWidth="4"
               strokeLinecap="round"
               strokeLinejoin="round"
               className="stroke-signal"
             />
-            <circle cx="1059" cy="60" r="5" className="fill-ink" />
+            <circle cx="1059" cy="60" r="7" className="fill-ink" />
           </svg>
         </div>
       </Container>
