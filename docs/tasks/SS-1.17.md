@@ -44,6 +44,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 17 „dodaj temu styl, ginie na stronie”: wersja z etykietą (kreska `signal` + mono „Klienci”) odrzucona przez tj („not like that for sure”); zostaje: pasmo `surface-raised` z powrotem, logo większe (Hydra 40/48, Sea Clouds 56/64, Fjord 28/32 px), wyśrodkowane z równymi odstępami 128 px na `lg`, 80% → 100% hover, bez etykiety i linii
 - [x] prompt 19 „krzywa pod 4 krokami grubsza”: `Process` — stroke 1,5 → 4 (jednostki viewBox 1200, ~4 px na 1440), kropka r 5 → 7
 - [x] prompt 20 „animacja tej linii”: krzywa procesu rysuje się raz przy odsłonięciu (svg z `data-reveal`, `stroke-dashoffset` 1260 → 0 przez 1400 ms liniowo, kropka pojawia się po 1300 ms), `prefers-reduced-motion` = bez przejścia
+- [x] prompt 21 „hero wg zrzutu Tailark hero-section-1” (wcześniejszy zrzut hero-section-2, wersja wyśrodkowana, odrzucona w trakcie): lewa kolumna (5/12) — etykieta, h1, lead, CTA, pod spodem podpis „Klienci” (istniejąca nazwa sekcji) i logo klientów (`PartnerLogos`, 70% → 100%); prawa (7/12) — panel `surface-raised` z hairline'em, +160 px poza kontener, ucięty prawą krawędzią (`overflow-hidden`), w środku wykres z podpisami; `PartnerStrip` usunięty; poniżej `lg` kolumna, panel pełnej szerokości
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
@@ -90,3 +91,4 @@ zostało zmienione i dlaczego.
 - 2026-09-26: prompt 18 — etykieta wycofana, pasmo + większe logo; sprawdzone lokalnie 1440 i 390; bez pushu
 - 2026-09-27: prompt 19 — grubsza krzywa procesu; sprawdzone lokalnie 1440; bez pushu
 - 2026-09-27: prompt 20 — pomiar lokalny: przed odsłonięciem offset 1260 i kropka 0, po 1250 ms offset 0 i kropka 0,9 → 1; bez pushu
+- 2026-09-27: prompt 21 — hero z panelem wychodzącym poza krawędź; sprawdzone lokalnie 1440 i 390; bez pushu
