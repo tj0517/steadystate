@@ -1,12 +1,13 @@
 import type { SiteContent } from "@/content/types";
-import { CaseCard } from "./CaseCard";
+import { CaseExplorer } from "./CaseExplorer";
 import { Container } from "./Container";
 
 type CasesProps = {
   content: SiteContent["cases"];
+  partners: SiteContent["partners"];
 };
 
-export function Cases({ content }: CasesProps) {
+export function Cases({ content, partners }: CasesProps) {
   return (
     <section id="realizacje" className="py-space-16">
       <Container className="flex flex-col gap-space-8">
@@ -14,11 +15,7 @@ export function Cases({ content }: CasesProps) {
           <h2 className="text-h1 text-ink">{content.heading}</h2>
         </div>
 
-        <div className="flex flex-col border-b border-line">
-          {content.items.map((item, index) => (
-            <CaseCard key={item.name} content={item} index={index} />
-          ))}
-        </div>
+        <CaseExplorer content={content} partners={partners} />
       </Container>
     </section>
   );

@@ -14,6 +14,15 @@ export const site: SiteContent = {
       captionRight: "przed → po wdrożeniu",
       badge: "STAN USTALONY",
     },
+    // Etykiety panelu-dashboardu w hero (dekoracyjne, aria-hidden). Słowa
+    // z opisów usług; „Przegląd”/„Aktywność”/„Ostatnie 30 dni” — do akceptacji tj.
+    dashboard: {
+      workspace: "Steady Ops",
+      nav: ["Przegląd", "Zamówienia", "Dokumenty", "Zapytania", "Czas pracy", "Finanse"],
+      filters: ["Ostatnie 30 dni", "Tydzień"],
+      overview: "Przegląd",
+      activity: "Aktywność",
+    },
   },
   proofStrip: {
     ariaLabel: "Liczby",
@@ -30,6 +39,14 @@ export const site: SiteContent = {
         value: "3",
         caption: "dostawców spiętych w jeden katalog, bez ręcznej pracy",
       },
+    ],
+  },
+  partners: {
+    ariaLabel: "Klienci",
+    items: [
+      { name: "Hydra Arms", logo: "/partners/hydra-arms.png", width: 2220, height: 825 },
+      { name: "Sea Clouds DCS", logo: "/partners/sea-clouds.png", width: 270, height: 260 },
+      { name: "Fjordanglers", logo: "/partners/fjordanglers.png", width: 1350, height: 264 },
     ],
   },
   services: {
@@ -66,24 +83,9 @@ export const site: SiteContent = {
   },
   cases: {
     heading: "Każdy projekt kończy się tym samym: opisem, co teraz działa samo.",
+    dialogCloseLabel: "Zamknij",
+    detailsLabel: "Co działa",
     items: [
-      {
-        accent: "signal",
-        tag: "Steady Ops · B2B e‑commerce",
-        name: "Hydra Arms",
-        sector: "Sektor obronny. Wcześniej bez sklepu internetowego.",
-        description:
-          "Strona i sklep B2B od zera. Katalog składany co noc z plików XML trzech dostawców: ponad 2 000 produktów, ceny i stany bez ręcznego przepisywania.",
-        note: "Start produkcyjny po dwóch tygodniach od pierwszej rozmowy.",
-        stack: ["Next.js", "Supabase", "BaseLinker"],
-        flow: ["XML ×3 dostawców", "import nocny", "katalog 2 000+", "zamówienia"],
-        steadyState: {
-          label: "Stan ustalony",
-          text: "Katalog aktualizuje się sam każdej nocy. Zespół obsługuje zamówienia, nie dane.",
-        },
-        caseHref: "#realizacje",
-        caseLabel: "Zobacz realizację →",
-      },
       {
         accent: "signal",
         tag: "Steady Ops · Dokumentacja",
@@ -93,6 +95,11 @@ export const site: SiteContent = {
           "Document Control System z rejestracją czasu pracy: rewizje, transmittale, akceptacje i rozliczenie godzin na projekt w jednym miejscu zamiast w mailach i arkuszach.",
         note: "Budowany etapami, każdy etap z kryteriami „gotowe, gdy”.",
         flow: ["rewizja", "transmittal", "akceptacja", "rozliczenie godzin"],
+        features: [
+          "Rewizje z właścicielem i statusem",
+          "Transmittale i akceptacje w jednym miejscu",
+          "Rozliczenie godzin na projekt",
+        ],
         steadyState: {
           label: "Stan ustalony",
           text: "Każda rewizja ma właściciela i status. Nikt nie pyta, która wersja jest aktualna.",
@@ -109,9 +116,36 @@ export const site: SiteContent = {
           "Od reklamy do rezerwacji: landing, kampanie, formularz zapytania, kwalifikacja z użyciem AI i automatyczna pierwsza odpowiedź. Oferta i płatność online.",
         note: "Nasz własny produkt: testujemy na sobie to, co sprzedajemy.",
         flow: ["reklama", "formularz", "kwalifikacja", "oferta", "płatność"],
+        features: [
+          "Kwalifikacja zapytań z użyciem AI",
+          "Automatyczna pierwsza odpowiedź w minuty",
+          "Oferta i płatność online",
+        ],
         steadyState: {
           label: "Stan ustalony",
           text: "Zapytanie dostaje odpowiedź w minuty, a człowiek wchodzi dopiero przy gotowym kliencie.",
+        },
+        caseHref: "#realizacje",
+        caseLabel: "Zobacz realizację →",
+      },
+      {
+        accent: "signal",
+        tag: "Steady Ops · B2B e‑commerce",
+        name: "Hydra Arms",
+        sector: "Sektor obronny. Wcześniej bez sklepu internetowego.",
+        description:
+          "Strona i sklep B2B od zera. Katalog składany co noc z plików XML trzech dostawców: ponad 2 000 produktów, ceny i stany bez ręcznego przepisywania.",
+        note: "Start produkcyjny po dwóch tygodniach od pierwszej rozmowy.",
+        stack: ["Next.js", "Supabase", "BaseLinker"],
+        flow: ["XML ×3 dostawców", "import nocny", "katalog 2 000+", "zamówienia"],
+        features: [
+          "Import nocny z plików XML trzech dostawców",
+          "Katalog 2 000+ produktów z cenami i stanami",
+          "Zamówienia B2B bez ręcznego przepisywania",
+        ],
+        steadyState: {
+          label: "Stan ustalony",
+          text: "Katalog aktualizuje się sam każdej nocy. Zespół obsługuje zamówienia, nie dane.",
         },
         caseHref: "#realizacje",
         caseLabel: "Zobacz realizację →",

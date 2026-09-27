@@ -19,6 +19,9 @@ export type ServiceCard = {
 
 export type Accent = "signal" | "amber";
 
+// Illustration data for the expandable case panel (SS-1.17, prompt 26).
+// One small motif per case, built from chips and hairlines; the numbers are
+// mock data, not claims — the claims live in `description` and `steadyState`.
 export type CaseCard = {
   accent: Accent;
   tag: string;
@@ -35,6 +38,8 @@ export type CaseCard = {
   stack?: string[];
   // Flow-diagram labels, in order (SS-1.16). Geometry lives in FlowDiagram.
   flow: string[];
+  // Three short highlights shown when the panel is expanded (SS-1.17).
+  features: string[];
   // Rendered only when it points at a real subpage (SS-1.10), not at an anchor.
   caseHref: string;
   caseLabel: string;
@@ -59,10 +64,25 @@ export type SiteContent = {
       captionRight: string;
       badge: string;
     };
+    // Decorative dashboard chrome around the chart (hero panel, SS-1.17).
+    dashboard: {
+      workspace: string;
+      nav: string[];
+      filters: string[];
+      overview: string;
+      activity: string;
+    };
   };
   proofStrip: {
     ariaLabel: string;
     metrics: Metric[];
+  };
+  partners: {
+    ariaLabel: string;
+    // `logo`: path under /public (PNG/SVG on transparent); rendered as a
+    // monochrome silhouette at `height` px. Without it the name renders as
+    // a mono wordmark.
+    items: { name: string; logo?: string; width?: number; height?: number }[];
   };
   services: {
     heading: string;
@@ -72,6 +92,9 @@ export type SiteContent = {
   };
   cases: {
     heading: string;
+    // Labels of the full case view opened from the panel (SS-1.17).
+    dialogCloseLabel: string;
+    detailsLabel: string;
     items: CaseCard[];
   };
   process: {

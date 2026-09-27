@@ -1,11 +1,32 @@
 import type { SiteContent } from "@/content/types";
 import { Container } from "./Container";
-import { SteadyOpsCard } from "./SteadyOpsCard";
-import { SteadySalesCard } from "./SteadySalesCard";
+import { ServiceColumn } from "./ServiceColumn";
 
 type ServicesProps = {
   content: SiteContent["services"];
 };
+
+// Two open columns split by a hairline (SS-1.17, tj 2026-09-27, after the
+// Tailark reference) instead of two boxed cards. Each visual is two
+// notification banners for Ops (pain: mail; solution: the system's notice)
+// and an iMessage-style exchange for Sales (pain: the enquiry; solution:
+// the automatic reply with offer and payment link). Texts are mock data —
+// copy for tj to accept.
+const NOTICES = {
+  ops: {
+    before: { app: "Mail", title: "RE: RE: RE: wersja_final_v3.xlsx", body: "Która wersja jest aktualna? W załączniku moja…", time: "wczoraj" },
+    after: { app: "Steady Ops", title: "P-104 · Rev C zatwierdzona", body: "Transmittal T-31 wysłany do klienta.", time: "11:45" },
+  },
+  sales: {
+    chat: {
+      incoming: "Dzień dobry, 3 osoby, 12–15 czerwca, łowienie z łodzi. Jest wolny termin?",
+      incomingTime: "pon., 12:04",
+      outgoing: "Tak — łódź i przewodnik są wolne. Oferta 4 800 €, zaliczka rezerwuje termin:",
+      link: "Opłać zaliczkę · 1 200 €",
+      sentNote: "Wysłano automatycznie · 12:05",
+    },
+  },
+} as const;
 
 export function Services({ content }: ServicesProps) {
   return (
@@ -16,9 +37,13 @@ export function Services({ content }: ServicesProps) {
           <p className="text-lead text-ink-muted">{content.lead}</p>
         </div>
 
-        <div className="grid grid-cols-1 gap-space-6 lg:grid-cols-2">
-          <SteadyOpsCard content={content.ops} />
-          <SteadySalesCard content={content.sales} />
+        <div className="grid grid-cols-1 gap-space-16 lg:grid-cols-2 lg:gap-0">
+          <div data-reveal className="lg:pr-space-16">
+            <ServiceColumn content={content.ops} line="ops" accent="signal" tilt="left" before={NOTICES.ops.before} after={NOTICES.ops.after} />
+          </div>
+          <div data-reveal className="border-t border-line pt-space-16 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-space-16">
+            <ServiceColumn content={content.sales} line="sales" accent="amber" tilt="right" chat={NOTICES.sales.chat} />
+          </div>
         </div>
       </Container>
     </section>
