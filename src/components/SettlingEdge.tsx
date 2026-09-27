@@ -20,7 +20,7 @@ const REST_EPS = 0.04;
 // final shape and eases into it.
 const ENTRY_OVERSHOOT = 0.35;
 
-// Motion for a curved edge (CurveEdge, CurveCard caps). The boundary is
+// Motion for a curved band edge (CurveEdge). The boundary is
 // the same coupled-spring system as the hero line (SettlingLine), drawn as
 // a filled area on a canvas that covers the static SVG and reaches half a
 // box height above and below it, so a big swing is never cropped:

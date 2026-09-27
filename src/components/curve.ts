@@ -1,5 +1,5 @@
-// The steady-state edge curve shared by CurveEdge (band edges) and
-// CurveCard (card caps): a long, low-amplitude version of the logo/hero
+// The steady-state edge curve used by CurveEdge (band edges):
+// a long, low-amplitude version of the logo/hero
 // family — jump, oscillations that fade over most of the width, flat line.
 // viewBox 1440 × 120; the line starts at the bottom-left, peaks at y=30,
 // and settles at y=64 (CURVE_REST). Closed variants add the fill below.

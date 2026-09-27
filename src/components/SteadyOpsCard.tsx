@@ -1,6 +1,4 @@
 import type { ServiceCard } from "@/content/types";
-import { CurveCard } from "./CurveCard";
-import { ServiceArtefact } from "./ServiceArtefact";
 
 type SteadyOpsCardProps = {
   content: ServiceCard;
@@ -9,15 +7,12 @@ type SteadyOpsCardProps = {
 // Work-systems line card — accent `signal` only, per BRAND.md ("Nigdy obu w jednym komponencie").
 export function SteadyOpsCard({ content }: SteadyOpsCardProps) {
   return (
-    <CurveCard as="article" reveal bordered className="flex flex-col gap-space-6 px-space-8 py-space-4">
+    <article data-reveal className="flex flex-col gap-space-6 rounded-lg border border-line bg-surface-raised p-space-8">
       <div className="flex items-center justify-between">
         <span className="inline-flex h-7 items-center rounded-sm bg-signal-soft px-space-2 text-label uppercase text-signal">
           {content.tag}
         </span>
         <span className="text-small text-ink-muted">{content.tagline}</span>
-      </div>
-      <div className="py-space-2">
-        <ServiceArtefact accent="signal" inputs={3} />
       </div>
       <h3 className="text-h2 text-ink">{content.heading}</h3>
       <p className="text-body text-ink-muted">{content.description}</p>
@@ -35,6 +30,6 @@ export function SteadyOpsCard({ content }: SteadyOpsCardProps) {
       <div className="mt-space-2 border-t border-line pt-space-6 text-small text-ink-muted">
         {content.credit}
       </div>
-    </CurveCard>
+    </article>
   );
 }
