@@ -58,6 +58,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 31 „odbuduj ekrany systemów” (zrzuty od tj: panel zapytania Fjordanglers, hero strony Hydra Arms, strona dokumentu SCL DCS): `CaseShowcase` jako przycięte okna 560×340 w tokenach strony — ta sama struktura co prawdziwe widoki (sidebar, nagłówek, zakładki, siatka pól, pipeline 8 kroków, kolumna bieżącej rewizji), dane zastępcze, bez brandingu klientów; typografia 9–11 px, żeby czytało się jak zrzut; Hydra na ciemnym z siatką zamiast fotografii
 - [x] prompt 32 „Hydra — prawdziwy zrzut, bez przycinania, okno w proporcji obrazu”: `public/cases/hydra-arms.jpg` (drugi zrzut hero od tj, 1400×762, JPEG; dymek przeglądarki w lewym górnym rogu zamalowany lustrzanym fragmentem tła, logo Hydra Arms z `public/partners` wkomponowane na biało w tym miejscu, 150 px na 2940) w oknie `natural` (proporcja obrazu, bez stałej wysokości) przez `next/image`; odbudowany hero usunięty
 - [x] prompt 33 „logo w każdej realizacji”: w nagłówku pozycji listy logo klienta (pliki z `public/partners`, białe, 20–32 px wysokości wg znaku) między numerem a nazwą; `Cases`/`CaseExplorer` dostają `partners`
+- [x] prompt 34 „ikona strony = nasze logo”: sygnet `design/steadystate-brand/logos/steadystate-mark.svg` jako `src/app/icon.svg` (favicon SVG), `apple-icon.png` 180 px i `favicon.ico` 32/16 px wyrenderowane z niego (ImageMagick); Next dołącza `<link rel="icon">` i `apple-touch-icon` automatycznie
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
