@@ -1,5 +1,6 @@
 import type { SiteContent } from "@/content/types";
 import { Container } from "./Container";
+import { ProcessArtefact } from "./ProcessArtefact";
 
 type ProcessProps = {
   content: SiteContent["process"];
@@ -11,7 +12,9 @@ type ProcessProps = {
 // above the flat line with the dot. Column centres in the 1200-wide viewBox
 // (4 columns, 24 gaps) are 141, 447, 753 and 1059; the curve's extremes and
 // the dot sit on them. Below `lg` the curve is hidden and the list is a
-// column with hairlines. The curve draws itself once when the section is
+// column with hairlines. Each step carries a small flat artefact
+// (ProcessArtefact) under its text — the reference's "screen per step",
+// in the brand idiom. The curve draws itself once when the section is
 // revealed (RevealObserver + globals.css `.process-curve-*`); length of the
 // path below by numerical integration: 1247, rounded up.
 const PROCESS_CURVE_LENGTH = 1260;
@@ -34,15 +37,20 @@ export function Process({ content }: ProcessProps) {
                 <li
                   key={step.number}
                   data-reveal
-                  className="flex flex-col gap-space-4 border-t border-line py-space-6 lg:border-t-0 lg:pt-0"
+                  className="flex flex-col gap-space-4 border-t border-line py-space-6 lg:border-t-0 lg:pt-0 lg:pb-space-8"
                 >
-                  <span
-                    className={`text-label ${isLast ? "text-signal" : "text-ink-muted"}`}
-                  >
-                    {step.number}
-                  </span>
-                  <h3 className="text-h3 text-ink">{step.heading}</h3>
+                  <h3 className="flex items-baseline gap-space-2 text-h3 text-ink">
+                    <span
+                      className={`font-mono text-label ${isLast ? "text-signal" : "text-ink-muted"}`}
+                    >
+                      {step.number}.
+                    </span>
+                    <span>{step.heading}</span>
+                  </h3>
                   <p className="text-small text-ink-muted">{step.description}</p>
+                  <div className="mt-space-2">
+                    <ProcessArtefact step={index as 0 | 1 | 2 | 3} />
+                  </div>
                 </li>
               );
             })}
