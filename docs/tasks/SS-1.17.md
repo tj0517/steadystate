@@ -135,3 +135,4 @@ zostało zmienione i dlaczego.
 - 2026-09-27: prompt 30 — pomiar lokalny 1440: wysokości akordeonu 238/0 → 106/132 w 150 ms → 0/238; swap 0,6 s; po przesunięciu wskaźnika nad krawędzią pasma SVG zostaje widoczny, canvas pusty; bez pushu
 - 2026-09-27: prompt 31 — dane w ekranach (Jonas K., Norway, 12–15 Jun, 4 800 € / 1 200 €, Erik; SC2699-SCL-AA-0002-EN i pola z demo DCS; nagłówek hero Hydra z ich strony) to atrapy/struktura do akceptacji; do wymiany na zrzuty po zgodzie klientów; sprawdzone lokalnie 1440 (trzy ekrany) i 390; bez pushu
 - 2026-09-27: prompt 32 — zrzut własnej strony klienta (publiczny hero), zgoda klientów na zrzuty systemów nadal deferred; sprawdzone lokalnie 1440; bez pushu
+- 2026-09-27 tj: „we did the job” — push 54 commitów na `feat/site-upgrades`, PR #10 zaktualizowany; CI (typecheck, lint, build, gitleaks) i podgląd Vercel zielone; podgląd: https://steadystate-git-feat-site-upgrades-tymon-jezionek.vercel.app
