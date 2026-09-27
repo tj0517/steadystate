@@ -1,8 +1,14 @@
+import { FileCheck, Mail, MessageSquareReply } from "lucide-react";
 import type { Accent } from "@/content/types";
 
 type Notice = { app: string; title: string; body: string; time: string };
 
+// Solution icons from lucide (tj, 2026-09-27: "an icon from a library");
+// the pain banner always shows Mail.
+const SOLUTION_ICON = { ops: FileCheck, sales: MessageSquareReply } as const;
+
 type ServiceVisualProps = {
+  line: keyof typeof SOLUTION_ICON;
   accent: Accent;
   // Two notification banners: the pain (a mail thread, muted) and the
   // system's own notice (accent).
@@ -22,8 +28,9 @@ const accents = {
 // style the customer recognises, addressing the pain and the solution,
 // not too much"). Banner one is the pain — a mail thread — dimmed; banner
 // two is the system's notice in the line's accent. Mock data. Decorative.
-export function ServiceVisual({ accent, before, after }: ServiceVisualProps) {
+export function ServiceVisual({ line, accent, before, after }: ServiceVisualProps) {
   const a = accents[accent];
+  const Solution = SOLUTION_ICON[line];
   const banner = (n: Notice, mode: "before" | "after") => (
     <div
       className={`flex items-start gap-space-4 rounded-lg border border-line bg-surface p-space-4 ${mode === "before" ? "opacity-60" : ""}`}
@@ -33,14 +40,9 @@ export function ServiceVisual({ accent, before, after }: ServiceVisualProps) {
         aria-hidden="true"
       >
         {mode === "before" ? (
-          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" strokeWidth="1.5" className="stroke-ink-muted">
-            <rect x="2.5" y="5" width="15" height="10" rx="2" />
-            <path d="M3 6l7 5 7-5" />
-          </svg>
+          <Mail size={18} strokeWidth={1.75} className="text-ink-muted" />
         ) : (
-          <svg viewBox="0 0 50 40" width="22" height="18" fill="none" strokeWidth="4" strokeLinecap="round" className="stroke-on-signal">
-            <path d="M6 32 C11 32 12 8 18 8 C24 8 23 26 29 26 C34 26 34 17 38 17 L45 17" />
-          </svg>
+          <Solution size={19} strokeWidth={1.75} className={a.on} />
         )}
       </span>
       <span className="flex min-w-0 flex-1 flex-col gap-[2px]">
