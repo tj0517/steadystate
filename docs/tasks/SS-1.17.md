@@ -69,6 +69,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 42 „ikona z biblioteki przy każdym rozwiązaniu”: `lucide-react` dodany; baner bólu — `Mail`, baner rozwiązania — `FileCheck` (Ops) i `MessageSquareReply` (Sales), 19 px, 1,75 px linia, na kwadracie w akcencie
 - [x] prompt 43 „to samo w punktach poniżej”: kreski przy czterech punktach zastąpione ikonami lucide w akcencie linii (Ops: FileText, Clock, Store, Plug; Sales: Megaphone, MessageSquare, CreditCard, LayoutDashboard), 16 px
 - [x] prompt 44 „nie liniowo — lekkie pochylenie, cień i radius jak w referencji”: karta wizualu usług w perspektywie od `lg` (`rotateX 6°, rotateY −5°, rotate −1,2°`), radius 20 px, miękki cień jak w hero (wyjątek tj), banery radius 14 px, baner rozwiązania z własnym lekkim cieniem; stos kart za wizualem usunięty
+- [x] prompt 45 „nie oba tak samo”: pochylenie lustrzane w prawej kolumnie (`rotateY +5°, rotate +1,2°`), karty pochylają się ku sobie
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji

@@ -32,10 +32,10 @@ export function Services({ content }: ServicesProps) {
 
         <div className="grid grid-cols-1 gap-space-16 lg:grid-cols-2 lg:gap-0">
           <div data-reveal className="lg:pr-space-16">
-            <ServiceColumn content={content.ops} line="ops" accent="signal" before={NOTICES.ops.before} after={NOTICES.ops.after} />
+            <ServiceColumn content={content.ops} line="ops" accent="signal" tilt="left" before={NOTICES.ops.before} after={NOTICES.ops.after} />
           </div>
           <div data-reveal className="border-t border-line pt-space-16 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-space-16">
-            <ServiceColumn content={content.sales} line="sales" accent="amber" before={NOTICES.sales.before} after={NOTICES.sales.after} />
+            <ServiceColumn content={content.sales} line="sales" accent="amber" tilt="right" before={NOTICES.sales.before} after={NOTICES.sales.after} />
           </div>
         </div>
       </Container>

@@ -10,6 +10,9 @@ const SOLUTION_ICON = { ops: FileCheck, sales: MessageSquareReply } as const;
 type ServiceVisualProps = {
   line: keyof typeof SOLUTION_ICON;
   accent: Accent;
+  // Tilt direction: the left column leans one way, the right the other,
+  // so the pair frames the section instead of repeating.
+  tilt: "left" | "right";
   // Two notification banners: the pain (a mail thread, muted) and the
   // system's own notice (accent).
   before: Notice;
@@ -28,7 +31,7 @@ const accents = {
 // style the customer recognises, addressing the pain and the solution,
 // not too much"). Banner one is the pain — a mail thread — dimmed; banner
 // two is the system's notice in the line's accent. Mock data. Decorative.
-export function ServiceVisual({ line, accent, before, after }: ServiceVisualProps) {
+export function ServiceVisual({ line, accent, tilt, before, after }: ServiceVisualProps) {
   const a = accents[accent];
   const Solution = SOLUTION_ICON[line];
   const banner = (n: Notice, mode: "before" | "after") => (
@@ -63,7 +66,11 @@ export function ServiceVisual({ line, accent, before, after }: ServiceVisualProp
           (tj, 2026-09-27, after the Tailark search/kanban references — the
           same shadow recipe as the hero panel). Flat below `lg`. */}
       <div
-        className="flex flex-col gap-space-4 rounded-[20px] border border-line bg-surface-raised p-space-6 lg:origin-center lg:[transform:rotateX(6deg)_rotateY(-5deg)_rotate(-1.2deg)]"
+        className={`flex flex-col gap-space-4 rounded-[20px] border border-line bg-surface-raised p-space-6 lg:origin-center ${
+          tilt === "left"
+            ? "lg:[transform:rotateX(6deg)_rotateY(-5deg)_rotate(-1.2deg)]"
+            : "lg:[transform:rotateX(6deg)_rotateY(5deg)_rotate(1.2deg)]"
+        }`}
         style={{ boxShadow: "0 28px 64px -24px color-mix(in oklab, var(--surface), black 70%)" }}
       >
         {banner(before, "before")}
