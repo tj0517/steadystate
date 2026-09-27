@@ -16,7 +16,7 @@ const accents = {
   amber: { text: "text-amber", bar: "bg-amber", box: "bg-amber-soft" },
 } as const;
 
-// Expandable case panels (SS-1.17, prompt 25, after the „Powerful features”
+// Expandable case panels (SS-1.17, prompt 26, after the „Powerful features”
 // reference): three panels in a row, the open one takes twice the width and
 // shows its diagram whole; the others show a cropped, dimmed corner of
 // theirs. Under each panel a hairline that fills with the accent when open,
@@ -61,22 +61,24 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
                 aria-expanded={isActive}
                 aria-controls={detailsId}
                 onClick={() => setActive(index)}
-                className={`relative h-[260px] w-full overflow-hidden rounded-lg border border-line bg-surface-raised text-left lg:h-[360px] ${
+                className={`relative h-[360px] w-full overflow-hidden rounded-lg border border-line bg-surface-raised text-left lg:h-[340px] ${
                   isActive ? "" : "hover:border-ink-muted"
                 }`}
               >
                 <span className="absolute left-0 top-0 flex items-center gap-space-2 px-space-6 pt-space-6 text-label text-ink-muted">
                   <span>{String(index + 1).padStart(2, "0")}</span>
-                  <span className={`uppercase ${accent.text}`}>{item.tag}</span>
+                  <span className={`whitespace-nowrap uppercase ${accent.text}`}>{item.tag}</span>
                 </span>
                 <div
                   aria-hidden="true"
-                  className={`absolute left-space-6 top-[72px] w-[calc(100%-48px)] lg:w-[560px] ${
+                  className={`absolute inset-x-space-6 bottom-space-6 top-[72px] flex items-center ${
                     isActive ? "opacity-100" : "opacity-60"
                   }`}
                   style={{ transition: "opacity 400ms cubic-bezier(0, 0, 0.2, 1)" }}
                 >
-                  <CaseVisual visual={item.visual} accent={item.accent} />
+                  <div className="w-full lg:w-[560px] lg:shrink-0">
+                    <CaseVisual visual={item.visual} accent={item.accent} />
+                  </div>
                 </div>
               </button>
 
@@ -143,7 +145,7 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
         ref={dialogRef}
         onClose={() => setOpen(null)}
         aria-label={current?.name}
-        className="case-dialog m-auto w-[calc(100%-32px)] max-w-[760px] rounded-lg border border-line bg-surface-raised p-space-8 text-ink"
+        className="case-dialog m-auto outline-none w-[calc(100%-32px)] max-w-[760px] rounded-lg border border-line bg-surface-raised p-space-8 text-ink"
       >
         {current && (
           <div className="flex flex-col gap-space-6">

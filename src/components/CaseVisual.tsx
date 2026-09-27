@@ -12,7 +12,7 @@ const accents = {
   amber: { text: "text-amber", bg: "bg-amber", stroke: "stroke-amber" },
 } as const;
 
-// One diagram per case for the expandable panel (SS-1.17, prompt 25):
+// One diagram per case for the expandable panel (SS-1.17, prompt 26):
 // nightly import, revision register, inquiry funnel. Built from the same
 // parts as the hero dashboard — `surface` tiles on `surface-raised`,
 // `line` hairlines, mono labels, one accent per diagram (BRAND „Grafika”:
@@ -30,8 +30,8 @@ export function CaseVisual({ visual, accent }: CaseVisualProps) {
     return (
       <div className="flex flex-col gap-space-4 font-mono text-label normal-case tracking-normal">
         <span className="text-ink-muted">{visual.schedule}</span>
-        <div className="flex items-center">
-          <ul className="flex w-[196px] shrink-0 flex-col gap-space-2">
+        <div className="flex flex-col lg:flex-row lg:items-center">
+          <ul className="flex w-full flex-col gap-space-2 lg:w-[196px] lg:shrink-0">
             {visual.sources.map((source) => (
               <li
                 key={source.name}
@@ -43,25 +43,26 @@ export function CaseVisual({ visual, accent }: CaseVisualProps) {
             ))}
           </ul>
           <svg
-            width="72"
+            width="56"
             height={height}
-            viewBox={`0 0 72 ${height}`}
+            viewBox={`0 0 56 ${height}`}
             fill="none"
             strokeWidth="1"
             strokeLinecap="round"
-            className={`shrink-0 ${a.stroke}`}
+            className={`hidden shrink-0 lg:block ${a.stroke}`}
           >
             {visual.sources.map((source, index) => {
               const y = index * (rowHeight + gap) + rowHeight / 2;
-              return <path key={source.name} d={`M0 ${y} H24 C40 ${y} 32 ${mid} 48 ${mid}`} />;
+              return <path key={source.name} d={`M0 ${y} H16 C30 ${y} 22 ${mid} 36 ${mid}`} />;
             })}
-            <path d={`M48 ${mid} H66`} />
-            <path d={`M61 ${mid - 3} L66 ${mid} L61 ${mid + 3}`} />
+            <path d={`M36 ${mid} H50`} />
+            <path d={`M45 ${mid - 3} L50 ${mid} L45 ${mid + 3}`} />
           </svg>
-          <div className="flex min-w-[168px] flex-col gap-space-1 rounded-md border border-line bg-surface p-space-4">
+          <span className={`ml-space-6 h-[16px] w-px lg:hidden ${a.bg}`} />
+          <div className="flex min-w-0 flex-col gap-space-1 rounded-md border border-line bg-surface p-space-4 lg:min-w-[168px]">
             <span className="text-ink-muted">{visual.target.label}</span>
             <span className={`text-[26px] leading-none ${a.text}`}>{visual.target.value}</span>
-            <span className="text-ink-muted">{visual.target.note}</span>
+            <span className="truncate text-ink-muted">{visual.target.note}</span>
           </div>
         </div>
       </div>
@@ -72,20 +73,22 @@ export function CaseVisual({ visual, accent }: CaseVisualProps) {
     // Register table: hairline rows, accent dot on the settled status.
     return (
       <div className="flex w-full flex-col font-mono text-label normal-case tracking-normal">
-        <div className="grid grid-cols-[72px_44px_64px_1fr] gap-x-space-4 border-b border-line pb-space-2 uppercase text-ink-muted">
-          {visual.columns.map((column) => (
-            <span key={column}>{column}</span>
+        <div className="grid grid-cols-[64px_40px_1fr] gap-x-space-4 border-b border-line pb-space-2 uppercase text-ink-muted lg:grid-cols-[72px_44px_64px_1fr]">
+          {visual.columns.map((column, index) => (
+            <span key={column} className={index === 2 ? "hidden lg:inline" : ""}>
+              {column}
+            </span>
           ))}
         </div>
         {visual.rows.map((row) => (
           <div
             key={row.id}
-            className="grid h-[40px] grid-cols-[72px_44px_64px_1fr] items-center gap-x-space-4 border-b border-line"
+            className="grid h-[40px] grid-cols-[64px_40px_1fr] items-center gap-x-space-4 border-b border-line lg:grid-cols-[72px_44px_64px_1fr]"
           >
             <span className="text-ink">{row.id}</span>
             <span className="text-ink">{row.rev}</span>
-            <span className="text-ink-muted">{row.owner}</span>
-            <span className={`flex items-center gap-space-2 ${row.done ? a.text : "text-ink-muted"}`}>
+            <span className="hidden text-ink-muted lg:inline">{row.owner}</span>
+            <span className={`flex items-center gap-space-2 whitespace-nowrap ${row.done ? a.text : "text-ink-muted"}`}>
               <span
                 className={`h-[6px] w-[6px] shrink-0 rounded-full ${row.done ? a.bg : "border border-line"}`}
               />
