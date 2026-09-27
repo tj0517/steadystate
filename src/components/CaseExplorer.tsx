@@ -98,11 +98,16 @@ export function CaseExplorer({ content, partners }: CaseExplorerProps) {
   const panel = (index: number) => {
     const item = content.items[index];
     const a = accents[item.accent];
+    const partner = partners.items.find((p) => p.name === item.name);
+    const logo =
+      partner?.logo && partner.width && partner.height
+        ? { src: partner.logo, width: partner.width, height: partner.height }
+        : undefined;
     const hasSubpage = !item.caseHref.startsWith("#");
     return (
       <div className="flex flex-col gap-space-8 rounded-lg border border-line p-space-6 lg:p-space-8">
         <div className="flex justify-center py-space-4">
-          <CaseShowcase name={item.name} accent={item.accent} />
+          <CaseShowcase name={item.name} accent={item.accent} logo={logo} />
         </div>
         <div className={`flex flex-col gap-space-2 rounded-md p-space-6 ${a.box}`}>
           <span className={`text-label uppercase ${a.text}`}>{item.steadyState.label}</span>

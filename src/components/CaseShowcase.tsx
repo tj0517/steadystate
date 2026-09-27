@@ -5,7 +5,25 @@ type CaseShowcaseProps = {
   // Keyed by case name — one rebuilt screen per case.
   name: string;
   accent: Accent;
+  // The client's logo (partner file), shown in the rebuilt screen's chrome
+  // where the real product shows its brand.
+  logo?: { src: string; width: number; height: number };
 };
+
+function Brand({ logo, className }: { logo?: { src: string; width: number; height: number }; className: string }) {
+  if (!logo) return null;
+  return (
+    <Image
+      src={logo.src}
+      alt=""
+      width={logo.width}
+      height={logo.height}
+      unoptimized
+      className={`w-auto ${className}`}
+      style={{ filter: "brightness(0) invert(1)" }}
+    />
+  );
+}
 
 // Accent classes written out literally — the Tailwind scanner only sees full
 // class names in the source, never strings built at runtime.
@@ -61,7 +79,7 @@ function Chip({ a, children, strong = false }: { a: A; children: React.ReactNode
 // navigation, headers, tabs, field grids, pipelines — redrawn in the site's
 // tokens with mock data and no client branding, until screenshots can be
 // used. Decorative; the panel's text carries the meaning.
-export function CaseShowcase({ name, accent }: CaseShowcaseProps) {
+export function CaseShowcase({ name, accent, logo }: CaseShowcaseProps) {
   const a = accents[accent];
 
   if (name === "Fjordanglers") {
@@ -73,7 +91,8 @@ export function CaseShowcase({ name, accent }: CaseShowcaseProps) {
       <Window>
         <div className="flex h-full">
           <aside className="hidden w-[118px] shrink-0 flex-col gap-space-4 bg-surface p-space-4 md:flex">
-            <span className={`${t.md} font-medium text-ink`}>Admin panel</span>
+            <Brand logo={logo} className="h-[14px]" />
+            <span className={`rounded-sm border border-line px-space-2 py-[3px] ${t.xs} ${a.text}`}>Admin panel</span>
             <ul className={`flex flex-col gap-[6px] ${t.sm} text-ink-muted`}>
               {["Weekly", "Overview", "Guides", "Experiences", "Inquiries", "Pipeline", "Ads", "Finances"].map((item) => (
                 <li key={item} className={item === "Inquiries" ? `rounded-sm px-space-2 py-[3px] ${a.soft} ${a.text}` : "px-space-2 py-[3px]"}>
@@ -171,10 +190,7 @@ export function CaseShowcase({ name, accent }: CaseShowcaseProps) {
     <Window>
       <div className="flex h-full">
         <aside className="hidden w-[104px] shrink-0 flex-col gap-space-4 border-r border-line p-space-4 md:flex">
-          <span className="flex items-center gap-space-2">
-            <span className={`flex h-[18px] w-[18px] items-center justify-center rounded-sm ${a.bg} ${a.on} ${t.xs} font-medium`}>SC</span>
-            <span className={`${t.md} font-medium text-ink`}>SCL DCS</span>
-          </span>
+          <Brand logo={logo} className="h-[20px]" />
           <ul className={`flex flex-col gap-[6px] ${t.sm} text-ink-muted`}>
             {["Projects", "MDR", "Dictionaries", "Clients"].map((item) => (
               <li key={item}>{item}</li>

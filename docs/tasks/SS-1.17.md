@@ -59,6 +59,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 32 „Hydra — prawdziwy zrzut, bez przycinania, okno w proporcji obrazu”: `public/cases/hydra-arms.jpg` (drugi zrzut hero od tj, 1400×762, JPEG; dymek przeglądarki w lewym górnym rogu zamalowany lustrzanym fragmentem tła, logo Hydra Arms z `public/partners` wkomponowane na biało w tym miejscu, 150 px na 2940) w oknie `natural` (proporcja obrazu, bez stałej wysokości) przez `next/image`; odbudowany hero usunięty
 - [x] prompt 33 „logo w każdej realizacji”: w nagłówku pozycji listy logo klienta (pliki z `public/partners`, białe, 20–32 px wysokości wg znaku) między numerem a nazwą; `Cases`/`CaseExplorer` dostają `partners`
 - [x] prompt 34 „ikona strony = nasze logo”: sygnet `design/steadystate-brand/logos/steadystate-mark.svg` jako `src/app/icon.svg` (favicon SVG), `apple-icon.png` 180 px i `favicon.ico` 32/16 px wyrenderowane z niego (ImageMagick); Next dołącza `<link rel="icon">` i `apple-touch-icon` automatycznie
+- [x] prompt 35 „logo marki w obu odbudowanych ekranach”: `CaseShowcase` dostaje `logo` (plik partnera) i pokazuje je w chrome ekranu tam, gdzie prawdziwy produkt ma swój znak — Fjordanglers: nad „Admin panel” w sidebarze (14 px), Sea Clouds: samo logo w sidebarze (20 px, bez napisu „SCL DCS” — tj), białe
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
