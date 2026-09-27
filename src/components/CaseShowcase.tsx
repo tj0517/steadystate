@@ -26,11 +26,17 @@ const t = {
 
 // Cropped window: the real screen's proportions, cut at the bottom like a
 // screenshot; hairline frame, tone only.
-function Window({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+function Window({
+  children,
+  dark = false,
+  // Fixed 340 px crop for rebuilt screens; `natural` lets a real
+  // screenshot keep its own proportions instead.
+  natural = false,
+}: { children: React.ReactNode; dark?: boolean; natural?: boolean }) {
   return (
     <div
       aria-hidden="true"
-      className={`h-[340px] w-full max-w-[560px] overflow-hidden rounded-md border border-line ${dark ? "bg-surface" : "bg-surface-raised"}`}
+      className={`w-full max-w-[560px] overflow-hidden rounded-md border border-line ${natural ? "" : "h-[340px]"} ${dark ? "bg-surface" : "bg-surface-raised"}`}
     >
       {children}
     </div>
@@ -132,18 +138,18 @@ export function CaseShowcase({ name, accent }: CaseShowcaseProps) {
   }
 
   if (name === "Hydra Arms") {
-    // Real screenshot of the site's hero (tj, 2026-09-27) in the same
-    // cropped window as the rebuilt screens; the image is a 1400 px JPEG
-    // in /public/cases, covered from the top.
+    // Real screenshot of the site's hero (tj, 2026-09-27), uncropped: the
+    // window takes the image's own proportions. 1400 px JPEG in
+    // /public/cases, a browser tooltip painted out of the top-left corner.
     return (
-      <Window dark>
+      <Window dark natural>
         <Image
           src="/cases/hydra-arms.jpg"
           alt=""
           width={1400}
-          height={764}
-          sizes="(min-width: 1024px) 560px, 100vw"
-          className="h-full w-full object-cover object-top"
+          height={762}
+          unoptimized
+          className="block h-auto w-full"
         />
       </Window>
     );
