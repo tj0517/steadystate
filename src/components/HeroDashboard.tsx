@@ -21,12 +21,12 @@ export function HeroDashboard({ chart, dashboard, metrics }: HeroDashboardProps)
     <div className="flex overflow-hidden rounded-lg border border-line bg-surface-raised">
       <aside
         aria-hidden="true"
-        className="hidden w-[184px] shrink-0 flex-col gap-space-6 border-r border-line bg-surface p-space-4 lg:flex"
+        className="hidden w-[160px] shrink-0 flex-col gap-space-4 border-r border-line bg-surface p-space-4 lg:flex"
       >
         <div className="flex items-center gap-space-2 px-space-2 pt-space-1">
           <Logo size="sm" />
         </div>
-        <ul className="flex flex-col gap-space-1 text-small">
+        <ul className="flex flex-col gap-space-1 font-sans text-[12px] leading-[16px] normal-case tracking-normal">
           {dashboard.nav.map((item, index) => (
             <li
               key={item}
@@ -41,14 +41,14 @@ export function HeroDashboard({ chart, dashboard, metrics }: HeroDashboardProps)
       <div className="flex min-w-0 flex-1 flex-col">
         <div
           aria-hidden="true"
-          className="flex items-center gap-space-2 border-b border-line px-space-6 py-space-4"
+          className="flex items-center gap-space-2 border-b border-line px-space-4 py-space-2"
         >
-          <span className="text-small text-ink">{dashboard.workspace}</span>
+          <span className="font-sans text-[12px] leading-[16px] normal-case tracking-normal text-ink">{dashboard.workspace}</span>
           <span className="ml-auto flex gap-space-2">
             {dashboard.filters.map((filter) => (
               <span
                 key={filter}
-                className="rounded-sm border border-line px-space-2 py-1 text-label text-ink-muted"
+                className="rounded-sm border border-line px-space-2 py-1 font-sans text-[12px] leading-[16px] text-ink-muted"
               >
                 {filter}
               </span>
@@ -56,17 +56,17 @@ export function HeroDashboard({ chart, dashboard, metrics }: HeroDashboardProps)
           </span>
         </div>
 
-        <div className="flex flex-col gap-space-6 p-space-6">
+        <div className="flex flex-col gap-space-4 p-space-4">
           <div aria-hidden="true" className="flex flex-col gap-space-4">
-            <span className="text-small text-ink">{dashboard.overview}</span>
+            <span className="font-sans text-[12px] leading-[16px] normal-case tracking-normal text-ink">{dashboard.overview}</span>
             <div className="grid grid-cols-3 gap-space-4">
               {metrics.map((metric) => (
                 <div
                   key={metric.caption}
-                  className="flex flex-col gap-space-2 rounded-md border border-line bg-surface p-space-4"
+                  className="flex flex-col gap-space-1 rounded-md border border-line bg-surface px-space-4 py-space-2"
                 >
-                  <span className="font-mono text-[22px] leading-none text-ink">{metric.value}</span>
-                  <span className="line-clamp-2 text-label normal-case tracking-normal text-ink-muted">
+                  <span className="font-mono text-[18px] leading-tight text-ink">{metric.value}</span>
+                  <span className="line-clamp-1 font-sans text-[12px] leading-[16px] normal-case tracking-normal text-ink-muted">
                     {metric.caption}
                   </span>
                 </div>
@@ -76,7 +76,7 @@ export function HeroDashboard({ chart, dashboard, metrics }: HeroDashboardProps)
 
           <div className="flex flex-col gap-space-4">
             <div className="flex flex-col gap-space-1">
-              <span aria-hidden="true" className="text-small text-ink">{dashboard.activity}</span>
+              <span aria-hidden="true" className="font-sans text-[12px] leading-[16px] normal-case tracking-normal text-ink">{dashboard.activity}</span>
               <div className="flex flex-col gap-space-1 text-label text-ink-muted md:flex-row md:justify-between">
                 <span className="uppercase">{chart.captionLeft}</span>
                 <span className="uppercase">{chart.captionRight}</span>

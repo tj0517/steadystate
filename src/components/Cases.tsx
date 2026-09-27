@@ -1,5 +1,5 @@
 import type { SiteContent } from "@/content/types";
-import { CaseCard } from "./CaseCard";
+import { CaseExplorer } from "./CaseExplorer";
 import { Container } from "./Container";
 
 type CasesProps = {
@@ -14,11 +14,7 @@ export function Cases({ content }: CasesProps) {
           <h2 className="text-h1 text-ink">{content.heading}</h2>
         </div>
 
-        <div className="flex flex-col border-b border-line">
-          {content.items.map((item, index) => (
-            <CaseCard key={item.name} content={item} index={index} />
-          ))}
-        </div>
+        <CaseExplorer content={content} />
       </Container>
     </section>
   );

@@ -14,14 +14,14 @@ type HeroProps = {
 // bright white; on the right the product panel — a dashboard screen built
 // from our parts (HeroDashboard) — starting at the sixth column, bleeding
 // off the viewport edge and tilted in a mild perspective. The whole hero
-// fits a 1440 × 900 viewport: no label line above the heading, 56 px
-// headline. No photo, no gradient (BRAND.md). Below `lg` it stacks flat.
+// fits a 1440 × 900 viewport with air around it: no label line above the
+// heading, 48 px headline, the panel in a bezel with a soft shadow. No photo, no gradient (BRAND.md). Below `lg` it stacks flat.
 export function Hero({ content, partners, metrics }: HeroProps) {
   return (
     <section id="top" className="overflow-hidden">
-      <Container className="grid grid-cols-1 items-center gap-space-8 pt-space-16 pb-space-16 lg:grid-cols-12 lg:gap-x-space-6 lg:py-[72px]">
+      <Container className="grid grid-cols-1 items-center gap-space-8 pt-space-16 pb-space-16 lg:grid-cols-12 lg:gap-x-space-6 lg:py-[96px]">
         <div className="flex flex-col gap-space-6 lg:col-span-5">
-          <h1 className="text-h1 text-ink md:text-display lg:max-w-[460px] lg:text-[56px] lg:leading-[1.0] lg:tracking-[-0.03em]">
+          <h1 className="text-h1 text-ink md:text-display lg:max-w-[460px] lg:text-[48px] lg:leading-[1.04] lg:tracking-[-0.03em]">
             {content.heading}
           </h1>
           <p className="max-w-[460px] text-lead text-ink-muted">{content.lead}</p>
@@ -45,8 +45,15 @@ export function Hero({ content, partners, metrics }: HeroProps) {
           </div>
         </div>
 
-        <div className="lg:col-span-7 lg:col-start-6 lg:[perspective:1600px]">
-          <div className="lg:w-[calc(100%+200px)] lg:origin-left lg:[transform:rotateY(-6deg)_rotateX(4deg)]">
+        <div className="lg:col-span-6 lg:col-start-7 lg:[perspective:1600px]">
+          {/* Bezel + soft shadow like the reference screen (tj's explicit
+              exception to BRAND "ramki zamiast cieni", 2026-09-27). The
+              shadow colour is the page surface mixed toward black, so it
+              stays a token-derived colour. */}
+          <div
+            className="rounded-[20px] border border-line bg-surface p-[10px] lg:w-[calc(100%+160px)] lg:origin-left lg:[transform:rotateY(-6deg)_rotateX(4deg)]"
+            style={{ boxShadow: "0 32px 80px -24px color-mix(in oklab, var(--surface), black 70%)" }}
+          >
             <HeroDashboard chart={content.chart} dashboard={content.dashboard} metrics={metrics} />
           </div>
         </div>

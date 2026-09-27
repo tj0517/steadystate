@@ -83,6 +83,8 @@ export const site: SiteContent = {
   },
   cases: {
     heading: "Każdy projekt kończy się tym samym: opisem, co teraz działa samo.",
+    dialogCloseLabel: "Zamknij",
+    detailsLabel: "Co działa",
     items: [
       {
         accent: "signal",
@@ -94,6 +96,21 @@ export const site: SiteContent = {
         note: "Start produkcyjny po dwóch tygodniach od pierwszej rozmowy.",
         stack: ["Next.js", "Supabase", "BaseLinker"],
         flow: ["XML ×3 dostawców", "import nocny", "katalog 2 000+", "zamówienia"],
+        features: [
+          "Import nocny z plików XML trzech dostawców",
+          "Katalog 2 000+ produktów z cenami i stanami",
+          "Zamówienia B2B bez ręcznego przepisywania",
+        ],
+        visual: {
+          kind: "import",
+          schedule: "02:00 · co noc",
+          sources: [
+            { name: "dostawca-a.xml", count: "812" },
+            { name: "dostawca-b.xml", count: "640" },
+            { name: "dostawca-c.xml", count: "590" },
+          ],
+          target: { label: "katalog", value: "2 042", note: "ceny · stany · opisy" },
+        },
         steadyState: {
           label: "Stan ustalony",
           text: "Katalog aktualizuje się sam każdej nocy. Zespół obsługuje zamówienia, nie dane.",
@@ -110,6 +127,21 @@ export const site: SiteContent = {
           "Document Control System z rejestracją czasu pracy: rewizje, transmittale, akceptacje i rozliczenie godzin na projekt w jednym miejscu zamiast w mailach i arkuszach.",
         note: "Budowany etapami, każdy etap z kryteriami „gotowe, gdy”.",
         flow: ["rewizja", "transmittal", "akceptacja", "rozliczenie godzin"],
+        features: [
+          "Rewizje z właścicielem i statusem",
+          "Transmittale i akceptacje w jednym miejscu",
+          "Rozliczenie godzin na projekt",
+        ],
+        visual: {
+          kind: "register",
+          columns: ["dokument", "rew.", "właściciel", "status"],
+          rows: [
+            { id: "P-104", rev: "C", owner: "MK", status: "zaakceptowana", done: true },
+            { id: "P-105", rev: "B", owner: "AN", status: "w akceptacji", done: false },
+            { id: "P-106", rev: "A", owner: "JW", status: "transmittal wysłany", done: false },
+            { id: "P-107", rev: "B", owner: "MK", status: "zaakceptowana", done: true },
+          ],
+        },
         steadyState: {
           label: "Stan ustalony",
           text: "Każda rewizja ma właściciela i status. Nikt nie pyta, która wersja jest aktualna.",
@@ -126,6 +158,21 @@ export const site: SiteContent = {
           "Od reklamy do rezerwacji: landing, kampanie, formularz zapytania, kwalifikacja z użyciem AI i automatyczna pierwsza odpowiedź. Oferta i płatność online.",
         note: "Nasz własny produkt: testujemy na sobie to, co sprzedajemy.",
         flow: ["reklama", "formularz", "kwalifikacja", "oferta", "płatność"],
+        features: [
+          "Kwalifikacja zapytań z użyciem AI",
+          "Automatyczna pierwsza odpowiedź w minuty",
+          "Oferta i płatność online",
+        ],
+        visual: {
+          kind: "funnel",
+          stages: [
+            { label: "zapytania", value: 48 },
+            { label: "kwalifikacja", value: 19 },
+            { label: "oferta", value: 12 },
+            { label: "płatność", value: 9 },
+          ],
+          footnote: "pierwsza odpowiedź: 3 min",
+        },
         steadyState: {
           label: "Stan ustalony",
           text: "Zapytanie dostaje odpowiedź w minuty, a człowiek wchodzi dopiero przy gotowym kliencie.",

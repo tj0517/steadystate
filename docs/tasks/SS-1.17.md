@@ -48,10 +48,11 @@ zostało zmienione i dlaczego.
 - [x] prompt 22 „usuń animację siatki linii, wdróż 1:1”: cztery poziome linie siatki wykresu usunięte (zostaje kreskowana linia stanu ustalonego, klasa `curve-baseline`); hero domierzone do wzorca: lewa kolumna max 460 px, h1 62 px / 1.0, podpis „Klienci” w `text-body`, panel od 6. kolumny, +200 px poza kontener, perspektywa `rotateY(-6deg) rotateX(4deg)` od `lg` (płaski poniżej), wykres z prawym marginesem 200 px, żeby kropka i etykieta zostały w kadrze
 - [x] prompt 23 „panel jak ekran dashboardu (własny), wszystko w viewport, logo białe i szerzej”: `HeroDashboard` — sidebar (logo + nav z 6 pozycji, aktywna na `surface-raised`), górny pasek (workspace + chipy filtrów), „Przegląd” z trzema kafelkami liczb z `proofStrip.metrics`, „Aktywność” z wykresem (ten sam `SteadyCurveChart`, ogon żywy); chrome `aria-hidden`; nowe klucze `hero.dashboard` w treści; hero bez linii-etykiety nad h1, h1 56 px, odstępy `space-6`, całość mieści się w 1440×900 (dół hero 859 px); logo białe (`brightness(0) invert(1)`, 100%), wyższe (Hydra 40, Sea Clouds 56, Fjord 32 px), rząd 560 px z odstępami 40 px
 - [x] prompt 24 „usuń efekt myszy na wykresie”: `SettlingLine` usunięty z `SteadyCurveChart` i z repo; wykres tylko rysuje się raz po załadowaniu; ruch krawędzi pasma i czapek kart (`SettlingEdge`) zostaje
+- [x] prompt 25 „cień jak na zrzucie, więcej powietrza, mniejszy wykres i nagłówek”: panel w ramce-bezelu (`surface`, 10 px, radius 20, hairline) z miękkim cieniem `0 32px 80px -24px color-mix(surface, black 70%)` — wyjątek tj od BRAND „ramki zamiast cieni”; panel 6 kolumn od 7., +160 px; h1 48 px; hero `py` 96 px; dashboard ciaśniejszy (sidebar 160 px, kafelki 18 px mono, chrome w sans 12 px)
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
-- bez cieni, gradientów, emoji; jeden akcent na ekran (BRAND.md)
+- bez gradientów i emoji; jeden akcent na ekran (BRAND.md); cień tylko na panelu hero (wyjątek tj 2026-09-27)
 - telefon bez poziomego przewijania — Playwright 390×844: `scrollWidth <= 390`
 - `npm run lint` (w tym `check:colors`), `npm run typecheck` przechodzą lokalnie, a build podglądu PR na Vercelu jest zielony
 
@@ -99,3 +100,4 @@ zostało zmienione i dlaczego.
 - 2026-09-27: SettlingLine mierzy canvas z `offsetWidth/Height` (rozmiar układu), nie z projekcji — po pochyleniu panelu projekcja (607×287) rozjeżdżała linię z SVG (592×275)
 - 2026-09-27: prompt 23 — copy do akceptacji tj: etykiety dashboardu „Przegląd”, „Aktywność”, „Ostatnie 30 dni”, „Tydzień” (pozostałe słowa z opisów usług); zmierzono 1440: hero 859 px, logo do 767 px, panel do 810 px; 390: kolumna, sidebar ukryty; bez pushu
 - 2026-09-27: prompt 24 — bez efektu wskaźnika na wykresie hero; bez pushu
+- 2026-09-27: prompt 25 — zmierzono 1440: dół hero 793 px, panel do 708 px; bez pushu

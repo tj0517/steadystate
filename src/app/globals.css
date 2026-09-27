@@ -154,3 +154,9 @@ button {
     transition: none;
   }
 }
+
+/* Full case view opened from the case panels (CaseExplorer). The page
+ * behind dims to the surface tone — a tint of the ground, not a shadow. */
+.case-dialog::backdrop {
+  background: color-mix(in srgb, var(--surface) 75%, transparent);
+}
