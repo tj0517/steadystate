@@ -70,6 +70,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 43 „to samo w punktach poniżej”: kreski przy czterech punktach zastąpione ikonami lucide w akcencie linii (Ops: FileText, Clock, Store, Plug; Sales: Megaphone, MessageSquare, CreditCard, LayoutDashboard), 16 px
 - [x] prompt 44 „nie liniowo — lekkie pochylenie, cień i radius jak w referencji”: karta wizualu usług w perspektywie od `lg` (`rotateX 6°, rotateY −5°, rotate −1,2°`), radius 20 px, miękki cień jak w hero (wyjątek tj), banery radius 14 px, baner rozwiązania z własnym lekkim cieniem; stos kart za wizualem usunięty
 - [x] prompt 45 „nie oba tak samo”: pochylenie lustrzane w prawej kolumnie (`rotateY +5°, rotate +1,2°`), karty pochylają się ku sobie
+- [x] prompt 46 „Steady Sales z innym pomysłem”: wizual Sales jako wymiana w stylu iMessage — szary dymek przychodzący (zapytanie, „pon., 12:04”), dymek wychodzący w amber z ofertą i chipem-linkiem „Opłać zaliczkę · 1 200 €” (ikona `Link`), pod spodem „Wysłano automatycznie · 12:05”; Ops zostaje przy dwóch powiadomieniach; teksty w `NOTICES` — copy do akceptacji tj
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji

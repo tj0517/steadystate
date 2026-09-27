@@ -1,29 +1,32 @@
-import { FileCheck, Mail, MessageSquareReply } from "lucide-react";
+import { FileCheck, Link, Mail } from "lucide-react";
 import type { Accent } from "@/content/types";
 
 type Notice = { app: string; title: string; body: string; time: string };
 
-// Solution icons from lucide (tj, 2026-09-27: "an icon from a library");
-// the pain banner always shows Mail.
-const SOLUTION_ICON = { ops: FileCheck, sales: MessageSquareReply } as const;
+type Chat = { incoming: string; incomingTime: string; outgoing: string; link: string; sentNote: string };
 
 type ServiceVisualProps = {
-  line: keyof typeof SOLUTION_ICON;
+  // Two different fragments (tj, 2026-09-27): Ops — two iOS-style
+  // notification banners (pain: mail; solution: the system's notice);
+  // Sales — an iMessage-style exchange (pain: the enquiry waiting;
+  // solution: the automatic reply with the offer and payment link).
+  line: "ops" | "sales";
   accent: Accent;
   // Tilt direction: the left column leans one way, the right the other,
   // so the pair frames the section instead of repeating.
   tilt: "left" | "right";
   // Two notification banners: the pain (a mail thread, muted) and the
   // system's own notice (accent).
-  before: Notice;
-  after: Notice;
+  before?: Notice;
+  after?: Notice;
+  chat?: Chat;
 };
 
 // Accent classes written out literally — the Tailwind scanner only sees full
 // class names in the source, never strings built at runtime.
 const accents = {
-  signal: { icon: "bg-signal", on: "text-on-signal", text: "text-signal" },
-  amber: { icon: "bg-amber", on: "text-on-signal", text: "text-amber" },
+  signal: { icon: "bg-signal", on: "text-on-signal", text: "text-signal", bubble: "bg-signal" },
+  amber: { icon: "bg-amber", on: "text-on-signal", text: "text-amber", bubble: "bg-amber" },
 } as const;
 
 // One tilted card per service line, holding two iOS-style notification
@@ -31,9 +34,8 @@ const accents = {
 // style the customer recognises, addressing the pain and the solution,
 // not too much"). Banner one is the pain — a mail thread — dimmed; banner
 // two is the system's notice in the line's accent. Mock data. Decorative.
-export function ServiceVisual({ line, accent, tilt, before, after }: ServiceVisualProps) {
+export function ServiceVisual({ line, accent, tilt, before, after, chat }: ServiceVisualProps) {
   const a = accents[accent];
-  const Solution = SOLUTION_ICON[line];
   const banner = (n: Notice, mode: "before" | "after") => (
     <div
       className={`flex items-start gap-space-4 rounded-[14px] border border-line bg-surface p-space-4 ${mode === "before" ? "opacity-60" : ""}`}
@@ -46,7 +48,7 @@ export function ServiceVisual({ line, accent, tilt, before, after }: ServiceVisu
         {mode === "before" ? (
           <Mail size={18} strokeWidth={1.75} className="text-ink-muted" />
         ) : (
-          <Solution size={19} strokeWidth={1.75} className={a.on} />
+          <FileCheck size={19} strokeWidth={1.75} className={a.on} />
         )}
       </span>
       <span className="flex min-w-0 flex-1 flex-col gap-[2px]">
@@ -73,8 +75,29 @@ export function ServiceVisual({ line, accent, tilt, before, after }: ServiceVisu
         }`}
         style={{ boxShadow: "0 28px 64px -24px color-mix(in oklab, var(--surface), black 70%)" }}
       >
-        {banner(before, "before")}
-        {banner(after, "after")}
+        {line === "ops" && before && after ? (
+          <>
+            {banner(before, "before")}
+            {banner(after, "after")}
+          </>
+        ) : (
+          chat && (
+            <div className="flex flex-col gap-space-2">
+              <span className="self-center text-label normal-case tracking-normal text-ink-muted">{chat.incomingTime}</span>
+              <p className="max-w-[82%] self-start rounded-[18px] rounded-bl-[4px] bg-surface px-space-4 py-space-2 text-small text-ink">
+                {chat.incoming}
+              </p>
+              <div className={`flex max-w-[82%] flex-col gap-space-2 self-end rounded-[18px] rounded-br-[4px] px-space-4 py-space-2 text-small ${a.bubble} ${a.on}`}>
+                <span>{chat.outgoing}</span>
+                <span className="flex items-center gap-space-2 rounded-[10px] bg-surface-raised px-space-2 py-[6px] text-label normal-case tracking-normal text-ink">
+                  <Link size={12} strokeWidth={2} className={a.text} />
+                  {chat.link}
+                </span>
+              </div>
+              <span className="self-end text-label normal-case tracking-normal text-ink-muted">{chat.sentNote}</span>
+            </div>
+          )
+        )}
       </div>
     </div>
   );

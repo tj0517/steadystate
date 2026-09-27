@@ -3,14 +3,16 @@ import type { Accent, ServiceCard } from "@/content/types";
 import { ServiceVisual } from "./ServiceVisual";
 
 type Notice = { app: string; title: string; body: string; time: string };
+type Chat = { incoming: string; incomingTime: string; outgoing: string; link: string; sentNote: string };
 
 type ServiceColumnProps = {
   content: ServiceCard;
   line: "ops" | "sales";
   accent: Accent;
   tilt: "left" | "right";
-  before: Notice;
-  after: Notice;
+  before?: Notice;
+  after?: Notice;
+  chat?: Chat;
 };
 
 // Accent classes written out literally — the Tailwind scanner only sees full
@@ -32,7 +34,7 @@ const BULLET_ICONS = {
 // two-column reference): tag, heading, description, the two-notification
 // visual, then the four bullets as a small two-by-two grid and the credit.
 // No card box — the columns are split by a hairline in Services.
-export function ServiceColumn({ content, line, accent, tilt, before, after }: ServiceColumnProps) {
+export function ServiceColumn({ content, line, accent, tilt, before, after, chat }: ServiceColumnProps) {
   const a = accents[accent];
   return (
     <article className="flex flex-col gap-space-6">
@@ -43,7 +45,7 @@ export function ServiceColumn({ content, line, accent, tilt, before, after }: Se
       <h3 className="text-h2 text-ink">{content.heading}</h3>
       <p className="text-body text-ink-muted">{content.description}</p>
       <div className="py-space-2">
-        <ServiceVisual line={line} accent={accent} tilt={tilt} before={before} after={after} />
+        <ServiceVisual line={line} accent={accent} tilt={tilt} before={before} after={after} chat={chat} />
       </div>
       <ul className="grid grid-cols-1 gap-x-space-6 gap-y-space-4 text-small text-ink md:grid-cols-2">
         {content.bullets.map((bullet, i) => {
