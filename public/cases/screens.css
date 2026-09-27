@@ -1,0 +1,31 @@
+/* Product palettes for the rebuilt client screens in the cases explorer
+ * (SS-1.17). These are the clients' own colours, sampled from their
+ * screenshots, not steadystate tokens — which is why this file lives
+ * outside src/ (check:colors enforces tokens there). Used only inside
+ * CaseShowcase windows. */
+.screen-fjord {
+  --sc-bg: #f3f5f8;
+  --sc-surface: #ffffff;
+  --sc-line: #e3e7ee;
+  --sc-text: #172033;
+  --sc-muted: #6a7486;
+  --sc-nav: #1f2e4a;
+  --sc-nav-text: #c9d3e6;
+  --sc-nav-active: #2b3c5c;
+  --sc-accent: #e8863a;
+  --sc-chip-bg: #dcf0f4;
+  --sc-chip-text: #1f5f6f;
+}
+.screen-dcs {
+  --sc-bg: #f5f6f8;
+  --sc-surface: #ffffff;
+  --sc-line: #e1e5ea;
+  --sc-text: #1f2937;
+  --sc-muted: #6b7280;
+  --sc-nav: #ffffff;
+  --sc-nav-text: #4b5563;
+  --sc-nav-active: #eef2f6;
+  --sc-accent: #2f6f8f;
+  --sc-chip-bg: #f1f5f9;
+  --sc-chip-text: #1f2937;
+}

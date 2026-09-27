@@ -60,6 +60,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 33 „logo w każdej realizacji”: w nagłówku pozycji listy logo klienta (pliki z `public/partners`, białe, 20–32 px wysokości wg znaku) między numerem a nazwą; `Cases`/`CaseExplorer` dostają `partners`
 - [x] prompt 34 „ikona strony = nasze logo”: sygnet `design/steadystate-brand/logos/steadystate-mark.svg` jako `src/app/icon.svg` (favicon SVG), `apple-icon.png` 180 px i `favicon.ico` 32/16 px wyrenderowane z niego (ImageMagick); Next dołącza `<link rel="icon">` i `apple-touch-icon` automatycznie
 - [x] prompt 35 „logo marki w obu odbudowanych ekranach”: `CaseShowcase` dostaje `logo` (plik partnera) i pokazuje je w chrome ekranu tam, gdzie prawdziwy produkt ma swój znak — Fjordanglers: nad „Admin panel” w sidebarze (14 px), Sea Clouds: samo logo w sidebarze (20 px, bez napisu „SCL DCS” — tj), białe
+- [x] prompt 36 „każdy ekran w jego własnej kolorystyce”: palety produktów klientów w `public/cases/screens.css` (`.screen-fjord`: granatowy sidebar, pomarańczowy akcent, jasna treść; `.screen-dcs`: jasny UI, turkusowe przyciski) jako zmienne `--sc-*`, importowane w `layout.tsx`; plik celowo poza `src/`, bo `check:colors` wymusza tam tokeny, a to kolory klientów, nie nasze; `CaseShowcase` mapuje zmienne na style inline; logo Fjordanglers białe na granacie, Sea Clouds w oryginale na białym
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
