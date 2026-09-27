@@ -43,6 +43,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 16 „wrzucone do public, pasek ma wyglądać gładziej”: logo w `public/partners/` (hydra-arms, sea-clouds, fjordanglers — PNG przycięte do zawartości, Sea Clouds z wyciętym białym tłem), w treści `logo`/`width`/`height`; `PartnerStrip` bez pasma i linii: jeden cichy rząd na `surface`, logo jako monochrom (`grayscale(1) invert(1)`, zachowuje detale), opacity 55% → 90% hover, wysokości per logo (Hydra 36/44, Sea Clouds 48/56, Fjord 24/28 px), `unoptimized` (cache optymalizatora podawał stary plik)
 - [x] prompt 17 „dodaj temu styl, ginie na stronie”: wersja z etykietą (kreska `signal` + mono „Klienci”) odrzucona przez tj („not like that for sure”); zostaje: pasmo `surface-raised` z powrotem, logo większe (Hydra 40/48, Sea Clouds 56/64, Fjord 28/32 px), wyśrodkowane z równymi odstępami 128 px na `lg`, 80% → 100% hover, bez etykiety i linii
 - [x] prompt 19 „krzywa pod 4 krokami grubsza”: `Process` — stroke 1,5 → 4 (jednostki viewBox 1200, ~4 px na 1440), kropka r 5 → 7
+- [x] prompt 20 „animacja tej linii”: krzywa procesu rysuje się raz przy odsłonięciu (svg z `data-reveal`, `stroke-dashoffset` 1260 → 0 przez 1400 ms liniowo, kropka pojawia się po 1300 ms), `prefers-reduced-motion` = bez przejścia
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
@@ -88,3 +89,4 @@ zostało zmienione i dlaczego.
 - 2026-09-26: prompt 17 — etykieta paska klientów; sprawdzone lokalnie 1440 i 390; bez pushu
 - 2026-09-26: prompt 18 — etykieta wycofana, pasmo + większe logo; sprawdzone lokalnie 1440 i 390; bez pushu
 - 2026-09-27: prompt 19 — grubsza krzywa procesu; sprawdzone lokalnie 1440; bez pushu
+- 2026-09-27: prompt 20 — pomiar lokalny: przed odsłonięciem offset 1260 i kropka 0, po 1250 ms offset 0 i kropka 0,9 → 1; bez pushu

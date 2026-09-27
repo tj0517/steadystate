@@ -125,3 +125,32 @@ button {
     transition: none;
   }
 }
+
+/* Process curve — draws once as the section is revealed, the dot lands as
+ * the line reaches it. Hidden state = full dash offset while the svg has
+ * `reveal-hidden` (RevealObserver); removing the class transitions to 0.
+ * Linear so the line runs at one speed, like the hero curve. */
+.process-curve.reveal-hidden .process-curve-path {
+  stroke-dashoffset: 1260;
+}
+
+.process-curve.reveal-hidden .process-curve-dot {
+  opacity: 0;
+}
+
+.process-curve:not(.reveal-hidden) .process-curve-path {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1400ms linear;
+}
+
+.process-curve:not(.reveal-hidden) .process-curve-dot {
+  opacity: 1;
+  transition: opacity 300ms cubic-bezier(0, 0, 0.2, 1) 1300ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-curve:not(.reveal-hidden) .process-curve-path,
+  .process-curve:not(.reveal-hidden) .process-curve-dot {
+    transition: none;
+  }
+}

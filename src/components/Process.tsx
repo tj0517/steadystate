@@ -11,7 +11,10 @@ type ProcessProps = {
 // above the flat line with the dot. Column centres in the 1200-wide viewBox
 // (4 columns, 24 gaps) are 141, 447, 753 and 1059; the curve's extremes and
 // the dot sit on them. Below `lg` the curve is hidden and the list is a
-// column with hairlines.
+// column with hairlines. The curve draws itself once when the section is
+// revealed (RevealObserver + globals.css `.process-curve-*`); length of the
+// path below by numerical integration: 1247, rounded up.
+const PROCESS_CURVE_LENGTH = 1260;
 export function Process({ content }: ProcessProps) {
   return (
     <section id="proces" className="py-space-16">
@@ -50,7 +53,8 @@ export function Process({ content }: ProcessProps) {
             width="1200"
             height="120"
             aria-hidden="true"
-            className="hidden h-auto w-full lg:block"
+            data-reveal
+            className="process-curve hidden h-auto w-full lg:block"
           >
             <path
               d="M0 104 C70 104 100 16 141 16 C200 16 390 92 447 92 C505 92 690 40 753 40 C800 40 850 60 900 60 L1200 60"
@@ -58,9 +62,10 @@ export function Process({ content }: ProcessProps) {
               strokeWidth="4"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="stroke-signal"
+              strokeDasharray={PROCESS_CURVE_LENGTH}
+              className="process-curve-path stroke-signal"
             />
-            <circle cx="1059" cy="60" r="7" className="fill-ink" />
+            <circle cx="1059" cy="60" r="7" className="process-curve-dot fill-ink" />
           </svg>
         </div>
       </Container>
