@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-// Client product palettes for the rebuilt screens in the cases explorer —
-// outside src/ on purpose (they are the clients' colours, not tokens).
-import "../../public/cases/screens.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { site } from "@/content/pl/site";
