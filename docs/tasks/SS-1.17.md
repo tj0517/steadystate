@@ -94,3 +94,4 @@ zostało zmienione i dlaczego.
 - 2026-09-27: prompt 20 — pomiar lokalny: przed odsłonięciem offset 1260 i kropka 0, po 1250 ms offset 0 i kropka 0,9 → 1; bez pushu
 - 2026-09-27: prompt 21 — hero z panelem wychodzącym poza krawędź; sprawdzone lokalnie 1440 i 390; bez pushu
 - 2026-09-27: prompt 22 — pomiar lokalny 1440: brak `<g>` siatki, ogon canvas działa po pochyleniu (pas 290–319 przy pociągnięciu); 390 kolumna bez przewijania; bez pushu
+- 2026-09-27: SettlingLine mierzy canvas z `offsetWidth/Height` (rozmiar układu), nie z projekcji — po pochyleniu panelu projekcja (607×287) rozjeżdżała linię z SVG (592×275)

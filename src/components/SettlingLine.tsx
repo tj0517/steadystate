@@ -83,9 +83,11 @@ export function SettlingLine({
     };
 
     const layout = () => {
-      const box = canvas.getBoundingClientRect();
-      width = box.width;
-      height = box.height;
+      // Layout size, not getBoundingClientRect(): the hero panel is tilted
+      // in perspective, and the projected box would scale the line away
+      // from the SVG it replaces.
+      width = canvas.offsetWidth;
+      height = canvas.offsetHeight;
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);
