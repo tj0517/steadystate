@@ -23,7 +23,7 @@ const accents = {
   amber: { icon: "bg-amber", on: "text-on-signal", text: "text-amber" },
 } as const;
 
-// One stacked card per service line, holding two iOS-style notification
+// One tilted card per service line, holding two iOS-style notification
 // banners (SS-1.17, tj 2026-09-27: "two real UI fragments in an Apple
 // style the customer recognises, addressing the pain and the solution,
 // not too much"). Banner one is the pain — a mail thread — dimmed; banner
@@ -33,7 +33,8 @@ export function ServiceVisual({ line, accent, before, after }: ServiceVisualProp
   const Solution = SOLUTION_ICON[line];
   const banner = (n: Notice, mode: "before" | "after") => (
     <div
-      className={`flex items-start gap-space-4 rounded-lg border border-line bg-surface p-space-4 ${mode === "before" ? "opacity-60" : ""}`}
+      className={`flex items-start gap-space-4 rounded-[14px] border border-line bg-surface p-space-4 ${mode === "before" ? "opacity-60" : ""}`}
+      style={mode === "after" ? { boxShadow: "0 12px 32px -16px color-mix(in oklab, var(--surface), black 70%)" } : undefined}
     >
       <span
         className={`flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-[10px] ${mode === "before" ? "bg-line" : a.icon}`}
@@ -57,10 +58,14 @@ export function ServiceVisual({ line, accent, before, after }: ServiceVisualProp
   );
 
   return (
-    <div aria-hidden="true" className="relative pt-[14px]">
-      <span className="absolute inset-x-[20px] top-0 h-[14px] rounded-t-lg border border-b-0 border-line bg-surface-raised" />
-      <span className="absolute inset-x-[10px] top-[7px] h-[14px] rounded-t-lg border border-b-0 border-line bg-surface-raised" />
-      <div className="relative flex flex-col gap-space-4 rounded-lg border border-line bg-surface-raised p-space-6">
+    <div aria-hidden="true" className="px-space-2 py-space-4 lg:[perspective:1400px]">
+      {/* Tilted in a mild perspective with a large radius and a soft shadow
+          (tj, 2026-09-27, after the Tailark search/kanban references — the
+          same shadow recipe as the hero panel). Flat below `lg`. */}
+      <div
+        className="flex flex-col gap-space-4 rounded-[20px] border border-line bg-surface-raised p-space-6 lg:origin-center lg:[transform:rotateX(6deg)_rotateY(-5deg)_rotate(-1.2deg)]"
+        style={{ boxShadow: "0 28px 64px -24px color-mix(in oklab, var(--surface), black 70%)" }}
+      >
         {banner(before, "before")}
         {banner(after, "after")}
       </div>

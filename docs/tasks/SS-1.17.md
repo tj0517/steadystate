@@ -68,6 +68,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 41 „za dużo; blisko referencji, dwa prawdziwe fragmenty UI w stylu Apple, problem i rozwiązanie, nie za dużo”: `ServiceVisual` = jedna karta w stosie z dwoma banerami powiadomień w stylu iOS: pierwszy (przygaszony) — wątek mailowy jako ból („RE: RE: RE: wersja_final_v3.xlsx” / „Zapytanie o wyprawę… bez odpowiedzi od 2 dni”), drugi — powiadomienie systemu w akcencie linii („P-104 · Rev C zatwierdzona” / „Odpowiedź wysłana · oferta 4 800 €”); rzędy przed/po, chipy i krzywa usunięte; teksty banerów w `Services.tsx` (`NOTICES`) — copy do akceptacji tj
 - [x] prompt 42 „ikona z biblioteki przy każdym rozwiązaniu”: `lucide-react` dodany; baner bólu — `Mail`, baner rozwiązania — `FileCheck` (Ops) i `MessageSquareReply` (Sales), 19 px, 1,75 px linia, na kwadracie w akcencie
 - [x] prompt 43 „to samo w punktach poniżej”: kreski przy czterech punktach zastąpione ikonami lucide w akcencie linii (Ops: FileText, Clock, Store, Plug; Sales: Megaphone, MessageSquare, CreditCard, LayoutDashboard), 16 px
+- [x] prompt 44 „nie liniowo — lekkie pochylenie, cień i radius jak w referencji”: karta wizualu usług w perspektywie od `lg` (`rotateX 6°, rotateY −5°, rotate −1,2°`), radius 20 px, miękki cień jak w hero (wyjątek tj), banery radius 14 px, baner rozwiązania z własnym lekkim cieniem; stos kart za wizualem usunięty
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji
