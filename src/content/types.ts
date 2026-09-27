@@ -19,25 +19,26 @@ export type ServiceCard = {
 
 export type Accent = "signal" | "amber";
 
-// Illustration data for the expandable case panel (SS-1.17, prompt 25).
-// Each case gets its own diagram; the numbers are the panel's mock data,
-// not claims — the claims live in `description` and `steadyState`.
+// Illustration data for the expandable case panel (SS-1.17, prompt 26).
+// One small motif per case, built from chips and hairlines; the numbers are
+// mock data, not claims — the claims live in `description` and `steadyState`.
 export type CaseVisual =
   | {
-      kind: "import";
-      schedule: string;
-      sources: { name: string; count: string }[];
-      target: { label: string; value: string; note: string };
+      // Vertical log: a settled headline, then chips hanging off a spine.
+      kind: "log";
+      headline: string;
+      entries: { label: string; meta: string }[];
     }
   | {
-      kind: "register";
-      columns: [string, string, string, string];
-      rows: { id: string; rev: string; owner: string; status: string; done: boolean }[];
+      // Small picker list with one current row.
+      kind: "list";
+      title: string;
+      rows: { label: string; meta: string; current?: boolean }[];
     }
   | {
-      kind: "funnel";
-      stages: { label: string; value: number }[];
-      footnote: string;
+      // Three chips on a line, left to right; the last one is settled.
+      kind: "steps";
+      steps: { label: string; meta: string }[];
     };
 
 export type CaseCard = {

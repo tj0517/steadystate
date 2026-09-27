@@ -102,14 +102,13 @@ export const site: SiteContent = {
           "Zamówienia B2B bez ręcznego przepisywania",
         ],
         visual: {
-          kind: "import",
-          schedule: "02:00 · co noc",
-          sources: [
-            { name: "dostawca-a.xml", count: "812" },
-            { name: "dostawca-b.xml", count: "640" },
-            { name: "dostawca-c.xml", count: "590" },
+          kind: "log",
+          headline: "Import zakończony · 02:14",
+          entries: [
+            { label: "dostawca-a.xml", meta: "812 produktów" },
+            { label: "dostawca-b.xml", meta: "640 produktów" },
+            { label: "dostawca-c.xml", meta: "590 produktów" },
           ],
-          target: { label: "katalog", value: "2 042", note: "ceny · stany · opisy" },
         },
         steadyState: {
           label: "Stan ustalony",
@@ -133,13 +132,12 @@ export const site: SiteContent = {
           "Rozliczenie godzin na projekt",
         ],
         visual: {
-          kind: "register",
-          columns: ["dokument", "rew.", "właściciel", "status"],
+          kind: "list",
+          title: "P-104 · rewizje",
           rows: [
-            { id: "P-104", rev: "C", owner: "MK", status: "zaakceptowana", done: true },
-            { id: "P-105", rev: "B", owner: "AN", status: "w akceptacji", done: false },
-            { id: "P-106", rev: "A", owner: "JW", status: "transmittal wysłany", done: false },
-            { id: "P-107", rev: "B", owner: "MK", status: "zaakceptowana", done: true },
+            { label: "Rew. A", meta: "zamknięta" },
+            { label: "Rew. B", meta: "zamknięta" },
+            { label: "Rew. C", meta: "aktualna", current: true },
           ],
         },
         steadyState: {
@@ -164,14 +162,12 @@ export const site: SiteContent = {
           "Oferta i płatność online",
         ],
         visual: {
-          kind: "funnel",
-          stages: [
-            { label: "zapytania", value: 48 },
-            { label: "kwalifikacja", value: 19 },
-            { label: "oferta", value: 12 },
-            { label: "płatność", value: 9 },
+          kind: "steps",
+          steps: [
+            { label: "zapytanie", meta: "12:04" },
+            { label: "kwalifikacja", meta: "12:05" },
+            { label: "odpowiedź", meta: "12:07" },
           ],
-          footnote: "pierwsza odpowiedź: 3 min",
         },
         steadyState: {
           label: "Stan ustalony",

@@ -18,9 +18,8 @@ const accents = {
 
 // Expandable case panels (SS-1.17, prompt 26, after the „Powerful features”
 // reference): three panels in a row, the open one takes twice the width and
-// shows its diagram whole; the others show a cropped, dimmed corner of
-// theirs. Under each panel a hairline that fills with the accent when open,
-// the name, and — open only — the description, three highlights, the
+// shows its motif at full tone; the others dim theirs. Under each panel a
+// hairline that fills with the accent when open, the tag and name, and — open only — the description, three highlights, the
 // „Stan ustalony” line and the button to the full case. Until SS-1.10 ships
 // the subpages the button opens the full case in a native dialog. Width
 // changes ease out (BRAND „Ruch”); below `lg` the panels stack.
@@ -61,24 +60,18 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
                 aria-expanded={isActive}
                 aria-controls={detailsId}
                 onClick={() => setActive(index)}
-                className={`relative h-[360px] w-full overflow-hidden rounded-lg border border-line bg-surface-raised text-left lg:h-[340px] ${
+                className={`relative h-[280px] w-full overflow-hidden rounded-lg border border-line bg-surface-raised text-left lg:h-[340px] ${
                   isActive ? "" : "hover:border-ink-muted"
                 }`}
               >
-                <span className="absolute left-0 top-0 flex items-center gap-space-2 px-space-6 pt-space-6 text-label text-ink-muted">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <span className={`whitespace-nowrap uppercase ${accent.text}`}>{item.tag}</span>
-                </span>
                 <div
                   aria-hidden="true"
-                  className={`absolute inset-x-space-6 bottom-space-6 top-[72px] flex items-center ${
-                    isActive ? "opacity-100" : "opacity-60"
+                  className={`absolute inset-0 flex items-center justify-center p-space-6 ${
+                    isActive ? "opacity-100" : "opacity-50"
                   }`}
                   style={{ transition: "opacity 400ms cubic-bezier(0, 0, 0.2, 1)" }}
                 >
-                  <div className="w-full lg:w-[560px] lg:shrink-0">
-                    <CaseVisual visual={item.visual} accent={item.accent} />
-                  </div>
+                  <CaseVisual visual={item.visual} accent={item.accent} />
                 </div>
               </button>
 
@@ -93,7 +86,11 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
               </div>
 
               <div id={detailsId} className="flex flex-col gap-space-4">
-                <div className="flex flex-col gap-space-1">
+                <div className="flex flex-col gap-space-2">
+                  <span className="flex items-center gap-space-2 text-label text-ink-muted">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <span className={`uppercase ${accent.text}`}>{item.tag}</span>
+                  </span>
                   <h3 className="text-body font-medium text-ink">{item.name}</h3>
                   <span className="text-small text-ink-muted">{item.sector}</span>
                 </div>
