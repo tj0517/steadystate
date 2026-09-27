@@ -88,28 +88,6 @@ export const site: SiteContent = {
     items: [
       {
         accent: "signal",
-        tag: "Steady Ops · B2B e‑commerce",
-        name: "Hydra Arms",
-        sector: "Sektor obronny. Wcześniej bez sklepu internetowego.",
-        description:
-          "Strona i sklep B2B od zera. Katalog składany co noc z plików XML trzech dostawców: ponad 2 000 produktów, ceny i stany bez ręcznego przepisywania.",
-        note: "Start produkcyjny po dwóch tygodniach od pierwszej rozmowy.",
-        stack: ["Next.js", "Supabase", "BaseLinker"],
-        flow: ["XML ×3 dostawców", "import nocny", "katalog 2 000+", "zamówienia"],
-        features: [
-          "Import nocny z plików XML trzech dostawców",
-          "Katalog 2 000+ produktów z cenami i stanami",
-          "Zamówienia B2B bez ręcznego przepisywania",
-        ],
-        steadyState: {
-          label: "Stan ustalony",
-          text: "Katalog aktualizuje się sam każdej nocy. Zespół obsługuje zamówienia, nie dane.",
-        },
-        caseHref: "#realizacje",
-        caseLabel: "Zobacz realizację →",
-      },
-      {
-        accent: "signal",
         tag: "Steady Ops · Dokumentacja",
         name: "Sea Clouds DCS",
         sector: "Inżynieria offshore. System kontroli dokumentów.",
@@ -146,6 +124,28 @@ export const site: SiteContent = {
         steadyState: {
           label: "Stan ustalony",
           text: "Zapytanie dostaje odpowiedź w minuty, a człowiek wchodzi dopiero przy gotowym kliencie.",
+        },
+        caseHref: "#realizacje",
+        caseLabel: "Zobacz realizację →",
+      },
+      {
+        accent: "signal",
+        tag: "Steady Ops · B2B e‑commerce",
+        name: "Hydra Arms",
+        sector: "Sektor obronny. Wcześniej bez sklepu internetowego.",
+        description:
+          "Strona i sklep B2B od zera. Katalog składany co noc z plików XML trzech dostawców: ponad 2 000 produktów, ceny i stany bez ręcznego przepisywania.",
+        note: "Start produkcyjny po dwóch tygodniach od pierwszej rozmowy.",
+        stack: ["Next.js", "Supabase", "BaseLinker"],
+        flow: ["XML ×3 dostawców", "import nocny", "katalog 2 000+", "zamówienia"],
+        features: [
+          "Import nocny z plików XML trzech dostawców",
+          "Katalog 2 000+ produktów z cenami i stanami",
+          "Zamówienia B2B bez ręcznego przepisywania",
+        ],
+        steadyState: {
+          label: "Stan ustalony",
+          text: "Katalog aktualizuje się sam każdej nocy. Zespół obsługuje zamówienia, nie dane.",
         },
         caseHref: "#realizacje",
         caseLabel: "Zobacz realizację →",

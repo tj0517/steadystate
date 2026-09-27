@@ -1,9 +1,9 @@
 import type { Accent } from "@/content/types";
 
 type CaseShowcaseProps = {
-  // 0 Hydra Arms, 1 Sea Clouds DCS, 2 Fjordanglers — the showcases are
-  // hand-built per case, like the reference illustrations.
-  index: number;
+  // Keyed by case name — the showcases are hand-built per case, like the
+  // reference illustrations; an unknown name falls back to the last one.
+  name: string;
   accent: Accent;
 };
 
@@ -69,10 +69,10 @@ function DocThumb() {
 // after the Tailark feature references: one big element per case with a
 // focal number, stacked cards for depth, a segmented bar, a timeline, a
 // chat exchange). Labels are mock data, not claims. Decorative.
-export function CaseShowcase({ index, accent }: CaseShowcaseProps) {
+export function CaseShowcase({ name, accent }: CaseShowcaseProps) {
   const a = accents[accent];
 
-  if (index === 0) {
+  if (name === "Hydra Arms") {
     // Hydra Arms: the catalogue after the nightly import — big count,
     // document thumb, a bar split by supplier.
     const suppliers = [
@@ -122,7 +122,7 @@ export function CaseShowcase({ index, accent }: CaseShowcaseProps) {
     );
   }
 
-  if (index === 1) {
+  if (name === "Sea Clouds DCS") {
     // Sea Clouds DCS: a revision's day as a timeline with the transmittal
     // highlighted, and the hours on the project as the focal number.
     const events: [string, string, boolean][] = [

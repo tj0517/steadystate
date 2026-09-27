@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import type { SiteContent } from "@/content/types";
 import { CaseShowcase } from "./CaseShowcase";
 import { FlowDiagram } from "./FlowDiagram";
@@ -12,9 +12,30 @@ type CaseExplorerProps = {
 // Accent classes written out literally — the Tailwind scanner only sees full
 // class names in the source, never strings built at runtime.
 const accents = {
-  signal: { text: "text-signal", box: "bg-signal-soft", border: "border-signal" },
-  amber: { text: "text-amber", box: "bg-amber-soft", border: "border-amber" },
+  signal: { text: "text-signal", box: "bg-signal-soft", stroke: "stroke-signal" },
+  amber: { text: "text-amber", box: "bg-amber-soft", stroke: "stroke-amber" },
 } as const;
+
+// Autoplay: the open item's border fills with its accent over this long,
+// then the next case opens (tj, 2026-09-27). A click restarts the cycle
+// from the clicked item; hovering or focusing the list pauses it, so does
+// a hidden tab and `prefers-reduced-motion`. On every change the opened
+// details and the right panel come in with the page's reveal motion
+// (`.case-swap`: fade + 8 px settle, ease-out), keyed so they re-mount.
+const AUTOPLAY_MS = 5000;
+
+const REDUCED = "(prefers-reduced-motion: reduce)";
+const subscribeReduced = (onChange: () => void) => {
+  const mq = window.matchMedia(REDUCED);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+};
+const useReducedMotion = () =>
+  useSyncExternalStore(
+    subscribeReduced,
+    () => window.matchMedia(REDUCED).matches,
+    () => true,
+  );
 
 // Cases as an explorer (SS-1.17, after the Tailark "pillars" reference,
 // tj 2026-09-27): on the left a stack of collapsible items — the open one
@@ -26,9 +47,35 @@ const accents = {
 // section stays a register that folds. Heights ease out (BRAND „Ruch”).
 export function CaseExplorer({ content }: CaseExplorerProps) {
   const [active, setActive] = useState(0);
+  const [cycle, setCycle] = useState(0); // bumps on every (re)start of the timer
+  const [paused, setPaused] = useState(false);
+  const autoplay = !useReducedMotion();
   const [open, setOpen] = useState<number | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const baseId = useId();
+  const count = content.items.length;
+
+  useEffect(() => {
+    const onVisibility = () => {
+      if (document.hidden) setPaused(true);
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, []);
+
+  useEffect(() => {
+    if (!autoplay || paused || open !== null) return;
+    const timer = window.setTimeout(() => {
+      setActive((i) => (i + 1) % count);
+      setCycle((c) => c + 1);
+    }, AUTOPLAY_MS);
+    return () => window.clearTimeout(timer);
+  }, [autoplay, paused, open, active, cycle, count]);
+
+  const select = (index: number) => {
+    setActive(index);
+    setCycle((c) => c + 1);
+  };
 
   const openCase = (index: number) => {
     setOpen(index);
@@ -44,7 +91,7 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
     return (
       <div className="flex flex-col gap-space-8 rounded-lg border border-line p-space-6 lg:p-space-8">
         <div className="flex justify-center py-space-4">
-          <CaseShowcase index={index} accent={item.accent} />
+          <CaseShowcase name={item.name} accent={item.accent} />
         </div>
         <div className={`flex flex-col gap-space-2 rounded-md p-space-6 ${a.box}`}>
           <span className={`text-label uppercase ${a.text}`}>{item.steadyState.label}</span>
@@ -73,7 +120,13 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
   return (
     <>
       <div className="grid grid-cols-1 gap-space-6 lg:grid-cols-12 lg:gap-x-space-6">
-        <ul className="flex flex-col gap-space-4 lg:col-span-5">
+        <ul
+          className="flex flex-col gap-space-4 lg:col-span-5"
+          onPointerEnter={() => setPaused(true)}
+          onPointerLeave={() => setPaused(false)}
+          onFocusCapture={() => setPaused(true)}
+          onBlurCapture={() => setPaused(false)}
+        >
           {content.items.map((item, index) => {
             const a = accents[item.accent];
             const isActive = index === active;
@@ -82,14 +135,40 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
               <li
                 key={item.name}
                 data-reveal
-                className={`rounded-lg border ${isActive ? a.border : "border-line"}`}
-                style={{ transition: "border-color 300ms cubic-bezier(0, 0, 0.2, 1)" }}
+                className="relative rounded-lg border border-line"
               >
+                {isActive && (
+                  // Progress border: a rounded rect drawn on top of the
+                  // hairline, dash offset running 100 → 0 over AUTOPLAY_MS
+                  // (globals.css `.case-progress`), restarted by `cycle`.
+                  <svg
+                    key={cycle}
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
+                  >
+                    <rect
+                      x="0.5"
+                      y="0.5"
+                      width="calc(100% - 1px)"
+                      height="calc(100% - 1px)"
+                      rx="16"
+                      pathLength="100"
+                      fill="none"
+                      strokeWidth="1.5"
+                      className={`case-progress ${a.stroke}`}
+                      style={{
+                        animationDuration: `${AUTOPLAY_MS}ms`,
+                        animationPlayState: autoplay && !paused && open === null ? "running" : "paused",
+                        strokeDashoffset: autoplay ? undefined : 0,
+                      }}
+                    />
+                  </svg>
+                )}
                 <button
                   type="button"
                   aria-expanded={isActive}
                   aria-controls={detailsId}
-                  onClick={() => setActive(index)}
+                  onClick={() => select(index)}
                   className="flex w-full flex-col items-start gap-space-2 px-space-6 py-space-6 text-left md:flex-row md:items-center md:justify-between md:gap-space-4"
                 >
                   <span className="flex items-center gap-space-4">
@@ -104,8 +183,9 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
                 </button>
                 <div
                   id={detailsId}
+                  key={isActive ? `open-${cycle}` : "closed"}
                   hidden={!isActive}
-                  className="flex flex-col gap-space-6 px-space-6 pb-space-6"
+                  className="case-swap flex flex-col gap-space-6 px-space-6 pb-space-6"
                 >
                   <div className="flex flex-col gap-space-4">
                     <span className="text-small text-ink-muted">{item.sector}</span>
@@ -128,7 +208,11 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
           })}
         </ul>
 
-        <div data-reveal className="hidden lg:col-span-7 lg:block">{panel(active)}</div>
+        <div data-reveal className="hidden lg:col-span-7 lg:block">
+          <div key={`${active}-${cycle}`} className="case-swap">
+            {panel(active)}
+          </div>
+        </div>
       </div>
 
       <dialog

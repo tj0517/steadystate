@@ -160,3 +160,43 @@ button {
 .case-dialog::backdrop {
   background: color-mix(in srgb, var(--surface) 75%, transparent);
 }
+
+/* Case explorer — the open item's border fills clockwise from the top-left
+ * corner, then the next case opens (CaseExplorer AUTOPLAY_MS). Linear, so
+ * the fill reads as a timer. Duration and play state are set inline. */
+@keyframes case-progress {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
+.case-progress {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation-name: case-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-progress {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Case explorer — content swap: the opened details and the panel come in
+ * like a section reveal (opacity + 8 px settle, ease-out, 350 ms). */
+@keyframes case-swap {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.case-swap {
+  animation: case-swap 350ms cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-swap {
+    animation: none;
+  }
+}
