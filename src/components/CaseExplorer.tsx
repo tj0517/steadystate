@@ -2,7 +2,7 @@
 
 import { useId, useRef, useState } from "react";
 import type { SiteContent } from "@/content/types";
-import { CaseNodeDiagram } from "./CaseNodeDiagram";
+import { CaseShowcase } from "./CaseShowcase";
 import { FlowDiagram } from "./FlowDiagram";
 
 type CaseExplorerProps = {
@@ -19,7 +19,7 @@ const accents = {
 // Cases as an explorer (SS-1.17, after the Tailark "pillars" reference,
 // tj 2026-09-27): on the left a stack of collapsible items — the open one
 // shows its tag, sector, description and three highlights; on the right a
-// panel with the node diagram of the open case's flow, its „Stan
+// panel with the case's UI showcase (CaseShowcase), its „Stan
 // ustalony” box (the one tinted element) and the link to the full case.
 // Until SS-1.10 ships the subpages the link opens the full case in a
 // native dialog. Below `lg` the panel renders inside the open item, so the
@@ -44,11 +44,7 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
     return (
       <div className="flex flex-col gap-space-8 rounded-lg border border-line p-space-6 lg:p-space-8">
         <div className="flex justify-center py-space-4">
-          <CaseNodeDiagram
-            steps={item.flow}
-            accent={item.accent}
-            ariaLabel={`${item.name}: ${item.flow.join(" → ")}`}
-          />
+          <CaseShowcase index={index} accent={item.accent} />
         </div>
         <div className={`flex flex-col gap-space-2 rounded-md p-space-6 ${a.box}`}>
           <span className={`text-label uppercase ${a.text}`}>{item.steadyState.label}</span>
