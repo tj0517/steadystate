@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <Hero content={site.hero} partners={site.partners} metrics={site.proofStrip.metrics} />
       <Services content={site.services} />
-      <Cases content={site.cases} />
+      <Cases content={site.cases} partners={site.partners} />
       <div className="mt-space-16">
         <CurveEdge />
       </div>

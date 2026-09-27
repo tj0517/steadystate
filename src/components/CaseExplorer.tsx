@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import type { SiteContent } from "@/content/types";
 import { CaseShowcase } from "./CaseShowcase";
@@ -7,6 +8,15 @@ import { FlowDiagram } from "./FlowDiagram";
 
 type CaseExplorerProps = {
   content: SiteContent["cases"];
+  partners: SiteContent["partners"];
+};
+
+// Client logos per case name (the partner files, white on the dark
+// surface); heights per mark so the three read as one weight.
+const LOGO_HEIGHT: Record<string, string> = {
+  "Hydra Arms": "h-6",
+  "Sea Clouds DCS": "h-8",
+  Fjordanglers: "h-5",
 };
 
 // Accent classes written out literally — the Tailwind scanner only sees full
@@ -46,7 +56,7 @@ const useReducedMotion = () =>
 // Until SS-1.10 ships the subpages the link opens the full case in a
 // native dialog. Below `lg` the panel renders inside the open item, so the
 // section stays a register that folds. Heights ease out (BRAND „Ruch”).
-export function CaseExplorer({ content }: CaseExplorerProps) {
+export function CaseExplorer({ content, partners }: CaseExplorerProps) {
   const [active, setActive] = useState(0);
   const [cycle, setCycle] = useState(0); // bumps on every (re)start of the timer
   const [paused, setPaused] = useState(false);
@@ -170,12 +180,26 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
                   aria-expanded={isActive}
                   aria-controls={detailsId}
                   onClick={() => select(index)}
-                  className="flex w-full flex-col items-start gap-space-2 px-space-6 py-space-6 text-left md:flex-row md:items-center md:justify-between md:gap-space-4"
+                  className="flex w-full flex-col items-start gap-space-2 px-space-6 py-space-6 text-left"
                 >
                   <span className="flex items-center gap-space-4">
                     <span className="font-mono text-label text-ink-muted">
                       {String(index + 1).padStart(2, "0")}
                     </span>
+                    {(() => {
+                      const logo = partners.items.find((p) => p.name === item.name);
+                      return logo?.logo && logo.width && logo.height ? (
+                        <Image
+                          src={logo.logo}
+                          alt=""
+                          width={logo.width}
+                          height={logo.height}
+                          unoptimized
+                          className={`w-auto ${LOGO_HEIGHT[item.name] ?? "h-6"}`}
+                          style={{ filter: "brightness(0) invert(1)" }}
+                        />
+                      ) : null;
+                    })()}
                     <span className="text-h3 text-ink">{item.name}</span>
                   </span>
                   <span className={`text-label uppercase ${isActive ? a.text : "text-ink-muted"}`}>
