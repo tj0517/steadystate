@@ -62,6 +62,7 @@ zostało zmienione i dlaczego.
 - [x] prompt 35 „logo marki w obu odbudowanych ekranach”: `CaseShowcase` dostaje `logo` (plik partnera) i pokazuje je w chrome ekranu tam, gdzie prawdziwy produkt ma swój znak — Fjordanglers: nad „Admin panel” w sidebarze (14 px), Sea Clouds: samo logo w sidebarze (20 px, bez napisu „SCL DCS” — tj), białe
 - [x] prompt 36 „każdy ekran w jego własnej kolorystyce” — wycofane (tj: „revert to our colors”); zapis dla historii: palety produktów klientów w `public/cases/screens.css` (`.screen-fjord`: granatowy sidebar, pomarańczowy akcent, jasna treść; `.screen-dcs`: jasny UI, turkusowe przyciski) jako zmienne `--sc-*`, importowane w `layout.tsx`; plik celowo poza `src/`, bo `check:colors` wymusza tam tokeny, a to kolory klientów, nie nasze; `CaseShowcase` mapuje zmienne na style inline; logo Fjordanglers białe na granacie, Sea Clouds w oryginale na białym
 - [x] prompt 37 „wróć do naszych kolorów, logo Sea Clouds nie rozciągnięte”: ekrany z powrotem w tokenach strony, `screens.css` i import usunięte; logo w sidebarze z `self-start` (kolumna flex rozciągała obraz na całą szerokość)
+- [x] prompt 38 „coś z kartami usług”: `ServiceArtefact` w obu kartach (nad nagłówkiem) — „przed → po”: luźne wejścia po lewej (chipy z hairline'em, lekko przekrzywione, 3 dla Ops, 2 dla Sales), ich linie oscylują i osiadają krzywą w jeden system po prawej (chip w akcencie karty z kropką); same kształty, bez tekstu
 
 ## Gotowe, gdy
 - każdy punkt zakresu ma odhaczony wpis i notatkę z realizacji

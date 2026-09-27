@@ -1,5 +1,6 @@
 import type { ServiceCard } from "@/content/types";
 import { CurveCard } from "./CurveCard";
+import { ServiceArtefact } from "./ServiceArtefact";
 
 type SteadySalesCardProps = {
   content: ServiceCard;
@@ -14,6 +15,9 @@ export function SteadySalesCard({ content }: SteadySalesCardProps) {
           {content.tag}
         </span>
         <span className="text-small text-ink-muted">{content.tagline}</span>
+      </div>
+      <div className="py-space-2">
+        <ServiceArtefact accent="amber" inputs={2} />
       </div>
       <h3 className="text-h2 text-ink">{content.heading}</h3>
       <p className="text-body text-ink-muted">{content.description}</p>
