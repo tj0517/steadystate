@@ -2,7 +2,7 @@
 
 import { useId, useRef, useState } from "react";
 import type { SiteContent } from "@/content/types";
-import { CaseVisual } from "./CaseVisual";
+import { CaseNodeDiagram } from "./CaseNodeDiagram";
 import { FlowDiagram } from "./FlowDiagram";
 
 type CaseExplorerProps = {
@@ -12,17 +12,18 @@ type CaseExplorerProps = {
 // Accent classes written out literally — the Tailwind scanner only sees full
 // class names in the source, never strings built at runtime.
 const accents = {
-  signal: { text: "text-signal", bar: "bg-signal", box: "bg-signal-soft" },
-  amber: { text: "text-amber", bar: "bg-amber", box: "bg-amber-soft" },
+  signal: { text: "text-signal", box: "bg-signal-soft", border: "border-signal" },
+  amber: { text: "text-amber", box: "bg-amber-soft", border: "border-amber" },
 } as const;
 
-// Expandable case panels (SS-1.17, prompt 26, after the „Powerful features”
-// reference): three panels in a row, the open one takes twice the width and
-// shows its motif at full tone; the others dim theirs. Under each panel a
-// hairline that fills with the accent when open, the tag and name, and — open only — the description, three highlights, the
-// „Stan ustalony” line and the button to the full case. Until SS-1.10 ships
-// the subpages the button opens the full case in a native dialog. Width
-// changes ease out (BRAND „Ruch”); below `lg` the panels stack.
+// Cases as an explorer (SS-1.17, after the Tailark "pillars" reference,
+// tj 2026-09-27): on the left a stack of collapsible items — the open one
+// shows its tag, sector, description and three highlights; on the right a
+// panel with the node diagram of the open case's flow, its „Stan
+// ustalony” box (the one tinted element) and the link to the full case.
+// Until SS-1.10 ships the subpages the link opens the full case in a
+// native dialog. Below `lg` the panel renders inside the open item, so the
+// section stays a register that folds. Heights ease out (BRAND „Ruch”).
 export function CaseExplorer({ content }: CaseExplorerProps) {
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState<number | null>(null);
@@ -36,68 +37,83 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
   const closeCase = () => dialogRef.current?.close();
   const current = open === null ? null : content.items[open];
 
+  const panel = (index: number) => {
+    const item = content.items[index];
+    const a = accents[item.accent];
+    const hasSubpage = !item.caseHref.startsWith("#");
+    return (
+      <div className="flex flex-col gap-space-8 rounded-lg border border-line p-space-6 lg:p-space-8">
+        <div className="flex justify-center py-space-4">
+          <CaseNodeDiagram
+            steps={item.flow}
+            accent={item.accent}
+            ariaLabel={`${item.name}: ${item.flow.join(" → ")}`}
+          />
+        </div>
+        <div className={`flex flex-col gap-space-2 rounded-md p-space-6 ${a.box}`}>
+          <span className={`text-label uppercase ${a.text}`}>{item.steadyState.label}</span>
+          <span className="text-small text-ink">{item.steadyState.text}</span>
+        </div>
+        {hasSubpage ? (
+          <a
+            href={item.caseHref}
+            className="inline-flex h-[44px] w-fit items-center rounded-md border border-line px-space-4 text-small font-medium text-ink hover:border-ink-muted"
+          >
+            {item.caseLabel}
+          </a>
+        ) : (
+          <button
+            type="button"
+            onClick={() => openCase(index)}
+            className="inline-flex h-[44px] w-fit items-center rounded-md border border-line px-space-4 text-small font-medium text-ink hover:border-ink-muted"
+          >
+            {item.caseLabel}
+          </button>
+        )}
+      </div>
+    );
+  };
+
   return (
     <>
-      <div className="flex flex-col gap-space-8 lg:flex-row lg:gap-space-6">
-        {content.items.map((item, index) => {
-          const accent = accents[item.accent];
-          const isActive = index === active;
-          const detailsId = `${baseId}-${index}`;
-          const hasSubpage = !item.caseHref.startsWith("#");
-
-          return (
-            <article
-              key={item.name}
-              data-reveal
-              className="flex min-w-0 flex-col gap-space-4"
-              style={{
-                flex: isActive ? "2 1 0%" : "1 1 0%",
-                transition: "flex-grow 400ms cubic-bezier(0, 0, 0.2, 1)",
-              }}
-            >
-              <button
-                type="button"
-                aria-expanded={isActive}
-                aria-controls={detailsId}
-                onClick={() => setActive(index)}
-                className={`relative h-[280px] w-full overflow-hidden rounded-lg border border-line bg-surface-raised text-left lg:h-[340px] ${
-                  isActive ? "" : "hover:border-ink-muted"
-                }`}
+      <div className="grid grid-cols-1 gap-space-6 lg:grid-cols-12 lg:gap-x-space-6">
+        <ul className="flex flex-col gap-space-4 lg:col-span-5">
+          {content.items.map((item, index) => {
+            const a = accents[item.accent];
+            const isActive = index === active;
+            const detailsId = `${baseId}-${index}`;
+            return (
+              <li
+                key={item.name}
+                data-reveal
+                className={`rounded-lg border ${isActive ? a.border : "border-line"}`}
+                style={{ transition: "border-color 300ms cubic-bezier(0, 0, 0.2, 1)" }}
               >
-                <div
-                  aria-hidden="true"
-                  className={`absolute inset-0 flex items-center justify-center p-space-6 ${
-                    isActive ? "opacity-100" : "opacity-50"
-                  }`}
-                  style={{ transition: "opacity 400ms cubic-bezier(0, 0, 0.2, 1)" }}
+                <button
+                  type="button"
+                  aria-expanded={isActive}
+                  aria-controls={detailsId}
+                  onClick={() => setActive(index)}
+                  className="flex w-full flex-col items-start gap-space-2 px-space-6 py-space-6 text-left md:flex-row md:items-center md:justify-between md:gap-space-4"
                 >
-                  <CaseVisual visual={item.visual} accent={item.accent} />
-                </div>
-              </button>
-
-              <div className="h-px w-full bg-line">
-                <div
-                  className={`h-full ${accent.bar}`}
-                  style={{
-                    width: isActive ? "100%" : "0%",
-                    transition: "width 400ms cubic-bezier(0, 0, 0.2, 1)",
-                  }}
-                />
-              </div>
-
-              <div id={detailsId} className="flex flex-col gap-space-4">
-                <div className="flex flex-col gap-space-2">
-                  <span className="flex items-center gap-space-2 text-label text-ink-muted">
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <span className={`uppercase ${accent.text}`}>{item.tag}</span>
+                  <span className="flex items-center gap-space-4">
+                    <span className="font-mono text-label text-ink-muted">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-h3 text-ink">{item.name}</span>
                   </span>
-                  <h3 className="text-body font-medium text-ink">{item.name}</h3>
-                  <span className="text-small text-ink-muted">{item.sector}</span>
-                </div>
-
-                {isActive && (
-                  <>
-                    <p className="max-w-[560px] text-body text-ink-muted">{item.description}</p>
+                  <span className={`text-label uppercase ${isActive ? a.text : "text-ink-muted"}`}>
+                    {item.tag}
+                  </span>
+                </button>
+                <div
+                  id={detailsId}
+                  hidden={!isActive}
+                  className="flex flex-col gap-space-6 px-space-6 pb-space-6"
+                >
+                  <div className="flex flex-col gap-space-4">
+                    <span className="text-small text-ink-muted">{item.sector}</span>
+                    <p className="text-body text-ink-muted">{item.description}</p>
                     <ul className="flex flex-col gap-space-2 text-small text-ink">
                       {item.features.map((feature, featureIndex) => (
                         <li key={feature} className="flex gap-space-4">
@@ -108,41 +124,22 @@ export function CaseExplorer({ content }: CaseExplorerProps) {
                         </li>
                       ))}
                     </ul>
-                    <p className={`max-w-[560px] rounded-md p-space-4 text-small text-ink ${accent.box}`}>
-                      <span className={`mr-space-2 font-mono text-label uppercase ${accent.text}`}>
-                        {item.steadyState.label}
-                      </span>
-                      {item.steadyState.text}
-                    </p>
-                    {hasSubpage ? (
-                      <a
-                        href={item.caseHref}
-                        className="inline-flex h-[44px] w-fit items-center rounded-md border border-line px-space-4 text-small font-medium text-ink hover:border-ink-muted"
-                      >
-                        {item.caseLabel}
-                      </a>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={() => openCase(index)}
-                        className="inline-flex h-[44px] w-fit items-center rounded-md border border-line px-space-4 text-small font-medium text-ink hover:border-ink-muted"
-                      >
-                        {item.caseLabel}
-                      </button>
-                    )}
-                  </>
-                )}
-              </div>
-            </article>
-          );
-        })}
+                  </div>
+                  <div className="lg:hidden">{panel(index)}</div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div data-reveal className="hidden lg:col-span-7 lg:block">{panel(active)}</div>
       </div>
 
       <dialog
         ref={dialogRef}
         onClose={() => setOpen(null)}
         aria-label={current?.name}
-        className="case-dialog m-auto outline-none w-[calc(100%-32px)] max-w-[760px] rounded-lg border border-line bg-surface-raised p-space-8 text-ink"
+        className="case-dialog m-auto w-[calc(100%-32px)] max-w-[760px] rounded-lg border border-line bg-surface-raised p-space-8 text-ink outline-none"
       >
         {current && (
           <div className="flex flex-col gap-space-6">

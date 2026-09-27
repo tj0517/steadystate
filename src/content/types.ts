@@ -22,25 +22,6 @@ export type Accent = "signal" | "amber";
 // Illustration data for the expandable case panel (SS-1.17, prompt 26).
 // One small motif per case, built from chips and hairlines; the numbers are
 // mock data, not claims — the claims live in `description` and `steadyState`.
-export type CaseVisual =
-  | {
-      // Vertical log: a settled headline, then chips hanging off a spine.
-      kind: "log";
-      headline: string;
-      entries: { label: string; meta: string }[];
-    }
-  | {
-      // Small picker list with one current row.
-      kind: "list";
-      title: string;
-      rows: { label: string; meta: string; current?: boolean }[];
-    }
-  | {
-      // Three chips on a line, left to right; the last one is settled.
-      kind: "steps";
-      steps: { label: string; meta: string }[];
-    };
-
 export type CaseCard = {
   accent: Accent;
   tag: string;
@@ -59,7 +40,6 @@ export type CaseCard = {
   flow: string[];
   // Three short highlights shown when the panel is expanded (SS-1.17).
   features: string[];
-  visual: CaseVisual;
   // Rendered only when it points at a real subpage (SS-1.10), not at an anchor.
   caseHref: string;
   caseLabel: string;

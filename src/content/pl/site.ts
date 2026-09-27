@@ -101,15 +101,6 @@ export const site: SiteContent = {
           "Katalog 2 000+ produktów z cenami i stanami",
           "Zamówienia B2B bez ręcznego przepisywania",
         ],
-        visual: {
-          kind: "log",
-          headline: "Import zakończony · 02:14",
-          entries: [
-            { label: "dostawca-a.xml", meta: "812 produktów" },
-            { label: "dostawca-b.xml", meta: "640 produktów" },
-            { label: "dostawca-c.xml", meta: "590 produktów" },
-          ],
-        },
         steadyState: {
           label: "Stan ustalony",
           text: "Katalog aktualizuje się sam każdej nocy. Zespół obsługuje zamówienia, nie dane.",
@@ -131,15 +122,6 @@ export const site: SiteContent = {
           "Transmittale i akceptacje w jednym miejscu",
           "Rozliczenie godzin na projekt",
         ],
-        visual: {
-          kind: "list",
-          title: "P-104 · rewizje",
-          rows: [
-            { label: "Rew. A", meta: "zamknięta" },
-            { label: "Rew. B", meta: "zamknięta" },
-            { label: "Rew. C", meta: "aktualna", current: true },
-          ],
-        },
         steadyState: {
           label: "Stan ustalony",
           text: "Każda rewizja ma właściciela i status. Nikt nie pyta, która wersja jest aktualna.",
@@ -161,14 +143,6 @@ export const site: SiteContent = {
           "Automatyczna pierwsza odpowiedź w minuty",
           "Oferta i płatność online",
         ],
-        visual: {
-          kind: "steps",
-          steps: [
-            { label: "zapytanie", meta: "12:04" },
-            { label: "kwalifikacja", meta: "12:05" },
-            { label: "odpowiedź", meta: "12:07" },
-          ],
-        },
         steadyState: {
           label: "Stan ustalony",
           text: "Zapytanie dostaje odpowiedź w minuty, a człowiek wchodzi dopiero przy gotowym kliencie.",
