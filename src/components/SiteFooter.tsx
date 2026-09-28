@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { SiteContent } from "@/content/types";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
@@ -8,6 +9,7 @@ type SiteFooterProps = {
 
 export function SiteFooter({ content }: SiteFooterProps) {
   const links = Object.values(content.links);
+  const legalLinks = Object.values(content.legalLinks);
 
   return (
     <footer>
@@ -22,6 +24,13 @@ export function SiteFooter({ content }: SiteFooterProps) {
               <a key={link.href} href={link.href} className="text-ink-muted hover:text-ink">
                 {link.label}
               </a>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-space-6">
+            {legalLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="text-ink-muted hover:text-ink">
+                {link.label}
+              </Link>
             ))}
           </div>
           <span className="font-mono text-label">{content.location}</span>

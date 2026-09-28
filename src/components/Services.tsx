@@ -14,23 +14,23 @@ type ServicesProps = {
 // copy for tj to accept.
 const NOTICES = {
   ops: {
-    before: { app: "Mail", title: "RE: RE: RE: wersja_final_v3.xlsx", body: "Która wersja jest aktualna? W załączniku moja…", time: "wczoraj" },
-    after: { app: "Steady Ops", title: "P-104 · Rev C zatwierdzona", body: "Transmittal T-31 wysłany do klienta.", time: "11:45" },
+    before: { app: "Mail", title: "RE: RE: RE: final_version_v3.xlsx", body: "Which version is current? Mine's attached...", time: "yesterday" },
+    after: { app: "Steady Ops", title: "P-104 · Rev C approved", body: "Transmittal T-31 sent to client.", time: "11:45" },
   },
   sales: {
     chat: {
-      incoming: "Dzień dobry, 3 osoby, 12–15 czerwca, łowienie z łodzi. Jest wolny termin?",
-      incomingTime: "pon., 12:04",
-      outgoing: "Tak — łódź i przewodnik są wolne. Oferta 4 800 €, zaliczka rezerwuje termin:",
-      link: "Opłać zaliczkę · 1 200 €",
-      sentNote: "Wysłano automatycznie · 12:05",
+      incoming: "Hi, 3 people, June 12 to 15, boat fishing. Any dates open?",
+      incomingTime: "Mon, 12:04",
+      outgoing: "Yes, the boat and guide are free. Offer 4,800 EUR, a deposit holds the date:",
+      link: "Pay deposit · 1,200 EUR",
+      sentNote: "Sent automatically · 12:05",
     },
   },
 } as const;
 
 export function Services({ content }: ServicesProps) {
   return (
-    <section id="uslugi" className="py-space-16">
+    <section id="services" className="py-space-16">
       <Container className="flex flex-col gap-space-8">
         <div data-reveal className="flex max-w-[720px] flex-col gap-space-4">
           <h2 className="text-h1 text-ink">{content.heading}</h2>

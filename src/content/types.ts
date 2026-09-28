@@ -28,7 +28,7 @@ export type CaseCard = {
   name: string;
   sector: string;
   description: string;
-  note: string;
+  note?: string;
   steadyState: {
     label: string;
     text: string;
@@ -56,7 +56,8 @@ export type SiteContent = {
     label: string;
     heading: string;
     lead: string;
-    primaryCta: NavItem;
+    // Opens the contact modal (no href — it's a trigger button, not a link).
+    primaryCta: { label: string };
     secondaryCta: NavItem;
     chart: {
       ariaLabel: string;
@@ -109,10 +110,36 @@ export type SiteContent = {
   cta: {
     heading: string;
     lead: string;
-    button: NavItem;
+    // Label of the bottom CTA button — opens the same contact modal as the hero.
+    triggerLabel: string;
     fit: {
       label: string;
       items: string[];
+    };
+    form: {
+      closeLabel: string;
+      // "{step}"/"{total}" placeholders, filled in at render time.
+      progressLabel: string;
+      about: {
+        heading: string;
+        nameLabel: string;
+        companyLabel: string;
+        emailLabel: string;
+        nextLabel: string;
+      };
+      problem: {
+        heading: string;
+        problemTypeLabel: string;
+        problemOptions: string[];
+        detailsLabel: string;
+        detailsPlaceholder: string;
+        dateLabel: string;
+        backLabel: string;
+        submitLabel: string;
+        submitPendingLabel: string;
+      };
+      successMessage: string;
+      genericErrorMessage: string;
     };
   };
   nav: {
@@ -135,6 +162,10 @@ export type SiteContent = {
       realizacje: NavItem;
       proces: NavItem;
       kontakt: NavItem;
+    };
+    legalLinks: {
+      privacy: NavItem;
+      terms: NavItem;
     };
     location: string;
   };
