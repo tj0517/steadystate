@@ -1,4 +1,5 @@
 import type { SiteContent } from "@/content/types";
+import { ContactModalTrigger } from "./ContactModal";
 import { Container } from "./Container";
 import { HeroDashboard } from "./HeroDashboard";
 import { PartnerLogos } from "./PartnerLogos";
@@ -26,12 +27,10 @@ export function Hero({ content, partners, metrics }: HeroProps) {
           </h1>
           <p className="max-w-[460px] text-lead text-ink-muted">{content.lead}</p>
           <div className="mt-space-2 flex flex-wrap items-center gap-space-4">
-            <a
-              href={content.primaryCta.href}
+            <ContactModalTrigger
+              label={content.primaryCta.label}
               className="inline-flex h-[52px] items-center rounded-md bg-signal px-space-6 text-body font-medium text-on-signal hover:bg-signal-hover"
-            >
-              {content.primaryCta.label}
-            </a>
+            />
             <a
               href={content.secondaryCta.href}
               className="inline-flex h-[52px] items-center rounded-md border border-line bg-surface-raised px-space-6 text-body font-medium text-ink hover:border-ink-muted"

@@ -1,4 +1,5 @@
 import { Cases } from "@/components/Cases";
+import { ContactModalProvider } from "@/components/ContactModal";
 import { CurveEdge } from "@/components/CurveEdge";
 import { LightScope } from "@/components/LightScope";
 import { ContactCta } from "@/components/ContactCta";
@@ -11,7 +12,7 @@ import { site } from "@/content/pl/site";
 
 export default function Home() {
   return (
-    <>
+    <ContactModalProvider content={site.cta.form}>
       <Hero content={site.hero} partners={site.partners} metrics={site.proofStrip.metrics} />
       <Services content={site.services} />
       <Cases content={site.cases} partners={site.partners} />
@@ -25,6 +26,6 @@ export default function Home() {
       <CurveEdge direction="out" />
       <ContactCta content={site.cta} />
       <RevealObserver />
-    </>
+    </ContactModalProvider>
   );
 }

@@ -20,7 +20,7 @@ type ProcessProps = {
 const PROCESS_CURVE_LENGTH = 1260;
 export function Process({ content }: ProcessProps) {
   return (
-    <section id="proces" className="py-space-16">
+    <section id="process" className="py-space-16">
       <Container className="flex flex-col gap-space-8">
         <div data-reveal className="flex max-w-[720px] flex-col gap-space-4">
           <h2 className="text-h1 text-ink">{content.heading}</h2>

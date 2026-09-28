@@ -54,7 +54,7 @@ function Window({
   return (
     <div
       aria-hidden="true"
-      className={`w-full max-w-[560px] overflow-hidden rounded-md border border-line ${natural ? "" : "h-[340px]"} ${dark ? "bg-surface" : "bg-surface-raised"}`}
+      className={`w-full min-w-0 max-w-[560px] overflow-hidden rounded-md border border-line ${natural ? "" : "h-[340px]"} ${dark ? "bg-surface" : "bg-surface-raised"}`}
     >
       {children}
     </div>
@@ -123,7 +123,7 @@ export function CaseShowcase({ name, accent, logo }: CaseShowcaseProps) {
               </div>
               <div className="flex gap-[3px]">
                 {steps.map((s, i) => (
-                  <span key={s} className="flex flex-1 flex-col gap-[4px]">
+                  <span key={s} className="flex min-w-0 flex-1 flex-col gap-[4px]">
                     <span className={`h-[3px] rounded-full ${i <= current ? a.bg : "bg-line"}`} />
                     <span className={`${t.xs} truncate ${i === current ? "font-medium text-ink" : "text-ink-muted"}`}>{s}</span>
                   </span>

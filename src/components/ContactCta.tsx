@@ -1,4 +1,5 @@
 import type { SiteContent } from "@/content/types";
+import { ContactModalTrigger } from "./ContactModal";
 import { Container } from "./Container";
 
 type ContactCtaProps = {
@@ -13,7 +14,7 @@ type ContactCtaProps = {
 // content. No fill, no shadow; tone and hairlines only.
 export function ContactCta({ content }: ContactCtaProps) {
   return (
-    <section id="kontakt" className="py-space-16">
+    <section id="contact" className="py-space-16">
       <Container>
         <div className="relative overflow-hidden rounded-lg border border-line">
           <div className="grid grid-cols-1 gap-space-8 px-space-6 py-space-16 md:px-space-8 lg:grid-cols-12 lg:gap-x-space-6 lg:px-[96px] lg:py-[112px]">
@@ -23,12 +24,10 @@ export function ContactCta({ content }: ContactCtaProps) {
               </h2>
               <p className="max-w-[520px] text-lead text-ink-muted">{content.lead}</p>
               <div className="mt-space-2">
-                <a
-                  href={content.button.href}
+                <ContactModalTrigger
+                  label={content.triggerLabel}
                   className="inline-flex h-[52px] items-center rounded-md bg-signal px-space-6 text-body font-medium text-on-signal hover:bg-signal-hover"
-                >
-                  {content.button.label}
-                </a>
+                />
               </div>
             </div>
 

@@ -283,7 +283,7 @@ export function CaseExplorer({ content, partners }: CaseExplorerProps) {
 
             <div className="flex flex-col gap-space-4 text-body">
               <p className="text-ink">{current.description}</p>
-              <p className="text-ink-muted">{current.note}</p>
+              {current.note && <p className="text-ink-muted">{current.note}</p>}
               <div className="py-space-2">
                 <FlowDiagram
                   steps={current.flow}
